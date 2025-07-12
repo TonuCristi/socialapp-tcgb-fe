@@ -6,6 +6,10 @@ declare module "styled-components" {
       primary: string;
       secondary: string;
       accent: string;
+      danger: string;
+      white: string;
+      transparent: string;
+      gray300: string;
     };
     spacing: {
       xs: string;
@@ -13,8 +17,17 @@ declare module "styled-components" {
       md: string;
       lg: string;
       xl: string;
+      "2xl": string;
+      "3xl": string;
+      "4xl": string;
+      "5xl": string;
+      "6xl": string;
+      "7xl": string;
+      "8xl": string;
+      "9xl": string;
     };
     fontSizes: {
+      xs: string;
       sm: string;
       base: string;
       lg: string;
@@ -40,9 +53,24 @@ declare module "styled-components" {
       black: number;
     };
     borderRadius: {
+      xs: string;
       sm: string;
       md: string;
       lg: string;
+      xl: string;
+      "2xl": string;
+      "3xl": string;
+      "4xl": string;
+      full: string;
+    };
+    breakpoints: {
+      xxs: string;
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      "2xl": string;
     };
   }
 }

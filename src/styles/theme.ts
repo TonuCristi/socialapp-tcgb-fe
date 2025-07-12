@@ -2,9 +2,13 @@ import type { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {
   colors: {
-    primary: "oklch(14.1% 0.005 285.823)",
-    secondary: "oklch(68.5% 0.169 237.323)",
-    accent: "oklch(97.7% 0.013 236.62)",
+    primary: "oklch(97.7% 0.013 236.62)",
+    secondary: "oklch(14.1% 0.005 285.823)",
+    accent: "oklch(68.5% 0.169 237.323)",
+    danger: "oklch(63.7% 0.237 25.331)",
+    white: "#fff",
+    transparent: "transparent",
+    gray300: "oklch(87.2% 0.01 258.338)",
   },
   spacing: {
     xs: "0.25rem", // 4px
@@ -12,8 +16,17 @@ export const theme: DefaultTheme = {
     md: "1rem", // 16px
     lg: "1.5rem", // 24px
     xl: "2rem", // 32px
+    "2xl": "2.5rem", // 40px
+    "3xl": "3rem", // 48px
+    "4xl": "3.5rem", // 56px
+    "5xl": "4rem", // 64px
+    "6xl": "4.5rem", // 72px
+    "7xl": "5rem", // 80px
+    "8xl": "5.5rem", // 88px
+    "9xl": "6rem", // 96px
   },
   fontSizes: {
+    xs: "0.75rem", // 12px
     sm: "0.875rem", // 14px
     base: "1rem", // 16px
     lg: "1.125rem", // 18px
@@ -39,8 +52,23 @@ export const theme: DefaultTheme = {
     black: 900,
   },
   borderRadius: {
+    xs: "0.125rem", // 2px
     sm: "0.25rem", // 4px
-    md: "0.5rem", // 8px
-    lg: "0.75rem", // 12px
+    md: "0.375rem", // 6px
+    lg: "0.5rem", // 8px
+    xl: "0.75rem", // 12px
+    "2xl": "1rem", // 16px
+    "3xl": "1.5rem", // 24px
+    "4xl": "2rem", // 32px
+    full: "100%",
+  },
+  breakpoints: {
+    xxs: "20rem", // 320px
+    xs: "30rem", // 480 px
+    sm: "40rem", // 640 px
+    md: "48rem", // 768 px
+    lg: "64rem", // 1024 px
+    xl: "80rem", // 1280 px
+    "2xl": "96rem", // 1536 px
   },
 };
