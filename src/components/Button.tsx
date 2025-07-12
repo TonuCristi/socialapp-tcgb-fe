@@ -1,14 +1,5 @@
 import styled from "styled-components";
 
-const StyledButton = styled.button`
-  background-color: red;
-  font-weight: ${({ theme }) => theme.fontWeights.semibold};
-  padding: ${({ theme }) => theme.spacing.sm};
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  background: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.accent};
-`;
-
 type Props = {
   children: string;
 };
@@ -16,3 +7,19 @@ type Props = {
 export default function Button({ children }: Props) {
   return <StyledButton>{children}</StyledButton>;
 }
+
+const StyledButton = styled.button`
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
+  padding: ${({ theme }) => theme.spacing.sm};
+  border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
+  background: ${({ theme }) => theme.colors.transparent};
+  border: 0.15rem solid ${({ theme }) => theme.colors.accent};
+  color: ${({ theme }) => theme.colors.accent};
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary};
+  }
+`;
