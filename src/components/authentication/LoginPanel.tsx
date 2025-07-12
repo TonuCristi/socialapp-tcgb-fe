@@ -20,18 +20,24 @@ export default function LoginPanel() {
 
 const StyledLoginPanel = styled.main`
   padding: ${({ theme }) => theme.spacing["9xl"]};
+  width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
 
   @media (width < ${({ theme }) => theme.breakpoints.xl}) {
+    padding: ${({ theme }) => theme.spacing["7xl"]};
     width: 100%;
+    margin: 0;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.lg}) {
-    width: 80%;
+    width: 70%;
     margin: 0 auto;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing["7xl"]};
     width: 90%;
   }
 
@@ -67,6 +73,10 @@ const StyledTitle = styled.h2`
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
     font-size: ${({ theme }) => theme.fontSizes["3xl"]};
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+    font-size: ${({ theme }) => theme.fontSizes["2xl"]};
   }
 `;
 

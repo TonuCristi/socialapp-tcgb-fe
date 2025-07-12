@@ -74,19 +74,7 @@ export default function LoginForm() {
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 20rem;
-
-  @media (width < ${({ theme }) => theme.breakpoints["2xl"]}) {
-    width: 60%;
-  }
-
-  @media (width < ${({ theme }) => theme.breakpoints["xl"]}) {
-    width: 80%;
-  }
-
-  @media (width < ${({ theme }) => theme.breakpoints["lg"]}) {
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 const StyledFormFieldsWrapper = styled.div`
