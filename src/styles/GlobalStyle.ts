@@ -24,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
         font-optical-sizing: auto;
         font-size: ${({ theme }) => theme.fontSizes.sm};
         font-weight: ${({ theme }) => theme.fontWeights.normal};
+        background-color: ${({ theme }) => theme.colors.secondary};
     }
 
     h1,

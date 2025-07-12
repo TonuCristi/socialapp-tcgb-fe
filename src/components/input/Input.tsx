@@ -9,28 +9,56 @@ type Props = DetailedHTMLProps<
   name: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
+  onLeftIconClick?: () => void;
+  onRightIconClick?: () => void;
 };
 
-export default function Input({ leftIcon, rightIcon, name, ...props }: Props) {
+export default function Input({
+  name,
+  leftIcon,
+  rightIcon,
+  onLeftIconClick,
+  onRightIconClick,
+  ...props
+}: Props) {
   const { register } = useFormContext();
 
   return (
     <InputWrapper>
-      {leftIcon && leftIcon}
+      {leftIcon && (
+        <StyledLeftIcon onClick={onLeftIconClick}>{leftIcon}</StyledLeftIcon>
+      )}
       <StyledInput {...props} {...register(name)} />
-      {leftIcon && rightIcon}
+      {rightIcon && (
+        <StyledRightIcon onClick={onRightIconClick}>
+          {rightIcon}
+        </StyledRightIcon>
+      )}
     </InputWrapper>
   );
 }
 
-const InputWrapper = styled.div``;
+const InputWrapper = styled.div`
+  border: 0.15rem solid ${({ theme }) => theme.colors.accent};
+  border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
+  padding: ${({ theme }) => theme.spacing.sm};
+  color: ${({ theme }) => theme.colors.accent};
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+`;
 
 const StyledInput = styled.input`
   outline: none;
   background: none;
-  border: 0.15rem solid ${({ theme }) => theme.colors.accent};
+  border: none;
   color: ${({ theme }) => theme.colors.white};
-  border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
-  padding: ${({ theme }) => theme.spacing.sm};
   width: 100%;
+`;
+
+const StyledLeftIcon = styled.div``;
+
+const StyledRightIcon = styled.div`
+  cursor: pointer;
 `;
