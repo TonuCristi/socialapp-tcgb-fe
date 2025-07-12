@@ -1,11 +1,11 @@
-import LoginPanel from "../components/authentication/login/LoginPanel";
 import BrandPanel from "../components/authentication/BrandPanel";
+import RegisterPanel from "../components/authentication/register/RegisterPanel";
 import { StyledAuthPage } from "../components/authentication/styles";
 
-export default function LoginPage() {
+export default function RegisterPage() {
   return (
     <StyledAuthPage>
-      <LoginPanel />
+      <RegisterPanel />
       <BrandPanel />
     </StyledAuthPage>
   );

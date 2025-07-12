@@ -38,6 +38,10 @@ export const GlobalStyle = createGlobalStyle`
         font-size: inherit;
         font-weight: inherit;
     }
+
+    a {
+        text-decoration: none;
+    }
     
     ol,
     ul,

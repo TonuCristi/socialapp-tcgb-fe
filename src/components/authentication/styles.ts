@@ -1,24 +1,21 @@
+import { Link } from "react-router";
 import styled from "styled-components";
-import LoginForm from "./login/LoginForm";
 
-export default function LoginPanel() {
-  return (
-    <StyledLoginPanel>
-      <StyledAppName>tcgb</StyledAppName>
-      <StyledTitle>
-        Hello,
-        <br />
-        Welcome back
-      </StyledTitle>
-      <StyledMessage>
-        Your space to share moments, ideas, and stories.
-      </StyledMessage>
-      <LoginForm />
-    </StyledLoginPanel>
-  );
-}
+export const StyledAuthPage = styled.div`
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: ${({ theme }) => theme.spacing.sm};
+  padding: ${({ theme }) => theme.spacing.sm};
+  background-color: ${({ theme }) => theme.colors.secondary};
+  overflow: hidden;
 
-const StyledLoginPanel = styled.main`
+  @media (width < ${({ theme }) => theme.breakpoints.lg}) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const StyledAuthPanel = styled.main`
   padding: ${({ theme }) => theme.spacing["9xl"]};
   width: 40rem;
   display: flex;
@@ -55,13 +52,13 @@ const StyledLoginPanel = styled.main`
   }
 `;
 
-const StyledAppName = styled.h3`
+export const StyledAppName = styled.h3`
   color: ${({ theme }) => theme.colors.accent};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
-const StyledTitle = styled.h2`
+export const StyledTitle = styled.h2`
   font-size: ${({ theme }) => theme.fontSizes["5xl"]};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primary};
@@ -80,9 +77,34 @@ const StyledTitle = styled.h2`
   }
 `;
 
-const StyledMessage = styled.p`
+export const StyledMessage = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.light};
   color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
+`;
+
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+export const StyledFormFieldsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
+`;
+
+export const StyledLoginRegisterLink = styled(Link)`
+  margin-top: ${({ theme }) => theme.spacing.md};
+  color: ${({ theme }) => theme.colors.accent};
+  font-size: ${({ theme }) => theme.fontSizes.xs};
+  font-weight: ${({ theme }) => theme.fontWeights.medium};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
+  align-self: center;
+
+  span {
+    color: ${({ theme }) => theme.colors.gray300};
+  }
 `;

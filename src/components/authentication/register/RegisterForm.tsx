@@ -1,7 +1,5 @@
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link } from "react-router";
-import styled from "styled-components";
 
 import Input from "../../input/Input";
 import FormField from "../../input/FormField";
@@ -9,15 +7,22 @@ import Label from "../../input/Label";
 import Message from "../../Message";
 import Button from "../../Button";
 
-import { loginFormSchema } from "../../../schemas/loginForm.schema";
-import type { LoginForm } from "../../../types/User.type";
+import type { RegisterForm } from "../../../types/User.type";
+import { registerFormSchema } from "../../../schemas/registerForm.schema";
 import {
   StyledForm,
   StyledFormFieldsWrapper,
   StyledLoginRegisterLink,
 } from "../styles";
+import styled from "styled-components";
 
 const inputs = [
+  {
+    label: "Username",
+    htmlFor: "username",
+    name: "username",
+    placeholder: "Enter your username...",
+  },
   {
     label: "Email",
     htmlFor: "email",
@@ -32,13 +37,13 @@ const inputs = [
   },
 ] as const;
 
-export default function LoginForm() {
-  const methods = useForm<LoginForm>({
+export default function RegisterForm() {
+  const methods = useForm<RegisterForm>({
     defaultValues: {
       email: "",
       password: "",
     },
-    resolver: zodResolver(loginFormSchema),
+    resolver: zodResolver(registerFormSchema),
   });
 
   const {
@@ -46,7 +51,7 @@ export default function LoginForm() {
     formState: { errors },
   } = methods;
 
-  const onSubmit: SubmitHandler<LoginForm> = (data) => {
+  const onSubmit: SubmitHandler<RegisterForm> = (data) => {
     console.log(data);
   };
 
@@ -66,12 +71,9 @@ export default function LoginForm() {
             ))}
           </StyledFormFieldsWrapper>
         </StyledFormFieldsSpaceWrapper>
-        <StyledForgotPasswordLink to="/forgot-password">
-          Forgot password?
-        </StyledForgotPasswordLink>
-        <Button>Login</Button>
-        <StyledLoginRegisterLink to="/register">
-          <span>Don't have an account?</span> Register
+        <Button>Register</Button>
+        <StyledLoginRegisterLink to="/login">
+          <span>Already have an account?</span> Login
         </StyledLoginRegisterLink>
       </StyledForm>
     </FormProvider>
@@ -79,14 +81,5 @@ export default function LoginForm() {
 }
 
 const StyledFormFieldsSpaceWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.sm};
-`;
-
-const StyledForgotPasswordLink = styled(Link)`
-  color: ${({ theme }) => theme.colors.gray300};
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-  font-weight: ${({ theme }) => theme.fontWeights.medium};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
-  align-self: end;
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
