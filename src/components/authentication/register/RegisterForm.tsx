@@ -6,34 +6,34 @@ import FormField from "../../input/FormField";
 import Label from "../../input/Label";
 import Message from "../../Message";
 import Button from "../../Button";
-
-import type { RegisterForm } from "../../../types/User.type";
-import { registerFormSchema } from "../../../schemas/registerForm.schema";
+import HidePasswordInput from "../../input/HidePasswordInput";
 import {
   StyledForm,
+  StyledFormFieldsSpaceWrapper,
   StyledFormFieldsWrapper,
   StyledLoginRegisterLink,
 } from "../styles";
-import styled from "styled-components";
+import { HiMiniEnvelope, HiMiniUser } from "react-icons/hi2";
+
+import type { RegisterForm } from "../../../types/User.type";
+import { registerFormSchema } from "../../../schemas/registerForm.schema";
 
 const inputs = [
   {
     label: "Username",
     htmlFor: "username",
+    type: "text",
     name: "username",
     placeholder: "Enter your username...",
+    leftIcon: <HiMiniUser />,
   },
   {
     label: "Email",
     htmlFor: "email",
+    type: "text",
     name: "email",
     placeholder: "Enter your email...",
-  },
-  {
-    label: "Password",
-    htmlFor: "password",
-    name: "password",
-    placeholder: "Enter your password...",
+    leftIcon: <HiMiniEnvelope />,
   },
 ] as const;
 
@@ -60,15 +60,34 @@ export default function RegisterForm() {
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <StyledFormFieldsSpaceWrapper>
           <StyledFormFieldsWrapper>
-            {inputs.map(({ label, htmlFor, name, placeholder }) => (
-              <FormField key={name}>
-                <Label htmlFor={htmlFor}>{label}</Label>
-                <Input id={htmlFor} name={name} placeholder={placeholder} />
-                {errors[name] && (
-                  <Message variant="error">{errors[name].message}</Message>
-                )}
-              </FormField>
-            ))}
+            {inputs.map(
+              ({ label, htmlFor, type, name, placeholder, leftIcon }) => (
+                <FormField key={name}>
+                  <Label htmlFor={htmlFor}>{label}</Label>
+                  <Input
+                    id={htmlFor}
+                    type={type}
+                    name={name}
+                    placeholder={placeholder}
+                    leftIcon={leftIcon}
+                  />
+                  {errors[name] && (
+                    <Message variant="error">{errors[name].message}</Message>
+                  )}
+                </FormField>
+              )
+            )}
+            <FormField>
+              <Label htmlFor="password">Password</Label>
+              <HidePasswordInput
+                id="password"
+                name="password"
+                placeholder="Enter your password..."
+              />
+              {errors.password && (
+                <Message variant="error">{errors.password.message}</Message>
+              )}
+            </FormField>
           </StyledFormFieldsWrapper>
         </StyledFormFieldsSpaceWrapper>
         <Button>Register</Button>
@@ -79,7 +98,3 @@ export default function RegisterForm() {
     </FormProvider>
   );
 }
-
-const StyledFormFieldsSpaceWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
-`;

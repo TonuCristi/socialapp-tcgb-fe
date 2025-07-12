@@ -7,7 +7,6 @@ export const StyledAuthPage = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.sm};
   padding: ${({ theme }) => theme.spacing.sm};
-  background-color: ${({ theme }) => theme.colors.secondary};
   overflow: hidden;
 
   @media (width < ${({ theme }) => theme.breakpoints.lg}) {
@@ -96,6 +95,10 @@ export const StyledFormFieldsWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing.md};
 `;
 
+export const StyledFormFieldsSpaceWrapper = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+`;
+
 export const StyledLoginRegisterLink = styled(Link)`
   margin-top: ${({ theme }) => theme.spacing.md};
   color: ${({ theme }) => theme.colors.accent};
@@ -106,5 +109,43 @@ export const StyledLoginRegisterLink = styled(Link)`
 
   span {
     color: ${({ theme }) => theme.colors.gray300};
+  }
+`;
+
+export const StyledForgotPasswordPage = styled.main`
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  padding: ${({ theme }) => theme.spacing["9xl"]};
+  margin: 0 auto;
+  width: 40rem;
+
+  @media (width < ${({ theme }) => theme.breakpoints.xl}) {
+    padding: ${({ theme }) => theme.spacing["7xl"]};
+    width: 60%;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.lg}) {
+    width: 75%;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.md}) {
+    width: 90%;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
+    padding: ${({ theme }) => theme.spacing["5xl"]};
+    width: 100%;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    padding: ${({ theme }) => theme.spacing["3xl"]};
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+    padding: ${({ theme }) => theme.spacing["md"]};
   }
 `;
