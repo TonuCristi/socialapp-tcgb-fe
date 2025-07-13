@@ -77,5 +77,22 @@ declare module "styled-components" {
       xl: string;
       "2xl": string;
     };
+    width: {
+      "3xs": string; // 256px
+      "2xs": string; // 288px
+      xs: string; // 320px
+      sm: string; // 384px
+      md: string; // 448px
+      lg: string; // 512px
+      xl: string; // 576px
+      "2xl": string; // 672px
+      "3xl": string; // 768px
+      "4xl": string; // 896px
+      "5xl": string; // 1024px
+      "6xl": string; // 1152px
+      "7xl": string; // 1280px
+      auto: string;
+      full: string;
+    };
   }
 }

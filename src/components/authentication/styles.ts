@@ -15,7 +15,7 @@ export const StyledAuthPage = styled.div`
 `;
 
 export const StyledAuthPanel = styled.main`
-  width: 30rem;
+  width: ${({ theme }) => theme.width.md};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,6 @@ export const StyledAuthPanel = styled.main`
 
   @media (width < ${({ theme }) => theme.breakpoints.lg}) {
     width: 50%;
-    margin: 0 auto;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.md}) {
@@ -75,7 +74,6 @@ export const StyledTitle = styled.h2`
 export const StyledMessage = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.light};
-  color: ${({ theme }) => theme.colors.primary};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
@@ -115,33 +113,27 @@ export const StyledForgotPasswordPage = styled.main`
   justify-content: center;
   align-items: start;
   flex-direction: column;
-  padding: ${({ theme }) => theme.spacing["9xl"]};
+  padding: ${({ theme }) => theme.spacing.sm};
+  width: ${({ theme }) => theme.width.md};
   margin: 0 auto;
-  width: 40rem;
 
   @media (width < ${({ theme }) => theme.breakpoints.xl}) {
-    padding: ${({ theme }) => theme.spacing["7xl"]};
-    width: 60%;
+    width: 45%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.lg}) {
-    width: 75%;
+    width: 55%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.md}) {
-    width: 90%;
+    width: 70%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing["5xl"]};
-    width: 100%;
+    width: 80%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
-    padding: ${({ theme }) => theme.spacing["3xl"]};
-  }
-
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
-    padding: ${({ theme }) => theme.spacing["md"]};
+    width: 90%;
   }
 `;

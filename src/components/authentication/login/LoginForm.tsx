@@ -18,24 +18,24 @@ import {
 
 import { loginFormSchema } from "../../../schemas/loginForm.schema";
 import type { LoginForm } from "../../../types/User.type";
+import { useLogin } from "../hooks/useLogin";
 
 export default function LoginForm() {
   const methods = useForm<LoginForm>({
     defaultValues: {
-      email: "",
-      password: "",
+      email: "chrisdev2002@gmail.com",
+      password: "P@rola1234",
     },
     resolver: zodResolver(loginFormSchema),
   });
+  const { loginUser, isLoading } = useLogin();
 
   const {
     handleSubmit,
     formState: { errors },
   } = methods;
 
-  const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    console.log(data);
-  };
+  const onSubmit: SubmitHandler<LoginForm> = (data) => loginUser(data);
 
   return (
     <FormProvider {...methods}>
@@ -71,7 +71,7 @@ export default function LoginForm() {
         <StyledForgotPasswordLink to="/forgot-password">
           Forgot password?
         </StyledForgotPasswordLink>
-        <Button>Login</Button>
+        <Button disabled={isLoading}>Login</Button>
         <StyledLoginRegisterLink to="/register">
           <span>Don't have an account?</span> Register
         </StyledLoginRegisterLink>
