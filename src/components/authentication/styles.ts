@@ -15,39 +15,35 @@ export const StyledAuthPage = styled.div`
 `;
 
 export const StyledAuthPanel = styled.main`
-  padding: ${({ theme }) => theme.spacing["9xl"]};
-  width: 40rem;
+  width: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
 
   @media (width < ${({ theme }) => theme.breakpoints.xl}) {
-    padding: ${({ theme }) => theme.spacing["7xl"]};
-    width: 100%;
-    margin: 0;
+    width: 70%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.lg}) {
-    width: 70%;
+    width: 50%;
     margin: 0 auto;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.md}) {
-    width: 90%;
+    width: 60%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
-    padding: ${({ theme }) => theme.spacing["5xl"]};
-    width: 100%;
+    width: 70%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
-    padding: ${({ theme }) => theme.spacing["3xl"]};
+    width: 80%;
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
-    padding: ${({ theme }) => theme.spacing["md"]};
+    width: 90%;
   }
 `;
 

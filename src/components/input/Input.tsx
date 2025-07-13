@@ -41,11 +41,12 @@ export default function Input({
 const InputWrapper = styled.div`
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
-  padding: ${({ theme }) => theme.spacing.sm};
   color: ${({ theme }) => theme.colors.accent};
   width: 100%;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  padding: 0 ${({ theme }) => theme.spacing.sm};
   gap: ${({ theme }) => theme.spacing.sm};
 `;
 
@@ -54,6 +55,7 @@ const StyledInput = styled.input`
   background: none;
   border: none;
   color: ${({ theme }) => theme.colors.white};
+  padding: ${({ theme }) => theme.spacing.sm} 0;
   width: 100%;
 `;
 

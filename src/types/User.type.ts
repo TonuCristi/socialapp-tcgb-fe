@@ -12,3 +12,9 @@ export type RegisterForm = z.infer<typeof registerFormSchema>;
 export type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>;
 
 export type ResetPasswordForm = z.infer<typeof resetPasswordFormSchema>;
+
+export type User = {
+  id: string;
+  username: string;
+  email: string;
+};

@@ -1,11 +1,15 @@
+import type { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import styled from "styled-components";
 
-type Props = {
+type Props = DetailedHTMLProps<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+> & {
   children: string;
 };
 
-export default function Button({ children }: Props) {
-  return <StyledButton>{children}</StyledButton>;
+export default function Button({ children, ...props }: Props) {
+  return <StyledButton {...props}>{children}</StyledButton>;
 }
 
 const StyledButton = styled.button`
@@ -21,5 +25,9 @@ const StyledButton = styled.button`
 
   &:hover {
     background: ${({ theme }) => theme.colors.primary};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;

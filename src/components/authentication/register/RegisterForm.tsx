@@ -17,6 +17,7 @@ import { HiMiniEnvelope, HiMiniUser } from "react-icons/hi2";
 
 import type { RegisterForm } from "../../../types/User.type";
 import { registerFormSchema } from "../../../schemas/registerForm.schema";
+import { useRegister } from "../hooks/useRegister";
 
 const inputs = [
   {
@@ -40,20 +41,20 @@ const inputs = [
 export default function RegisterForm() {
   const methods = useForm<RegisterForm>({
     defaultValues: {
-      email: "",
-      password: "",
+      username: "Tonu Cristian",
+      email: "chrisdev2002@gmail.com",
+      password: "P@rola1234",
     },
     resolver: zodResolver(registerFormSchema),
   });
+  const { registerUser, isLoading } = useRegister();
 
   const {
     handleSubmit,
     formState: { errors },
   } = methods;
 
-  const onSubmit: SubmitHandler<RegisterForm> = (data) => {
-    console.log(data);
-  };
+  const onSubmit: SubmitHandler<RegisterForm> = (data) => registerUser(data);
 
   return (
     <FormProvider {...methods}>
@@ -90,7 +91,7 @@ export default function RegisterForm() {
             </FormField>
           </StyledFormFieldsWrapper>
         </StyledFormFieldsSpaceWrapper>
-        <Button>Register</Button>
+        <Button disabled={isLoading}>Register</Button>
         <StyledLoginRegisterLink to="/login">
           <span>Already have an account?</span> Login
         </StyledLoginRegisterLink>
