@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         font-size: ${({ theme }) => theme.fontSizes.sm};
         font-weight: ${({ theme }) => theme.fontWeights.normal};
         background-color: ${({ theme }) => theme.colors.secondary};
+        color: ${({ theme }) => theme.colors.primary};
     }
 
     h1,

@@ -41,9 +41,9 @@ const inputs = [
 export default function RegisterForm() {
   const methods = useForm<RegisterForm>({
     defaultValues: {
-      username: "Tonu Cristian",
-      email: "chrisdev2002@gmail.com",
-      password: "P@rola1234",
+      username: "",
+      email: "",
+      password: "",
     },
     resolver: zodResolver(registerFormSchema),
   });
