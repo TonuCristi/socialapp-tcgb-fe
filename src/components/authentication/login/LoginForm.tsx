@@ -16,6 +16,8 @@ import {
   StyledFormFieldsWrapper,
   StyledLoginRegisterLink,
 } from "../styles";
+import { useAppDispatch } from "../../../app/hooks";
+import { login } from "../../../features/auth/authSlice";
 
 const inputs = [
   {
@@ -40,6 +42,7 @@ export default function LoginForm() {
     },
     resolver: zodResolver(loginFormSchema),
   });
+  const dispatch = useAppDispatch();
 
   const {
     handleSubmit,
@@ -47,6 +50,7 @@ export default function LoginForm() {
   } = methods;
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
+    dispatch(login(data));
     console.log(data);
   };
 
