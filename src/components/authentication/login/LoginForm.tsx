@@ -8,31 +8,16 @@ import FormField from "../../input/FormField";
 import Label from "../../input/Label";
 import Message from "../../Message";
 import Button from "../../Button";
-
-import { loginFormSchema } from "../../../schemas/loginForm.schema";
-import type { LoginForm } from "../../../types/User.type";
+import HidePasswordInput from "../../input/HidePasswordInput";
+import { HiMiniEnvelope } from "react-icons/hi2";
 import {
   StyledForm,
   StyledFormFieldsWrapper,
   StyledLoginRegisterLink,
 } from "../styles";
-import { useAppDispatch } from "../../../app/hooks";
-import { login } from "../../../features/auth/authSlice";
 
-const inputs = [
-  {
-    label: "Email",
-    htmlFor: "email",
-    name: "email",
-    placeholder: "Enter your email...",
-  },
-  {
-    label: "Password",
-    htmlFor: "password",
-    name: "password",
-    placeholder: "Enter your password...",
-  },
-] as const;
+import { loginFormSchema } from "../../../schemas/loginForm.schema";
+import type { LoginForm } from "../../../types/User.type";
 
 export default function LoginForm() {
   const methods = useForm<LoginForm>({
@@ -42,7 +27,6 @@ export default function LoginForm() {
     },
     resolver: zodResolver(loginFormSchema),
   });
-  const dispatch = useAppDispatch();
 
   const {
     handleSubmit,
@@ -50,7 +34,6 @@ export default function LoginForm() {
   } = methods;
 
   const onSubmit: SubmitHandler<LoginForm> = (data) => {
-    dispatch(login(data));
     console.log(data);
   };
 
@@ -59,15 +42,30 @@ export default function LoginForm() {
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <StyledFormFieldsSpaceWrapper>
           <StyledFormFieldsWrapper>
-            {inputs.map(({ label, htmlFor, name, placeholder }) => (
-              <FormField key={name}>
-                <Label htmlFor={htmlFor}>{label}</Label>
-                <Input id={htmlFor} name={name} placeholder={placeholder} />
-                {errors[name] && (
-                  <Message variant="error">{errors[name].message}</Message>
-                )}
-              </FormField>
-            ))}
+            <FormField>
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="text"
+                name="email"
+                placeholder="Enter your email..."
+                leftIcon={<HiMiniEnvelope />}
+              />
+              {errors.email && (
+                <Message variant="error">{errors.email.message}</Message>
+              )}
+            </FormField>
+            <FormField>
+              <Label htmlFor="password">Password</Label>
+              <HidePasswordInput
+                id="password"
+                name="password"
+                placeholder="Enter your password..."
+              />
+              {errors.password && (
+                <Message variant="error">{errors.password.message}</Message>
+              )}
+            </FormField>
           </StyledFormFieldsWrapper>
         </StyledFormFieldsSpaceWrapper>
         <StyledForgotPasswordLink to="/forgot-password">
