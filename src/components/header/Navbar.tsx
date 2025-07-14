@@ -1,54 +1,71 @@
 import styled from "styled-components";
 
-import Button from "../Button";
 import {
   HiMiniBell,
   HiMiniChatBubbleOvalLeft,
+  HiMiniHome,
   HiMiniMagnifyingGlass,
 } from "react-icons/hi2";
+import {
+  StyledSidebarButton,
+  StyledSidebarItemText,
+  StyledSidebarLink,
+} from "./styles";
 
 export default function Navbar() {
   return (
-    <nav>
+    <StyledNavbar>
       <StyledNavbarList>
-        <li>
-          <StyledButton variant="empty">
-            <HiMiniChatBubbleOvalLeft />
-          </StyledButton>
-        </li>
-        <li>
-          <StyledButton variant="empty">
+        <StyledNavbarListItem>
+          <StyledSidebarLink to="/">
+            <HiMiniHome />
+            <StyledSidebarItemText>Home</StyledSidebarItemText>
+          </StyledSidebarLink>
+        </StyledNavbarListItem>
+        <StyledNavbarListItem>
+          <StyledSidebarButton variant="empty">
             <HiMiniMagnifyingGlass />
-          </StyledButton>
-        </li>
-        <li>
-          <StyledButton variant="empty">
+            <StyledSidebarItemText>Search</StyledSidebarItemText>
+          </StyledSidebarButton>
+        </StyledNavbarListItem>
+        <StyledNavbarListItem>
+          <StyledSidebarLink to="/chat">
+            <HiMiniChatBubbleOvalLeft />
+            <StyledSidebarItemText>Chat</StyledSidebarItemText>
+          </StyledSidebarLink>
+        </StyledNavbarListItem>
+        <StyledNavbarListItem>
+          <StyledSidebarButton variant="empty">
             <HiMiniBell />
-          </StyledButton>
-        </li>
+            <StyledSidebarItemText>Notifications</StyledSidebarItemText>
+          </StyledSidebarButton>
+        </StyledNavbarListItem>
       </StyledNavbarList>
-    </nav>
+    </StyledNavbar>
   );
 }
+
+const StyledNavbar = styled.nav`
+  width: 100%;
+
+  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
+    width: auto;
+  }
+`;
 
 const StyledNavbarList = styled.ul`
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.md};
+  align-items: start;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.sm};
+
+  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
-const StyledButton = styled(Button)`
-  color: ${({ theme }) => theme.colors.accent};
-  font-size: ${({ theme }) => theme.fontSizes.lg};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-  transition: all 0.1s;
-
-  &:hover {
-    background-color: rgb(0, 166, 244, 0.4);
-    box-shadow: 0 0 0.4rem 0.4rem rgb(0, 166, 244, 0.4);
-  }
+const StyledNavbarListItem = styled.li`
+  width: 100%;
 `;

@@ -8,6 +8,7 @@ export const theme: DefaultTheme = {
     danger: "oklch(63.7% 0.237 25.331)",
     white: "#fff",
     transparent: "transparent",
+    zinc800: "oklch(27.4% 0.006 286.033)",
     gray300: "oklch(87.2% 0.01 258.338)",
   },
   spacing: {

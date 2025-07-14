@@ -9,6 +9,7 @@ declare module "styled-components" {
       danger: string;
       white: string;
       transparent: string;
+      zinc800: string;
       gray300: string;
     };
     spacing: {
