@@ -35,10 +35,12 @@ export const GlobalStyle = createGlobalStyle`
     h5,
     h6,
     button,
-    input {
+    input,
+    a {
         font-family: inherit;
         font-size: inherit;
         font-weight: inherit;
+        color: inherit
     }
 
     a {

@@ -6,9 +6,15 @@ declare module "styled-components" {
       primary: string;
       secondary: string;
       accent: string;
+      succes: string;
+      succesLight: string;
       danger: string;
+      dangerLight: string;
+      shadowBlue: string;
+      shadowRed: string;
       white: string;
       transparent: string;
+      zinc800: string;
       gray300: string;
     };
     spacing: {
@@ -78,19 +84,19 @@ declare module "styled-components" {
       "2xl": string;
     };
     width: {
-      "3xs": string; // 256px
-      "2xs": string; // 288px
-      xs: string; // 320px
-      sm: string; // 384px
-      md: string; // 448px
-      lg: string; // 512px
-      xl: string; // 576px
-      "2xl": string; // 672px
-      "3xl": string; // 768px
-      "4xl": string; // 896px
-      "5xl": string; // 1024px
-      "6xl": string; // 1152px
-      "7xl": string; // 1280px
+      "3xs": string;
+      "2xs": string;
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      "2xl": string;
+      "3xl": string;
+      "4xl": string;
+      "5xl": string;
+      "6xl": string;
+      "7xl": string;
       auto: string;
       full: string;
     };

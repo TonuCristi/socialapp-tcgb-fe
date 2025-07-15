@@ -4,8 +4,10 @@ export const api = axios.create({
   baseURL: "http://localhost:3000/api/v1",
 });
 
-axios.interceptors.request.use(function (config) {
-  config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
+api.interceptors.request.use(function (config) {
+  const token = localStorage.getItem("token");
+
+  config.headers.authorization = `Bearer ${token}`;
 
   return config;
 });

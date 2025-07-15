@@ -4,10 +4,12 @@ import {
   type ThunkAction,
 } from "@reduxjs/toolkit";
 import authSlice from "../features/auth/authSlice";
+import currentUserSlice from "../features/user/currentUserSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
+    currentUser: currentUserSlice,
   },
 });
 

@@ -12,8 +12,7 @@ export function useLogin() {
 
   async function loginUser(user: LoginForm) {
     try {
-      const token = await dispatch(login(user)).unwrap();
-      localStorage.setItem("token", token);
+      await dispatch(login(user)).unwrap();
       navigate("/");
     } catch (error) {
       toast.error(error as string);

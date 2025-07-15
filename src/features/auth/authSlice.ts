@@ -19,6 +19,8 @@ export const register = createAsyncThunk(
         user
       );
 
+      localStorage.setItem("token", data.token);
+
       return data.token;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
@@ -39,6 +41,8 @@ export const login = createAsyncThunk(
         user
       );
 
+      localStorage.setItem("token", data.token);
+
       return data.token;
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
@@ -56,16 +60,23 @@ export type AuthState = {
   isLoading: boolean;
 };
 
+const token = localStorage.getItem("token");
+
 const initialState: AuthState = {
-  token: "",
-  isLogged: false,
+  token: token ? token : "",
+  isLogged: !!token,
   isLoading: false,
 };
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state.token = "";
+      state.isLogged = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(register.pending, (state) => {
       state.isLoading = true;
@@ -83,10 +94,25 @@ export const authSlice = createSlice({
       state.isLogged = false;
       state.isLoading = false;
     });
+    builder.addCase(login.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(login.fulfilled, (state, action: PayloadAction<string>) => {
+      state.token = action.payload;
+      state.isLogged = true;
+      state.isLoading = false;
+    });
+    builder.addCase(login.rejected, (state) => {
+      state.token = "";
+      state.isLogged = false;
+      state.isLoading = false;
+    });
   },
 });
 
 export default authSlice.reducer;
+
+export const { logout } = authSlice.actions;
 
 export const selectAuthIsLogged = (state: RootState) => state.auth.isLogged;
 export const selectAuthIsLoading = (state: RootState) => state.auth.isLoading;
