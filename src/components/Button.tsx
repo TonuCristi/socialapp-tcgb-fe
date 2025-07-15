@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import styled from "styled-components";
 
-type Variant = "primary" | "empty";
+type Variant = "primary" | "aprove" | "reject" | "empty";
 
 type Props = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -42,6 +42,28 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
 
                 &:hover {
                   background: ${theme.colors.primary};
+                }`;
+      case "aprove":
+        return `background: ${theme.colors.succes};
+                padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
+                border-radius: ${theme.borderRadius["3xl"]};
+                font-weight: ${theme.fontWeights.semibold};
+                width: 100%;
+                transition: background 0.3s;
+                
+                &:hover {
+                  background: ${theme.colors.succesLight};
+                  }`;
+      case "reject":
+        return `background: ${theme.colors.danger};
+                padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
+                border-radius: ${theme.borderRadius["3xl"]};
+                font-weight: ${theme.fontWeights.semibold};
+                width: 100%;
+                transition: background 0.3s;
+
+                &:hover {
+                  background: ${theme.colors.dangerLight};
                 }`;
       case "empty":
         return ``;

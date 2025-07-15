@@ -18,8 +18,7 @@ const StyledBrandPanel = styled.div`
   font-size: ${({ theme }) => theme.fontSizes["9xl"]};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.accent};
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background-color: rgba(39, 39, 42, 0.2);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);

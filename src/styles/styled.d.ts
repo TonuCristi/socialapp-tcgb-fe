@@ -6,7 +6,12 @@ declare module "styled-components" {
       primary: string;
       secondary: string;
       accent: string;
+      succes: string;
+      succesLight: string;
       danger: string;
+      dangerLight: string;
+      shadowBlue: string;
+      shadowRed: string;
       white: string;
       transparent: string;
       zinc800: string;

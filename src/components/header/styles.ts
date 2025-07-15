@@ -20,8 +20,8 @@ export const StyledSidebarButton = styled(Button)`
 
   &:hover :first-child {
     border-radius: ${({ theme }) => theme.borderRadius.full};
-    background-color: rgb(0, 166, 244, 0.4);
-    box-shadow: 0 0 0.4rem 0.4rem rgb(0, 166, 244, 0.4);
+    background-color: ${({ theme }) => theme.colors.shadowBlue};
+    box-shadow: 0 0 0.4rem 0.4rem ${({ theme }) => theme.colors.shadowBlue};
   }
 
   @media (width > ${({ theme }) => theme.breakpoints.md}) {
@@ -58,8 +58,8 @@ export const StyledSidebarLink = styled(Link)`
 
   &:hover :first-child {
     border-radius: ${({ theme }) => theme.borderRadius.full};
-    background-color: rgb(0, 166, 244, 0.4);
-    box-shadow: 0 0 0.4rem 0.4rem rgb(0, 166, 244, 0.4);
+    background-color: ${({ theme }) => theme.colors.shadowBlue};
+    box-shadow: 0 0 0.4rem 0.4rem ${({ theme }) => theme.colors.shadowBlue};
   }
 
   @media (width > ${({ theme }) => theme.breakpoints.md}) {
