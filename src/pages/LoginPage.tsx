@@ -1,5 +1,5 @@
-import LoginPanel from "../components/authentication/login/LoginPanel";
-import BrandPanel from "../components/authentication/BrandPanel";
+import BrandPanel from "../components/authentication/components/BrandPanel";
+import LoginPanel from "../components/authentication/components/login/LoginPanel";
 import { StyledAuthPage } from "../components/authentication/styles";
 
 export default function LoginPage() {

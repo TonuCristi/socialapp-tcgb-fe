@@ -8,7 +8,7 @@ export const StyledSidebarButton = styled(Button)`
   gap: ${({ theme }) => theme.spacing.sm};
   align-items: center;
   justify-content: start;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   transition: all 0.1s;
   padding: ${({ theme }) =>
     `${theme.spacing.sm} ${theme.spacing.md} ${theme.spacing.sm} ${theme.spacing.sm}`};
@@ -46,7 +46,7 @@ export const StyledSidebarLink = styled(Link)`
   gap: ${({ theme }) => theme.spacing.sm};
   align-items: center;
   justify-content: start;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   transition: all 0.1s;
   padding: ${({ theme }) =>
     `${theme.spacing.sm} ${theme.spacing.md} ${theme.spacing.sm} ${theme.spacing.sm}`};

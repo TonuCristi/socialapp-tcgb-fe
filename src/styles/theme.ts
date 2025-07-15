@@ -15,6 +15,7 @@ export const theme: DefaultTheme = {
     transparent: "transparent",
     zinc800: "oklch(27.4% 0.006 286.033)",
     gray300: "oklch(87.2% 0.01 258.338)",
+    gray400: "oklch(70.7% 0.022 261.325)",
   },
   spacing: {
     xs: "0.25rem", // 4px

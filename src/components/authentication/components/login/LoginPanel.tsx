@@ -3,18 +3,22 @@ import {
   StyledAuthPanel,
   StyledMessage,
   StyledTitle,
-} from "../styles";
-import RegisterForm from "./RegisterForm";
+} from "../../styles";
+import LoginForm from "./LoginForm";
 
-export default function RegisterPanel() {
+export default function LoginPanel() {
   return (
     <StyledAuthPanel>
       <StyledAppName>tcgb</StyledAppName>
-      <StyledTitle>Register now</StyledTitle>
+      <StyledTitle>
+        Hello,
+        <br />
+        Welcome back
+      </StyledTitle>
       <StyledMessage>
         Your space to share moments, ideas, and stories.
       </StyledMessage>
-      <RegisterForm />
+      <LoginForm />
     </StyledAuthPanel>
   );
 }

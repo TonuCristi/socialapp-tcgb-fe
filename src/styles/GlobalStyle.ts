@@ -62,12 +62,11 @@ export const GlobalStyle = createGlobalStyle`
     embed,
     object {
         display: block;
-        vertical-align: middle;
     }
 
     img,
     video {
-        max-width: 100%;
+        max-width: ${({ theme }) => theme.width.full};
         height: auto;
     }
 `;

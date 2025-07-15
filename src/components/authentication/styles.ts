@@ -80,7 +80,7 @@ export const StyledMessage = styled.p`
 export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
 `;
 
 export const StyledFormFieldsWrapper = styled.div`

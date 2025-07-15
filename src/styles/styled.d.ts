@@ -16,6 +16,7 @@ declare module "styled-components" {
       transparent: string;
       zinc800: string;
       gray300: string;
+      gray400: string;
     };
     spacing: {
       xs: string;

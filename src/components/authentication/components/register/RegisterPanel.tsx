@@ -1,24 +1,20 @@
-import LoginForm from "./LoginForm";
 import {
   StyledAppName,
   StyledAuthPanel,
   StyledMessage,
   StyledTitle,
-} from "../styles";
+} from "../../styles";
+import RegisterForm from "./RegisterForm";
 
-export default function LoginPanel() {
+export default function RegisterPanel() {
   return (
     <StyledAuthPanel>
       <StyledAppName>tcgb</StyledAppName>
-      <StyledTitle>
-        Hello,
-        <br />
-        Welcome back
-      </StyledTitle>
+      <StyledTitle>Register now</StyledTitle>
       <StyledMessage>
         Your space to share moments, ideas, and stories.
       </StyledMessage>
-      <LoginForm />
+      <RegisterForm />
     </StyledAuthPanel>
   );
 }

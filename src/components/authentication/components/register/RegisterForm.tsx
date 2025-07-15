@@ -1,23 +1,23 @@
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Input from "../../input/Input";
-import FormField from "../../input/FormField";
-import Label from "../../input/Label";
-import Message from "../../Message";
-import Button from "../../Button";
-import HidePasswordInput from "../../input/HidePasswordInput";
+import FormField from "../../../input/FormField";
+import Label from "../../../input/Label";
+import Input from "../../../input/Input";
+import Message from "../../../Message";
+import HidePasswordInput from "../../../input/HidePasswordInput";
+import Button from "../../../Button";
+import { HiMiniEnvelope, HiMiniUser } from "react-icons/hi2";
 import {
   StyledForm,
   StyledFormFieldsSpaceWrapper,
   StyledFormFieldsWrapper,
   StyledLoginRegisterLink,
-} from "../styles";
-import { HiMiniEnvelope, HiMiniUser } from "react-icons/hi2";
+} from "../../styles";
 
-import type { RegisterForm } from "../../../types/User.type";
-import { registerFormSchema } from "../../../schemas/registerForm.schema";
-import { useRegister } from "../hooks/useRegister";
+import type { RegisterForm } from "../../../../types/User.type";
+import { registerFormSchema } from "../../../../schemas/registerForm.schema";
+import { useRegister } from "../../hooks/useRegister";
 
 const inputs = [
   {

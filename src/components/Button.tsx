@@ -36,8 +36,8 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 border-radius: ${theme.borderRadius["3xl"]};
                 background: ${theme.colors.transparent};
                 border: 0.15rem solid ${theme.colors.accent};
-                color: ${theme.colors.accent}
-                width: 100%;
+                color: ${theme.colors.accent};
+                width: ${theme.width.full};
                 transition: background 0.3s;
 
                 &:hover {
@@ -48,7 +48,7 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
                 border-radius: ${theme.borderRadius["3xl"]};
                 font-weight: ${theme.fontWeights.semibold};
-                width: 100%;
+                width: ${theme.width.full};
                 transition: background 0.3s;
                 
                 &:hover {
@@ -59,7 +59,7 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
                 border-radius: ${theme.borderRadius["3xl"]};
                 font-weight: ${theme.fontWeights.semibold};
-                width: 100%;
+                width: ${theme.width.full};
                 transition: background 0.3s;
 
                 &:hover {
@@ -73,8 +73,8 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 border-radius: ${theme.borderRadius["3xl"]};
                 background: ${theme.colors.transparent};
                 border: 0.15rem solid ${theme.colors.accent};
-                color: ${theme.colors.accent}
-                width: 100%;
+                color: ${theme.colors.accent};
+                width: ${theme.width.full};
                 transition: background 0.3s;
 
                 &:hover {

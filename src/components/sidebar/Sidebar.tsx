@@ -28,6 +28,15 @@ const StyledAside = styled.aside`
   top: 0;
   left: 0;
   height: 100dvh;
+  width: 20rem;
+
+  @media (width < ${({ theme }) => theme.breakpoints.xl}) {
+    width: 15rem;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.lg}) {
+    width: auto;
+  }
 
   @media (width < ${({ theme }) => theme.breakpoints.md}) {
     align-items: center;
@@ -35,6 +44,7 @@ const StyledAside = styled.aside`
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
+    width: auto;
     grid-row: 2;
     flex-direction: row;
     top: 100%;
@@ -43,6 +53,10 @@ const StyledAside = styled.aside`
     border-top: 0.1rem solid ${({ theme }) => theme.colors.accent};
     padding: ${({ theme }) => theme.spacing.sm};
     gap: ${({ theme }) => theme.spacing.sm};
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    gap: ${({ theme }) => theme.spacing.xs};
   }
 `;
 

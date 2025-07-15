@@ -1,24 +1,20 @@
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Message from "../../Message";
-import Button from "../../Button";
-import FormField from "../../input/FormField";
-import Label from "../../input/Label";
-import HidePasswordInput from "../../input/HidePasswordInput";
-
-import { forgotPasswordFormSchema } from "../../../schemas/forgotPasswordForm.schema";
-import type {
-  ForgotPasswordForm,
-  ResetPasswordForm,
-} from "../../../types/User.type";
 import {
   StyledForm,
   StyledFormFieldsSpaceWrapper,
   StyledFormFieldsWrapper,
   StyledLoginRegisterLink,
-} from "../styles";
-import { resetPasswordFormSchema } from "../../../schemas/resetPasswordForm.schema";
+} from "../../styles";
+import FormField from "../../../input/FormField";
+import Label from "../../../input/Label";
+import HidePasswordInput from "../../../input/HidePasswordInput";
+import Message from "../../../Message";
+import Button from "../../../Button";
+
+import type { ResetPasswordForm } from "../../../../types/User.type";
+import { resetPasswordFormSchema } from "../../../../schemas/resetPasswordForm.schema";
 
 const inputs = [
   {

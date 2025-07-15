@@ -3,22 +3,22 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router";
 import styled from "styled-components";
 
-import Input from "../../input/Input";
-import FormField from "../../input/FormField";
-import Label from "../../input/Label";
-import Message from "../../Message";
-import Button from "../../Button";
-import HidePasswordInput from "../../input/HidePasswordInput";
-import { HiMiniEnvelope } from "react-icons/hi2";
 import {
   StyledForm,
   StyledFormFieldsWrapper,
   StyledLoginRegisterLink,
-} from "../styles";
+} from "../../styles";
+import FormField from "../../../input/FormField";
+import Label from "../../../input/Label";
+import Input from "../../../input/Input";
+import { HiMiniEnvelope } from "react-icons/hi2";
+import Message from "../../../Message";
+import HidePasswordInput from "../../../input/HidePasswordInput";
+import Button from "../../../Button";
 
-import { loginFormSchema } from "../../../schemas/loginForm.schema";
-import type { LoginForm } from "../../../types/User.type";
-import { useLogin } from "../hooks/useLogin";
+import type { LoginForm } from "../../../../types/User.type";
+import { loginFormSchema } from "../../../../schemas/loginForm.schema";
+import { useLogin } from "../../hooks/useLogin";
 
 export default function LoginForm() {
   const methods = useForm<LoginForm>({

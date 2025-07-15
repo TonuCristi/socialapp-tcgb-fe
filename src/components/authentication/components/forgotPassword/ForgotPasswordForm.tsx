@@ -2,16 +2,16 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 
-import { StyledForm, StyledLoginRegisterLink } from "../styles";
-import Message from "../../Message";
-import Button from "../../Button";
-import FormField from "../../input/FormField";
-import Label from "../../input/Label";
-import Input from "../../input/Input";
+import FormField from "../../../input/FormField";
+import Label from "../../../input/Label";
+import Input from "../../../input/Input";
+import Message from "../../../Message";
+import Button from "../../../Button";
+import { StyledForm, StyledLoginRegisterLink } from "../../styles";
 import { HiMiniEnvelope } from "react-icons/hi2";
 
-import { forgotPasswordFormSchema } from "../../../schemas/forgotPasswordForm.schema";
-import type { ForgotPasswordForm } from "../../../types/User.type";
+import type { ForgotPasswordForm } from "../../../../types/User.type";
+import { forgotPasswordFormSchema } from "../../../../schemas/forgotPasswordForm.schema";
 
 export default function ForgotPassword() {
   const methods = useForm<ForgotPasswordForm>({

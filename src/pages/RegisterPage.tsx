@@ -1,5 +1,5 @@
-import BrandPanel from "../components/authentication/BrandPanel";
-import RegisterPanel from "../components/authentication/register/RegisterPanel";
+import BrandPanel from "../components/authentication/components/BrandPanel";
+import RegisterPanel from "../components/authentication/components/register/RegisterPanel";
 import { StyledAuthPage } from "../components/authentication/styles";
 
 export default function RegisterPage() {

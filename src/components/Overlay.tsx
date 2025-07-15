@@ -11,7 +11,7 @@ const StyledOverlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   height: 100dvh;
   display: flex;
   justify-content: center;

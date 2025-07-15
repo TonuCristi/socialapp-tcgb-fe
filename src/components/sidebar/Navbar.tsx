@@ -46,7 +46,7 @@ export default function Navbar() {
 }
 
 const StyledNavbar = styled.nav`
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     width: auto;
@@ -64,8 +64,12 @@ const StyledNavbarList = styled.ul`
     flex-direction: row;
     align-items: center;
   }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    gap: ${({ theme }) => theme.spacing.xs};
+  }
 `;
 
 const StyledNavbarListItem = styled.li`
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
 `;

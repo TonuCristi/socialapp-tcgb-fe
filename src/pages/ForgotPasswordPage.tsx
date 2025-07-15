@@ -1,4 +1,4 @@
-import ForgotPassword from "../components/authentication/forgotPassword/ForgotPasswordForm";
+import ForgotPassword from "../components/authentication/components/forgotPassword/ForgotPasswordForm";
 import {
   StyledForgotPasswordPage,
   StyledMessage,
