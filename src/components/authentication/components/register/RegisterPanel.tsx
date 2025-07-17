@@ -3,7 +3,7 @@ import {
   StyledAuthPanel,
   StyledMessage,
   StyledTitle,
-} from "../../styles";
+} from "../styles";
 import RegisterForm from "./RegisterForm";
 
 export default function RegisterPanel() {

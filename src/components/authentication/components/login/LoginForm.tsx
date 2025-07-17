@@ -3,18 +3,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router";
 import styled from "styled-components";
 
-import {
-  StyledForm,
-  StyledFormFieldsWrapper,
-  StyledLoginRegisterLink,
-} from "../../styles";
 import FormField from "../../../input/FormField";
 import Label from "../../../input/Label";
 import Input from "../../../input/Input";
-import { HiMiniEnvelope } from "react-icons/hi2";
 import Message from "../../../Message";
 import HidePasswordInput from "../../../input/HidePasswordInput";
 import Button from "../../../Button";
+import { HiMiniEnvelope } from "react-icons/hi2";
+import { StyledFormFieldsWrapper } from "../../../styles/styles";
+import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 
 import type { LoginForm } from "../../../../types/User.type";
 import { loginFormSchema } from "../../../../schemas/loginForm.schema";
@@ -39,9 +36,9 @@ export default function LoginForm() {
 
   return (
     <FormProvider {...methods}>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
         <StyledFormFieldsSpaceWrapper>
-          <StyledFormFieldsWrapper>
+          <StyledFormFieldsWrapperWithMargin>
             <FormField>
               <Label htmlFor="email">Email</Label>
               <Input
@@ -66,7 +63,7 @@ export default function LoginForm() {
                 <Message variant="error">{errors.password.message}</Message>
               )}
             </FormField>
-          </StyledFormFieldsWrapper>
+          </StyledFormFieldsWrapperWithMargin>
         </StyledFormFieldsSpaceWrapper>
         <StyledForgotPasswordLink to="/forgot-password">
           Forgot password?
@@ -75,7 +72,7 @@ export default function LoginForm() {
         <StyledLoginRegisterLink to="/register">
           <span>Don't have an account?</span> Register
         </StyledLoginRegisterLink>
-      </StyledForm>
+      </StyledAuthForm>
     </FormProvider>
   );
 }
@@ -90,5 +87,9 @@ const StyledForgotPasswordLink = styled(Link)`
   font-weight: ${({ theme }) => theme.fontWeights.medium};
   margin-bottom: ${({ theme }) => theme.spacing.xl};
   align-self: end;
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
+`;
+
+const StyledFormFieldsWrapperWithMargin = styled(StyledFormFieldsWrapper)`
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;

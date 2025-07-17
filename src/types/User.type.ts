@@ -5,6 +5,7 @@ import type { registerFormSchema } from "../schemas/registerForm.schema";
 import type { forgotPasswordFormSchema } from "../schemas/forgotPasswordForm.schema";
 import type { resetPasswordFormSchema } from "../schemas/resetPasswordForm.schema";
 import type { editProfileFormSchema } from "../schemas/editProfileForm.schema";
+import type { changePasswordFormSchema } from "../schemas/changePasswordForm.schema";
 
 export type LoginForm = z.infer<typeof loginFormSchema>;
 
@@ -15,6 +16,8 @@ export type ForgotPasswordForm = z.infer<typeof forgotPasswordFormSchema>;
 export type ResetPasswordForm = z.infer<typeof resetPasswordFormSchema>;
 
 export type EditProfileForm = z.infer<typeof editProfileFormSchema>;
+
+export type ChangePasswordForm = z.infer<typeof changePasswordFormSchema>;
 
 export type UserResponse = {
   _id: string;

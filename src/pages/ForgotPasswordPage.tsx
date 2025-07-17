@@ -3,7 +3,7 @@ import {
   StyledForgotPasswordPage,
   StyledMessage,
   StyledTitle,
-} from "../components/authentication/styles";
+} from "../components/authentication/components/styles";
 
 export default function ForgotPasswordPage() {
   return (

@@ -8,13 +8,13 @@ import Label from "../../input/Label";
 import Input from "../../input/Input";
 import Message from "../../Message";
 import Button from "../../Button";
+import { StyledFormFieldsWrapper } from "../../styles/styles";
 import {
   HiMiniCalendar,
   HiMiniEnvelope,
   HiMiniPhone,
   HiMiniUser,
 } from "react-icons/hi2";
-import { StyledFormFieldsWrapper } from "../../authentication/styles";
 
 import type { EditProfileForm } from "../../../types/User.type";
 import { editProfileFormSchema } from "../../../schemas/editProfileForm.schema";
@@ -70,16 +70,12 @@ export default function EditProfileForm() {
   });
   const { editUserDetails, isLoading } = useEditUser();
 
-  // console.log(user?.birthDate);
-
   const {
     handleSubmit,
     formState: { errors },
   } = methods;
 
   const onSubmit: SubmitHandler<EditProfileForm> = (data) => {
-    // console.log(data.birthDate.split("T"));
-    // console.log(data.birthDate);
     const birthDate = data.birthDate.split("T")[0];
     editUserDetails({ ...data, birthDate });
   };
@@ -87,7 +83,7 @@ export default function EditProfileForm() {
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <Title variant="small">Edit profile</Title>
-        <StyledFormFieldsWrapper>
+        <StyledFormFieldsWrapperWithMargin>
           {inputs.map(
             ({ label, htmlFor, type, name, placeholder, leftIcon }) => (
               <FormField key={name}>
@@ -105,7 +101,7 @@ export default function EditProfileForm() {
               </FormField>
             )
           )}
-        </StyledFormFieldsWrapper>
+        </StyledFormFieldsWrapperWithMargin>
         <Button disabled={isLoading}>Save</Button>
       </StyledForm>
     </FormProvider>
@@ -125,4 +121,8 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
+`;
+
+const StyledFormFieldsWrapperWithMargin = styled(StyledFormFieldsWrapper)`
+  margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;

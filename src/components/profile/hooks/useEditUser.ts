@@ -13,7 +13,9 @@ export function useEditUser() {
 
   async function editUserDetails(editedUser: EditProfileForm) {
     try {
-      await dispatch(editUser(editedUser));
+      const res = await dispatch(editUser(editedUser)).unwrap();
+
+      toast.success(res.message);
     } catch (error) {
       toast.error(error as string);
     }

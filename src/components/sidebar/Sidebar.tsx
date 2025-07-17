@@ -27,7 +27,7 @@ const StyledAside = styled.aside`
   position: sticky;
   top: 0;
   left: 0;
-  height: 100dvh;
+  height: 100vh;
   width: 20rem;
 
   @media (width < ${({ theme }) => theme.breakpoints.xl}) {
@@ -44,11 +44,12 @@ const StyledAside = styled.aside`
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
-    width: auto;
-    grid-row: 2;
-    flex-direction: row;
-    top: 100%;
+    width: ${({ theme }) => theme.width.full};
     height: min-content;
+    flex-direction: row;
+    top: auto;
+    bottom: 0;
+    z-index: 10;
     border-right: none;
     border-top: 0.1rem solid ${({ theme }) => theme.colors.accent};
     padding: ${({ theme }) => theme.spacing.sm};

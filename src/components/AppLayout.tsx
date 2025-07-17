@@ -3,9 +3,9 @@ import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
 import Loader from "./Loader";
+import Sidebar from "./sidebar/Sidebar";
 
 import { useFetchLoggedUser } from "./authentication/hooks/useFetchLoggedUser";
-import Sidebar from "./sidebar/Sidebar";
 
 export default function AppLayout() {
   const location = useLocation();
@@ -35,7 +35,9 @@ export default function AppLayout() {
   return (
     <StyledApp>
       <Sidebar />
-      <Outlet />
+      <StyledOutletWrapper>
+        <Outlet />
+      </StyledOutletWrapper>
     </StyledApp>
   );
 }
@@ -43,7 +45,6 @@ export default function AppLayout() {
 const StyledApp = styled.div`
   display: grid;
   grid-template-columns: 25fr 50fr 25fr;
-  height: 100dvh;
 
   @media (width < ${({ theme }) => theme.breakpoints.xl}) {
     grid-template-columns: auto 65fr 10fr;
@@ -55,6 +56,14 @@ const StyledApp = styled.div`
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
+  }
+`;
+
+const StyledOutletWrapper = styled.div`
+  min-height: 100dvh;
+
+  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
+    grid-row: 1;
   }
 `;
 

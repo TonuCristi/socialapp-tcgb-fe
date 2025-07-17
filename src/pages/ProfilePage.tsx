@@ -4,6 +4,8 @@ import Page from "../components/Page";
 import Title from "../components/Title";
 import ProfileIntroSection from "../components/profile/components/ProfileIntroSection";
 import ProfileUserInfoSection from "../components/profile/components/ProfileUserInfoSection";
+import ChangePasswordSection from "../components/profile/components/ChangePasswordSection";
+import { StyledDivider } from "../components/profile/components/styles";
 
 export default function ProfilePage() {
   return (
@@ -12,6 +14,7 @@ export default function ProfilePage() {
       <StyledDivider />
       <ProfileIntroSection />
       <ProfileUserInfoSection />
+      <ChangePasswordSection />
     </StyledProfilePage>
   );
 }
@@ -20,10 +23,4 @@ const StyledProfilePage = styled(Page)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
-`;
-
-const StyledDivider = styled.div`
-  width: ${({ theme }) => theme.width.full};
-  height: 0.05rem;
-  background-color: ${({ theme }) => theme.colors.primary};
 `;

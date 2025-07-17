@@ -6,6 +6,7 @@ import Title from "../../Title";
 
 import { useAppSelector } from "../../../app/hooks";
 import { selectCurrentUser } from "../../../features/user/currentUserSlice";
+import { StyledDivider } from "./styles";
 
 export default function ProfileUserInfoSection() {
   const user = useAppSelector(selectCurrentUser);
@@ -66,12 +67,6 @@ const StyledHeader = styled.header`
     flex-direction: column;
     align-items: start;
   }
-`;
-
-const StyledDivider = styled.div`
-  width: ${({ theme }) => theme.width.full};
-  height: 0.05rem;
-  background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 const StyledUserInformation = styled.div`

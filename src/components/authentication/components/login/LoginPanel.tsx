@@ -3,7 +3,7 @@ import {
   StyledAuthPanel,
   StyledMessage,
   StyledTitle,
-} from "../../styles";
+} from "../styles";
 import LoginForm from "./LoginForm";
 
 export default function LoginPanel() {

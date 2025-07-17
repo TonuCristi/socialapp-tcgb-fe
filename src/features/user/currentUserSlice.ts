@@ -7,6 +7,7 @@ import axios from "axios";
 import type { AxiosResponse } from "axios";
 
 import type {
+  ChangePasswordForm,
   EditProfileForm,
   User,
   UserResponse,
@@ -32,12 +33,34 @@ export const editUser = createAsyncThunk(
   "user/edit-user",
   async (editedUser: EditProfileForm, { rejectWithValue }) => {
     try {
-      const { data }: AxiosResponse<{ editedUser: UserResponse }> =
+      const {
+        data,
+      }: AxiosResponse<{ editedUser: UserResponse; message: string }> =
         await api.put(`/user/edit-user`, editedUser);
 
       const user = mapUser(data.editedUser);
 
-      return user;
+      return { user, message: data.message };
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        return rejectWithValue(error.response.data.message);
+      }
+
+      return rejectWithValue("Something went wrong!");
+    }
+  }
+);
+
+export const changePassword = createAsyncThunk(
+  "user/change-password",
+  async (passwords: ChangePasswordForm, { rejectWithValue }) => {
+    try {
+      const { data }: AxiosResponse<{ message: string }> = await api.put(
+        `/user/change-password`,
+        passwords
+      );
+
+      return { message: data.message };
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         return rejectWithValue(error.response.data.message);
@@ -51,12 +74,14 @@ export const editUser = createAsyncThunk(
 export type UserState = {
   isLoading: boolean;
   isEditUserLoading: boolean;
+  isChangePasswordLoading: boolean;
   user: User | null;
 };
 
 const initialState: UserState = {
   isLoading: true,
   isEditUserLoading: false,
+  isChangePasswordLoading: false,
   user: null,
 };
 
@@ -88,10 +113,19 @@ export const currentUserSlice = createSlice({
     });
     builder.addCase(editUser.fulfilled, (state, action) => {
       state.isEditUserLoading = false;
-      state.user = action.payload;
+      state.user = action.payload.user;
     });
     builder.addCase(editUser.rejected, (state) => {
       state.isEditUserLoading = false;
+    });
+    builder.addCase(changePassword.pending, (state) => {
+      state.isChangePasswordLoading = true;
+    });
+    builder.addCase(changePassword.fulfilled, (state) => {
+      state.isChangePasswordLoading = false;
+    });
+    builder.addCase(changePassword.rejected, (state) => {
+      state.isChangePasswordLoading = false;
     });
   },
 });
@@ -104,4 +138,6 @@ export const selectCurrentUserIsLoading = (state: RootState) =>
   state.currentUser.isLoading;
 export const selectCurrentUserIsEditProfileLoading = (state: RootState) =>
   state.currentUser.isEditUserLoading;
+export const selectCurrentUserIsChangePasswordLoading = (state: RootState) =>
+  state.currentUser.isChangePasswordLoading;
 export const selectCurrentUser = (state: RootState) => state.currentUser.user;

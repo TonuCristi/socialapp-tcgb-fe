@@ -7,7 +7,7 @@ import Label from "../../../input/Label";
 import Input from "../../../input/Input";
 import Message from "../../../Message";
 import Button from "../../../Button";
-import { StyledForm, StyledLoginRegisterLink } from "../../styles";
+import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 import { HiMiniEnvelope } from "react-icons/hi2";
 
 import type { ForgotPasswordForm } from "../../../../types/User.type";
@@ -32,7 +32,7 @@ export default function ForgotPassword() {
 
   return (
     <FormProvider {...methods}>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
         <StyledInputWrapper>
           <FormField>
             <Label htmlFor="email">Email</Label>
@@ -52,7 +52,7 @@ export default function ForgotPassword() {
         <StyledLoginRegisterLink to="/login">
           <span>Back to</span> login
         </StyledLoginRegisterLink>
-      </StyledForm>
+      </StyledAuthForm>
     </FormProvider>
   );
 }

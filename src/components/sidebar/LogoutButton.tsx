@@ -18,7 +18,7 @@ export default function LogoutButton() {
       </StyledSidebarButton>
       {isOpen && (
         <ConfirmationModal
-          onAprove={logoutUser}
+          onConfirm={logoutUser}
           onReject={() => setIsOpen(false)}
         >
           Are you sure you want to log out?

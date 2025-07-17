@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 
@@ -7,22 +7,30 @@ import Button from "./Button";
 
 type Props = {
   children: ReactNode;
-  onAprove: () => void;
+  onConfirm: () => void;
   onReject: () => void;
 };
 
 export default function ConfirmationModal({
   children,
-  onAprove,
+  onConfirm,
   onReject,
 }: Props) {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return createPortal(
     <Overlay>
       <StyledConfirmationModal>
         <StyledQuestion>{children}</StyledQuestion>
         <StyledButtonsContainer>
-          <Button variant="aprove" onClick={onAprove}>
-            Aprove
+          <Button variant="aprove" onClick={onConfirm}>
+            Confirm
           </Button>
           <Button variant="reject" onClick={onReject}>
             Reject

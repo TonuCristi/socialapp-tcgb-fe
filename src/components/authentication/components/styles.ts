@@ -77,20 +77,10 @@ export const StyledMessage = styled.p`
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
-export const StyledForm = styled.form`
+export const StyledAuthForm = styled.form`
   display: flex;
   flex-direction: column;
   width: ${({ theme }) => theme.width.full};
-`;
-
-export const StyledFormFieldsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
-`;
-
-export const StyledFormFieldsSpaceWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
 export const StyledLoginRegisterLink = styled(Link)`
