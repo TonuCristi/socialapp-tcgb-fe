@@ -1,16 +1,13 @@
 import styled from "styled-components";
 
 import Navbar from "./Navbar";
-import ProfileLink from "./ProfileLink";
-import LogoutButton from "./LogoutButton";
+import { Link } from "react-router";
 
 export default function Sidebar() {
   return (
     <StyledAside>
-      <StyledLogo>tcgb</StyledLogo>
+      <StyledLogo to="/">tcgb</StyledLogo>
       <Navbar />
-      <ProfileLink />
-      <LogoutButton />
     </StyledAside>
   );
 }
@@ -55,13 +52,10 @@ const StyledAside = styled.aside`
     padding: ${({ theme }) => theme.spacing.sm};
     gap: ${({ theme }) => theme.spacing.sm};
   }
-
-  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
-    gap: ${({ theme }) => theme.spacing.xs};
-  }
 `;
 
-const StyledLogo = styled.div`
+const StyledLogo = styled(Link)`
+  display: inline-block;
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   font-size: ${({ theme }) => theme.fontSizes.lg};
   margin-bottom: ${({ theme }) => theme.spacing["2xl"]};
