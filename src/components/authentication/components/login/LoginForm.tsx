@@ -3,7 +3,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router";
 import styled from "styled-components";
 
-import FormField from "../../../input/FormField";
 import Label from "../../../input/Label";
 import Input from "../../../input/Input";
 import Message from "../../../Message";
@@ -12,6 +11,7 @@ import Button from "../../../Button";
 import { HiMiniEnvelope } from "react-icons/hi2";
 import { StyledFormFieldsWrapper } from "../../../styles/styles";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
+import { StyledFormField } from "../../../input/styles";
 
 import type { LoginForm } from "../../../../types/User.type";
 import { loginFormSchema } from "../../../../schemas/loginForm.schema";
@@ -37,34 +37,32 @@ export default function LoginForm() {
   return (
     <FormProvider {...methods}>
       <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledFormFieldsSpaceWrapper>
-          <StyledFormFieldsWrapperWithMargin>
-            <FormField>
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="text"
-                name="email"
-                placeholder="Enter your email..."
-                leftIcon={<HiMiniEnvelope />}
-              />
-              {errors.email && (
-                <Message variant="error">{errors.email.message}</Message>
-              )}
-            </FormField>
-            <FormField>
-              <Label htmlFor="password">Password</Label>
-              <HidePasswordInput
-                id="password"
-                name="password"
-                placeholder="Enter your password..."
-              />
-              {errors.password && (
-                <Message variant="error">{errors.password.message}</Message>
-              )}
-            </FormField>
-          </StyledFormFieldsWrapperWithMargin>
-        </StyledFormFieldsSpaceWrapper>
+        <StyledFormFieldsWithMargin>
+          <StyledFormField>
+            <Label htmlFor="email">Email</Label>
+            <Input
+              id="email"
+              type="text"
+              name="email"
+              placeholder="Enter your email..."
+              leftIcon={<HiMiniEnvelope />}
+            />
+            {errors.email && (
+              <Message variant="error">{errors.email.message}</Message>
+            )}
+          </StyledFormField>
+          <StyledFormField>
+            <Label htmlFor="password">Password</Label>
+            <HidePasswordInput
+              id="password"
+              name="password"
+              placeholder="Enter your password..."
+            />
+            {errors.password && (
+              <Message variant="error">{errors.password.message}</Message>
+            )}
+          </StyledFormField>
+        </StyledFormFieldsWithMargin>
         <StyledForgotPasswordLink to="/forgot-password">
           Forgot password?
         </StyledForgotPasswordLink>
@@ -77,7 +75,7 @@ export default function LoginForm() {
   );
 }
 
-const StyledFormFieldsSpaceWrapper = styled.div`
+const StyledFormFieldsWithMargin = styled(StyledFormFieldsWrapper)`
   margin-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
@@ -85,11 +83,6 @@ const StyledForgotPasswordLink = styled(Link)`
   color: ${({ theme }) => theme.colors.gray300};
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.medium};
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
   align-self: end;
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
-`;
-
-const StyledFormFieldsWrapperWithMargin = styled(StyledFormFieldsWrapper)`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;

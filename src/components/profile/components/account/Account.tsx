@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import ChangePasswordSection from "./ChangePasswordSection";
-import ProfileUserInfoSection from "./ProfileUserInfoSection";
+import ProfileUserInfoSection from "./profileUserInfoSection/ProfileUserInfoSection";
+import ChangePasswordSection from "./changePasswordSection/ChangePasswordSection";
 
 export default function Account() {
   return (

@@ -3,10 +3,10 @@ import { useState } from "react";
 
 import Page from "../components/Page";
 import Title from "../components/Title";
-import ProfileIntroSection from "../components/profile/components/ProfileIntroSection";
-import Account from "../components/profile/components/Account";
-import Posts from "../components/profile/components/Posts";
+import ProfileIntroSection from "../components/profile/components/account/profileIntroSection/ProfileIntroSection";
+import Posts from "../components/profile/components/posts/Posts";
 import ProfileTabs from "../components/profile/components/ProfileTabs";
+import Account from "../components/profile/components/account/Account";
 import { StyledDivider } from "../components/profile/components/styles";
 
 export type Tab = "posts" | "account";

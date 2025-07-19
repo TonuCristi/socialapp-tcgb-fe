@@ -19,6 +19,7 @@ declare module "styled-components" {
       gray400: string;
     };
     spacing: {
+      xxs: string;
       xs: string;
       sm: string;
       md: string;

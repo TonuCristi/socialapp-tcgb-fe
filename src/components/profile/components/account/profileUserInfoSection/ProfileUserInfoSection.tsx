@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
-import ProfileSection from "./ProfileSection";
 import EditProfileButton from "./EditProfileButton";
-import Title from "../../Title";
+import Title from "../../../../Title";
+import { StyledDivider, StyledProfileSection } from "../../styles";
 
-import { useAppSelector } from "../../../app/hooks";
-import { selectCurrentUser } from "../../../features/user/currentUserSlice";
-import { StyledDivider } from "./styles";
+import { useAppSelector } from "../../../../../app/hooks";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSlice";
 
 export default function ProfileUserInfoSection() {
   const user = useAppSelector(selectCurrentUser);
@@ -43,7 +42,7 @@ export default function ProfileUserInfoSection() {
         {userDetails.map(({ name, value }) => (
           <StyledUserDetailWrapper key={name}>
             <StyledUserDetailName>{name}</StyledUserDetailName>
-            <StyledUserDetail>{value}</StyledUserDetail>
+            <p>{value}</p>
           </StyledUserDetailWrapper>
         ))}
       </StyledUserInformation>
@@ -51,10 +50,11 @@ export default function ProfileUserInfoSection() {
   );
 }
 
-const StyledProfileUserInfoSection = styled(ProfileSection)`
+const StyledProfileUserInfoSection = styled(StyledProfileSection)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
+  z-index: 1;
 `;
 
 const StyledHeader = styled.header`
@@ -63,9 +63,10 @@ const StyledHeader = styled.header`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.md};
 
-  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
     flex-direction: column;
     align-items: start;
+    width: ${({ theme }) => theme.width.full};
   }
 `;
 
@@ -88,5 +89,3 @@ const StyledUserDetailWrapper = styled.div`
 const StyledUserDetailName = styled.p`
   color: ${({ theme }) => theme.colors.gray400};
 `;
-
-const StyledUserDetail = styled.p``;

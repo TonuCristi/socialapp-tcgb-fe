@@ -2,13 +2,13 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 
-import FormField from "../../../input/FormField";
 import Label from "../../../input/Label";
 import HidePasswordInput from "../../../input/HidePasswordInput";
 import Message from "../../../Message";
 import Button from "../../../Button";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 import { StyledFormFieldsWrapper } from "../../../styles/styles";
+import { StyledFormField } from "../../../input/styles";
 
 import type { ResetPasswordForm } from "../../../../types/User.type";
 import { resetPasswordFormSchema } from "../../../../schemas/resetPasswordForm.schema";
@@ -51,7 +51,7 @@ export default function ResetPasswordForm() {
       <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
         <StyledFormFieldsWrapperWithMargin>
           {inputs.map(({ label, htmlFor, name, placeholder }) => (
-            <FormField key={name}>
+            <StyledFormField key={name}>
               <Label htmlFor={htmlFor}>{label}</Label>
               <HidePasswordInput
                 id={htmlFor}
@@ -61,7 +61,7 @@ export default function ResetPasswordForm() {
               {errors[name] && (
                 <Message variant="error">{errors[name].message}</Message>
               )}
-            </FormField>
+            </StyledFormField>
           ))}
         </StyledFormFieldsWrapperWithMargin>
         <Button>Reset</Button>
@@ -74,5 +74,5 @@ export default function ResetPasswordForm() {
 }
 
 const StyledFormFieldsWrapperWithMargin = styled(StyledFormFieldsWrapper)`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;

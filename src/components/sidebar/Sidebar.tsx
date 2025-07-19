@@ -52,6 +52,10 @@ const StyledAside = styled.aside`
     padding: ${({ theme }) => theme.spacing.sm};
     gap: ${({ theme }) => theme.spacing.sm};
   }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+    padding: ${({ theme }) => `${theme.spacing.sm} ${theme.spacing.xs}`};
+  }
 `;
 
 const StyledLogo = styled(Link)`

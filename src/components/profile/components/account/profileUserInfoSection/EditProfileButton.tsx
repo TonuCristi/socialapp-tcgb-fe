@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 
 import EditProfileForm from "./EditProfileForm";
-import Button from "../../Button";
+import Button from "../../../../Button";
 
-import { useClickOutside } from "../../../hooks/useClickOutside";
+import { useClickOutside } from "../../../../../hooks/useClickOutside";
 
 export default function EditProfileButton() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -24,12 +24,16 @@ export default function EditProfileButton() {
 
 const StyledEditProfileButtonWrapper = styled.div`
   position: relative;
+
+  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+    width: ${({ theme }) => theme.width.full};
+  }
 `;
 
 const StyledEditProfileButton = styled(Button)`
   width: auto;
 
-  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
     width: ${({ theme }) => theme.width.full};
   }
 `;

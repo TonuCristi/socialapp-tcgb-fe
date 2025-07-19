@@ -20,7 +20,7 @@ export const getLoggedUser = createAsyncThunk(
   "user/get-logged-user",
   async () => {
     const { data }: AxiosResponse<{ user: UserResponse }> = await api.get(
-      `/user/get-logged-user`
+      "/user/get-logged-user"
     );
 
     const user = mapUser(data.user);
@@ -36,11 +36,29 @@ export const editUser = createAsyncThunk(
       const {
         data,
       }: AxiosResponse<{ editedUser: UserResponse; message: string }> =
-        await api.put(`/user/edit-user`, editedUser);
+        await api.put("/user/edit-user", editedUser);
 
       const user = mapUser(data.editedUser);
 
       return { user, message: data.message };
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        return rejectWithValue(error.response.data.message);
+      }
+
+      return rejectWithValue("Something went wrong!");
+    }
+  }
+);
+
+export const editBio = createAsyncThunk(
+  "user/edit-user-bio",
+  async (bio: string, { rejectWithValue }) => {
+    try {
+      const { data }: AxiosResponse<{ bio: string; message: string }> =
+        await api.put("/user/edit-user-bio", { bio });
+
+      return { bio: data.bio, message: data.message };
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {
         return rejectWithValue(error.response.data.message);
@@ -56,7 +74,7 @@ export const changePassword = createAsyncThunk(
   async (passwords: ChangePasswordForm, { rejectWithValue }) => {
     try {
       const { data }: AxiosResponse<{ message: string }> = await api.put(
-        `/user/change-password`,
+        "/user/change-password",
         passwords
       );
 
@@ -74,6 +92,7 @@ export const changePassword = createAsyncThunk(
 export type UserState = {
   isLoading: boolean;
   isEditUserLoading: boolean;
+  isEditBioLoading: boolean;
   isChangePasswordLoading: boolean;
   user: User | null;
 };
@@ -81,6 +100,7 @@ export type UserState = {
 const initialState: UserState = {
   isLoading: true,
   isEditUserLoading: false,
+  isEditBioLoading: false,
   isChangePasswordLoading: false,
   user: null,
 };
@@ -127,6 +147,18 @@ export const currentUserSlice = createSlice({
     builder.addCase(changePassword.rejected, (state) => {
       state.isChangePasswordLoading = false;
     });
+    builder.addCase(editBio.pending, (state) => {
+      state.isEditBioLoading = true;
+    });
+    builder.addCase(editBio.fulfilled, (state, action) => {
+      if (state.user) {
+        state.user = { ...state.user, bio: action.payload.bio };
+      }
+      state.isEditBioLoading = false;
+    });
+    builder.addCase(editBio.rejected, (state) => {
+      state.isEditBioLoading = false;
+    });
   },
 });
 
@@ -140,4 +172,6 @@ export const selectCurrentUserIsEditProfileLoading = (state: RootState) =>
   state.currentUser.isEditUserLoading;
 export const selectCurrentUserIsChangePasswordLoading = (state: RootState) =>
   state.currentUser.isChangePasswordLoading;
+export const selectCurrentUserIsEditBioLoading = (state: RootState) =>
+  state.currentUser.isEditBioLoading;
 export const selectCurrentUser = (state: RootState) => state.currentUser.user;

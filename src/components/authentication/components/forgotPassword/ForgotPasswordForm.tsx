@@ -2,13 +2,13 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 
-import FormField from "../../../input/FormField";
 import Label from "../../../input/Label";
 import Input from "../../../input/Input";
 import Message from "../../../Message";
 import Button from "../../../Button";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 import { HiMiniEnvelope } from "react-icons/hi2";
+import { StyledFormField } from "../../../input/styles";
 
 import type { ForgotPasswordForm } from "../../../../types/User.type";
 import { forgotPasswordFormSchema } from "../../../../schemas/forgotPasswordForm.schema";
@@ -34,7 +34,7 @@ export default function ForgotPassword() {
     <FormProvider {...methods}>
       <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
         <StyledInputWrapper>
-          <FormField>
+          <StyledFormField>
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
@@ -46,7 +46,7 @@ export default function ForgotPassword() {
             {errors.email && (
               <Message variant="error">{errors.email.message}</Message>
             )}
-          </FormField>
+          </StyledFormField>
         </StyledInputWrapper>
         <Button>Send</Button>
         <StyledLoginRegisterLink to="/login">
@@ -58,5 +58,5 @@ export default function ForgotPassword() {
 }
 
 const StyledInputWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;

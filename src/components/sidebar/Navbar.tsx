@@ -47,7 +47,7 @@ export default function Navbar() {
               variant={(type === "button" ? "empty" : "") as Variant}
             >
               {icon}
-              <StyledSidebarItemText>Home</StyledSidebarItemText>
+              <StyledSidebarItemText>{text}</StyledSidebarItemText>
             </StyledSidebarButtonLink>
           </StyledNavbarListItem>
         ))}
@@ -84,6 +84,10 @@ const StyledNavbarList = styled.ul`
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
     gap: ${({ theme }) => theme.spacing.xs};
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    gap: ${({ theme }) => theme.spacing.xxs};
   }
 `;
 

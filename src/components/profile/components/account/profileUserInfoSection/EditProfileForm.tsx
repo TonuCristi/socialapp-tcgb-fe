@@ -2,25 +2,25 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Title from "../../Title";
-import FormField from "../../input/FormField";
-import Label from "../../input/Label";
-import Input from "../../input/Input";
-import Message from "../../Message";
-import Button from "../../Button";
-import { StyledFormFieldsWrapper } from "../../styles/styles";
+import Title from "../../../../Title";
+import Label from "../../../../input/Label";
+import Input from "../../../../input/Input";
+import Message from "../../../../Message";
+import Button from "../../../../Button";
 import {
   HiMiniCalendar,
   HiMiniEnvelope,
   HiMiniPhone,
   HiMiniUser,
 } from "react-icons/hi2";
+import { StyledFormFieldsWrapper } from "../../../../styles/styles";
+import { StyledFormField } from "../../../../input/styles";
 
-import type { EditProfileForm } from "../../../types/User.type";
-import { editProfileFormSchema } from "../../../schemas/editProfileForm.schema";
-import { useAppSelector } from "../../../app/hooks";
-import { selectCurrentUser } from "../../../features/user/currentUserSlice";
-import { useEditUser } from "../hooks/useEditUser";
+import { useAppSelector } from "../../../../../app/hooks";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSlice";
+import { editProfileFormSchema } from "../../../../../schemas/editProfileForm.schema";
+import type { EditProfileForm } from "../../../../../types/User.type";
+import { useEditUser } from "../../../hooks/useEditUser";
 
 const inputs = [
   {
@@ -79,14 +79,15 @@ export default function EditProfileForm() {
     const birthDate = data.birthDate.split("T")[0];
     editUserDetails({ ...data, birthDate });
   };
+
   return (
     <FormProvider {...methods}>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <Title variant="small">Edit profile</Title>
-        <StyledFormFieldsWrapperWithMargin>
+        <StyledFormFieldsWrapper>
           {inputs.map(
             ({ label, htmlFor, type, name, placeholder, leftIcon }) => (
-              <FormField key={name}>
+              <StyledFormField key={name}>
                 <Label htmlFor={htmlFor}>{label}</Label>
                 <Input
                   id={htmlFor}
@@ -98,10 +99,10 @@ export default function EditProfileForm() {
                 {errors[name] && (
                   <Message variant="error">{errors[name].message}</Message>
                 )}
-              </FormField>
+              </StyledFormField>
             )
           )}
-        </StyledFormFieldsWrapperWithMargin>
+        </StyledFormFieldsWrapper>
         <Button disabled={isLoading}>Save</Button>
       </StyledForm>
     </FormProvider>
@@ -121,8 +122,8 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
-`;
 
-const StyledFormFieldsWrapperWithMargin = styled(StyledFormFieldsWrapper)`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+    width: ${({ theme }) => theme.width.full};
+  }
 `;

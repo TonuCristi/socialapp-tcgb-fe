@@ -2,7 +2,6 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 
-import FormField from "../../../input/FormField";
 import Label from "../../../input/Label";
 import Input from "../../../input/Input";
 import Message from "../../../Message";
@@ -11,6 +10,7 @@ import Button from "../../../Button";
 import { HiMiniEnvelope, HiMiniUser } from "react-icons/hi2";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 import { StyledFormFieldsWrapper } from "../../../styles/styles";
+import { StyledFormField } from "../../../input/styles";
 
 import type { RegisterForm } from "../../../../types/User.type";
 import { registerFormSchema } from "../../../../schemas/registerForm.schema";
@@ -59,7 +59,7 @@ export default function RegisterForm() {
         <StyledFormFieldsWrapperWithMargin>
           {inputs.map(
             ({ label, htmlFor, type, name, placeholder, leftIcon }) => (
-              <FormField key={name}>
+              <StyledFormField key={name}>
                 <Label htmlFor={htmlFor}>{label}</Label>
                 <Input
                   id={htmlFor}
@@ -71,10 +71,10 @@ export default function RegisterForm() {
                 {errors[name] && (
                   <Message variant="error">{errors[name].message}</Message>
                 )}
-              </FormField>
+              </StyledFormField>
             )
           )}
-          <FormField>
+          <StyledFormField>
             <Label htmlFor="password">Password</Label>
             <HidePasswordInput
               id="password"
@@ -84,7 +84,7 @@ export default function RegisterForm() {
             {errors.password && (
               <Message variant="error">{errors.password.message}</Message>
             )}
-          </FormField>
+          </StyledFormField>
         </StyledFormFieldsWrapperWithMargin>
         <Button disabled={isLoading}>Register</Button>
         <StyledLoginRegisterLink to="/login">
@@ -96,5 +96,5 @@ export default function RegisterForm() {
 }
 
 const StyledFormFieldsWrapperWithMargin = styled(StyledFormFieldsWrapper)`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;

@@ -1,10 +1,12 @@
 import styled from "styled-components";
 
-import ProfileSection from "./ProfileSection";
-import Title from "../../Title";
+import Title from "../../../../Title";
+import ProfileStats from "./ProfileStats";
+import ProfileBio from "./ProfileBio";
+import { StyledProfileSection } from "../../styles";
 
-import { useAppSelector } from "../../../app/hooks";
-import { selectCurrentUser } from "../../../features/user/currentUserSlice";
+import { useAppSelector } from "../../../../../app/hooks";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSlice";
 
 export default function ProfileIntroSection() {
   const user = useAppSelector(selectCurrentUser);
@@ -14,18 +16,20 @@ export default function ProfileIntroSection() {
       <StyledAvatar src="src/assets/photo.png" />
       <StyledIntro>
         <Title variant="medium">{user?.username}</Title>
-        <StyledBio>{user?.bio}</StyledBio>
+        <ProfileStats />
+        <ProfileBio />
       </StyledIntro>
     </StyledProfileIntroSection>
   );
 }
 
-const StyledProfileIntroSection = styled(ProfileSection)`
+const StyledProfileIntroSection = styled(StyledProfileSection)`
   display: flex;
   gap: ${({ theme }) => theme.spacing.lg};
+  z-index: 2;
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
-    gap: ${({ theme }) => theme.spacing.sm};
+    flex-direction: column;
   }
 `;
 
@@ -48,9 +52,6 @@ const StyledAvatar = styled.img`
 const StyledIntro = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const StyledBio = styled.p`
-  word-break: break-word;
+  gap: ${({ theme }) => theme.spacing.md};
+  width: ${({ theme }) => theme.width.full};
 `;

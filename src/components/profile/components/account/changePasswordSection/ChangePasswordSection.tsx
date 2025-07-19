@@ -2,19 +2,18 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 
-import ProfileSection from "./ProfileSection";
-import Button from "../../Button";
-import FormField from "../../input/FormField";
-import Label from "../../input/Label";
-import HidePasswordInput from "../../input/HidePasswordInput";
-import Message from "../../Message";
-import Title from "../../Title";
-import { StyledDivider } from "./styles";
-import { StyledFormFieldsWrapper } from "../../styles/styles";
+import Title from "../../../../Title";
+import Label from "../../../../input/Label";
+import HidePasswordInput from "../../../../input/HidePasswordInput";
+import Message from "../../../../Message";
+import Button from "../../../../Button";
+import { StyledDivider, StyledProfileSection } from "../../styles";
+import { StyledFormFieldsWrapper } from "../../../../styles/styles";
+import { StyledFormField } from "../../../../input/styles";
 
-import type { ChangePasswordForm } from "../../../types/User.type";
-import { changePasswordFormSchema } from "../../../schemas/changePasswordForm.schema";
-import { useChangePassword } from "../hooks/useChangePassword";
+import type { ChangePasswordForm } from "../../../../../types/User.type";
+import { changePasswordFormSchema } from "../../../../../schemas/changePasswordForm.schema";
+import { useChangePassword } from "../../../hooks/useChangePassword";
 
 const inputs = [
   {
@@ -67,7 +66,7 @@ export default function ChangePasswordSection() {
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
           <StyledFormFieldsWrapperWithMargin>
             {inputs.map(({ label, htmlFor, name, placeholder }) => (
-              <FormField key={name}>
+              <StyledFormField key={name}>
                 <Label htmlFor={htmlFor}>{label}</Label>
                 <HidePasswordInput
                   id={htmlFor}
@@ -77,7 +76,7 @@ export default function ChangePasswordSection() {
                 {errors[name] && (
                   <Message variant="error">{errors[name].message}</Message>
                 )}
-              </FormField>
+              </StyledFormField>
             ))}
           </StyledFormFieldsWrapperWithMargin>
           <Button disabled={isLoading}>Save</Button>
@@ -87,7 +86,7 @@ export default function ChangePasswordSection() {
   );
 }
 
-const StyledChangePasswordSection = styled(ProfileSection)`
+const StyledChangePasswordSection = styled(StyledProfileSection)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
