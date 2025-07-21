@@ -2,16 +2,16 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
 
-import { StyledForm, StyledLoginRegisterLink } from "../styles";
-import Message from "../../Message";
-import Button from "../../Button";
-import FormField from "../../input/FormField";
-import Label from "../../input/Label";
-import Input from "../../input/Input";
+import Label from "../../../input/Label";
+import Input from "../../../input/Input";
+import Message from "../../../Message";
+import Button from "../../../Button";
+import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 import { HiMiniEnvelope } from "react-icons/hi2";
+import { StyledFormField } from "../../../input/styles";
 
-import { forgotPasswordFormSchema } from "../../../schemas/forgotPasswordForm.schema";
-import type { ForgotPasswordForm } from "../../../types/User.type";
+import type { ForgotPasswordForm } from "../../../../types/User.type";
+import { forgotPasswordFormSchema } from "../../../../schemas/forgotPasswordForm.schema";
 
 export default function ForgotPassword() {
   const methods = useForm<ForgotPasswordForm>({
@@ -32,9 +32,9 @@ export default function ForgotPassword() {
 
   return (
     <FormProvider {...methods}>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
+      <StyledAuthForm onSubmit={handleSubmit(onSubmit)}>
         <StyledInputWrapper>
-          <FormField>
+          <StyledFormField>
             <Label htmlFor="email">Email</Label>
             <Input
               id="email"
@@ -46,17 +46,17 @@ export default function ForgotPassword() {
             {errors.email && (
               <Message variant="error">{errors.email.message}</Message>
             )}
-          </FormField>
+          </StyledFormField>
         </StyledInputWrapper>
         <Button>Send</Button>
         <StyledLoginRegisterLink to="/login">
           <span>Back to</span> login
         </StyledLoginRegisterLink>
-      </StyledForm>
+      </StyledAuthForm>
     </FormProvider>
   );
 }
 
 const StyledInputWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;

@@ -26,11 +26,19 @@ export default function Input({
   return (
     <InputWrapper>
       {leftIcon && (
-        <StyledLeftIcon onClick={onLeftIconClick}>{leftIcon}</StyledLeftIcon>
+        <StyledLeftIcon
+          $isButton={!!onRightIconClick}
+          onClick={onLeftIconClick}
+        >
+          {leftIcon}
+        </StyledLeftIcon>
       )}
       <StyledInput {...props} {...register(name)} />
       {rightIcon && (
-        <StyledRightIcon onClick={onRightIconClick}>
+        <StyledRightIcon
+          $isButton={!!onRightIconClick}
+          onClick={onRightIconClick}
+        >
           {rightIcon}
         </StyledRightIcon>
       )}
@@ -42,7 +50,7 @@ const InputWrapper = styled.div`
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
   color: ${({ theme }) => theme.colors.accent};
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -56,11 +64,18 @@ const StyledInput = styled.input`
   border: none;
   color: ${({ theme }) => theme.colors.white};
   padding: ${({ theme }) => theme.spacing.sm} 0;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
+
+  &::-webkit-calendar-picker-indicator {
+    filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(180deg);
+    cursor: pointer;
+  }
 `;
 
-const StyledLeftIcon = styled.div``;
+const StyledLeftIcon = styled.div<{ $isButton: boolean }>`
+  cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
+`;
 
-const StyledRightIcon = styled.div`
-  cursor: pointer;
+const StyledRightIcon = styled.div<{ $isButton: boolean }>`
+  cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
 `;

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
 import styled from "styled-components";
 
 type Props = { children: ReactNode };
@@ -8,11 +8,12 @@ export default function Overlay({ children }: Props) {
 }
 
 const StyledOverlay = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100dvh;
+  width: ${({ theme }) => theme.width.full};
+  min-height: 100dvh;
+  z-index: 999;
   display: flex;
   justify-content: center;
   align-items: center;

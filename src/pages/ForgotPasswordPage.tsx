@@ -1,9 +1,9 @@
-import ForgotPassword from "../components/authentication/forgotPassword/ForgotPasswordForm";
+import ForgotPassword from "../components/authentication/components/forgotPassword/ForgotPasswordForm";
 import {
   StyledForgotPasswordPage,
   StyledMessage,
   StyledTitle,
-} from "../components/authentication/styles";
+} from "../components/authentication/components/styles";
 
 export default function ForgotPasswordPage() {
   return (

@@ -31,7 +31,7 @@ export default function AuthLayout() {
 }
 
 const StyledLoaderWrapper = styled.div`
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   height: 100dvh;
   display: flex;
   justify-content: center;

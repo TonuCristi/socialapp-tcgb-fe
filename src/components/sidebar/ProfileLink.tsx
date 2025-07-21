@@ -1,23 +1,16 @@
 import styled from "styled-components";
 
-import { StyledSidebarItemText, StyledSidebarLink } from "./styles";
+import { StyledSidebarButtonLink, StyledSidebarItemText } from "./styles";
+import { Link } from "react-router";
 
 export default function ProfileLink() {
   return (
-    <StyledProfileLink to="/profile">
+    <StyledSidebarButtonLink as={Link} to="/profile">
       <StyledAvatar src="src/assets/photo.png" />
       <StyledSidebarItemText>Profile</StyledSidebarItemText>
-    </StyledProfileLink>
+    </StyledSidebarButtonLink>
   );
 }
-
-const StyledProfileLink = styled(StyledSidebarLink)`
-  margin-top: auto;
-
-  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
-    margin-top: 0;
-  }
-`;
 
 const StyledAvatar = styled.img`
   width: 1.5rem;

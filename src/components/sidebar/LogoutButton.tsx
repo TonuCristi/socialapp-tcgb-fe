@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import ConfirmationModal from "../ConfirmationModal";
 import { HiMiniArrowLeftEndOnRectangle } from "react-icons/hi2";
-import { StyledSidebarButton, StyledSidebarItemText } from "./styles";
+import { StyledSidebarButtonLink, StyledSidebarItemText } from "./styles";
 
 import { useLogout } from "../authentication/hooks/useLogout";
 
@@ -12,13 +12,13 @@ export default function LogoutButton() {
 
   return (
     <>
-      <StyledSidebarButton variant="empty" onClick={() => setIsOpen(true)}>
+      <StyledSidebarButtonLink variant="empty" onClick={() => setIsOpen(true)}>
         <HiMiniArrowLeftEndOnRectangle />
         <StyledSidebarItemText>Log out</StyledSidebarItemText>
-      </StyledSidebarButton>
+      </StyledSidebarButtonLink>
       {isOpen && (
         <ConfirmationModal
-          onAprove={logoutUser}
+          onConfirm={logoutUser}
           onReject={() => setIsOpen(false)}
         >
           Are you sure you want to log out?

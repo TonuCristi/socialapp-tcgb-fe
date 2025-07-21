@@ -26,7 +26,7 @@ const rotate = keyframes`
 `;
 
 const StyledLoader = styled.div`
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
   height: 100%;
   border: 0.5rem solid ${({ theme }) => theme.colors.zinc800};
   border-right: 0.5rem solid ${({ theme }) => theme.colors.accent};

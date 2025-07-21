@@ -15,8 +15,10 @@ export const theme: DefaultTheme = {
     transparent: "transparent",
     zinc800: "oklch(27.4% 0.006 286.033)",
     gray300: "oklch(87.2% 0.01 258.338)",
+    gray400: "oklch(70.7% 0.022 261.325)",
   },
   spacing: {
+    "2xs": "0.125rem", // 2px
     xs: "0.25rem", // 4px
     sm: "0.5rem", // 8px
     md: "1rem", // 16px
@@ -74,7 +76,7 @@ export const theme: DefaultTheme = {
     full: "100%",
   },
   breakpoints: {
-    xxs: "20rem", // 320px
+    "2xs": "20rem", // 320px
     xs: "30rem", // 480 px
     sm: "40rem", // 640 px
     md: "48rem", // 768 px

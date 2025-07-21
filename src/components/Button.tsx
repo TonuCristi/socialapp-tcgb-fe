@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import styled from "styled-components";
 
-type Variant = "primary" | "aprove" | "reject" | "empty";
+export type Variant = "primary" | "aprove" | "reject" | "empty";
 
 type Props = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -36,9 +36,9 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 border-radius: ${theme.borderRadius["3xl"]};
                 background: ${theme.colors.transparent};
                 border: 0.15rem solid ${theme.colors.accent};
-                color: ${theme.colors.accent}
-                width: 100%;
-                transition: background 0.3s;
+                color: ${theme.colors.accent};
+                width: ${theme.width.full};
+                transition: background 0.1s;
 
                 &:hover {
                   background: ${theme.colors.primary};
@@ -48,8 +48,8 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
                 border-radius: ${theme.borderRadius["3xl"]};
                 font-weight: ${theme.fontWeights.semibold};
-                width: 100%;
-                transition: background 0.3s;
+                width: ${theme.width.full};
+                transition: background 0.1s;
                 
                 &:hover {
                   background: ${theme.colors.succesLight};
@@ -59,8 +59,8 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
                 border-radius: ${theme.borderRadius["3xl"]};
                 font-weight: ${theme.fontWeights.semibold};
-                width: 100%;
-                transition: background 0.3s;
+                width: ${theme.width.full};
+                transition: background 0.1s;
 
                 &:hover {
                   background: ${theme.colors.dangerLight};
@@ -73,9 +73,9 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
                 border-radius: ${theme.borderRadius["3xl"]};
                 background: ${theme.colors.transparent};
                 border: 0.15rem solid ${theme.colors.accent};
-                color: ${theme.colors.accent}
-                width: 100%;
-                transition: background 0.3s;
+                color: ${theme.colors.accent};
+                width: ${theme.width.full};
+                transition: background 0.1s;
 
                 &:hover {
                   background: ${theme.colors.primary};

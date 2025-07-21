@@ -41,7 +41,7 @@ export const StyledAuthPanel = styled.main`
     width: 80%;
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: 90%;
   }
 `;
@@ -66,7 +66,7 @@ export const StyledTitle = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes["3xl"]};
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     font-size: ${({ theme }) => theme.fontSizes["2xl"]};
   }
 `;
@@ -77,20 +77,10 @@ export const StyledMessage = styled.p`
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
-export const StyledForm = styled.form`
+export const StyledAuthForm = styled.form`
   display: flex;
   flex-direction: column;
-  width: 100%;
-`;
-
-export const StyledFormFieldsWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.spacing.md};
-`;
-
-export const StyledFormFieldsSpaceWrapper = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing.xl};
+  width: ${({ theme }) => theme.width.full};
 `;
 
 export const StyledLoginRegisterLink = styled(Link)`

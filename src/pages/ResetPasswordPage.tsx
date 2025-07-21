@@ -1,9 +1,9 @@
-import ResetPasswordForm from "../components/authentication/forgotPassword/ResetPasswordForm";
+import ResetPasswordForm from "../components/authentication/components/forgotPassword/ResetPasswordForm";
 import {
   StyledForgotPasswordPage,
   StyledMessage,
   StyledTitle,
-} from "../components/authentication/styles";
+} from "../components/authentication/components/styles";
 
 export default function ResetPasswordPage() {
   return (

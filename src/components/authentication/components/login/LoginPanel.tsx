@@ -1,10 +1,10 @@
-import LoginForm from "./LoginForm";
 import {
   StyledAppName,
   StyledAuthPanel,
   StyledMessage,
   StyledTitle,
 } from "../styles";
+import LoginForm from "./LoginForm";
 
 export default function LoginPanel() {
   return (
