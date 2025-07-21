@@ -36,7 +36,7 @@ export const StyledSidebarButtonLink = styled(Button)`
     justify-content: center;
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     padding: ${({ theme }) => theme.spacing.xs};
   }
 `;

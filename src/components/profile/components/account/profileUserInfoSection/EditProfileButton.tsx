@@ -25,7 +25,7 @@ export default function EditProfileButton() {
 const StyledEditProfileButtonWrapper = styled.div`
   position: relative;
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: ${({ theme }) => theme.width.full};
   }
 `;
@@ -33,7 +33,7 @@ const StyledEditProfileButtonWrapper = styled.div`
 const StyledEditProfileButton = styled(Button)`
   width: auto;
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: ${({ theme }) => theme.width.full};
   }
 `;

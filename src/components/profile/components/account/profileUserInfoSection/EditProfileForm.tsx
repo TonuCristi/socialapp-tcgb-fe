@@ -123,7 +123,11 @@ const StyledForm = styled.form`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    width: ${({ theme }) => theme.width["3xs"]};
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: ${({ theme }) => theme.width.full};
   }
 `;

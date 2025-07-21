@@ -23,11 +23,11 @@ const StyledMain = styled.main`
     width: 80%;
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     width: 90%;
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: ${({ theme }) => theme.width.full};
   }
 `;

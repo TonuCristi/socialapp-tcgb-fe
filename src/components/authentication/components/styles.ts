@@ -41,7 +41,7 @@ export const StyledAuthPanel = styled.main`
     width: 80%;
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: 90%;
   }
 `;
@@ -66,7 +66,7 @@ export const StyledTitle = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes["3xl"]};
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     font-size: ${({ theme }) => theme.fontSizes["2xl"]};
   }
 `;

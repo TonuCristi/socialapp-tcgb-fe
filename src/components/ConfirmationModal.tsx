@@ -55,7 +55,7 @@ const StyledConfirmationModal = styled.div`
     width: 85%;
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: 90%;
   }
 `;
@@ -70,7 +70,7 @@ const StyledButtonsContainer = styled.div`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing.md};
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing.sm};
   }

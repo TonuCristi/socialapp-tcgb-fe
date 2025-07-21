@@ -73,7 +73,7 @@ const StyledForm = styled.form`
     width: ${({ theme }) => theme.width["3xs"]};
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: 12rem;
   }
 `;

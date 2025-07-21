@@ -87,7 +87,7 @@ const StyledNavbarList = styled.ul`
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
-    gap: ${({ theme }) => theme.spacing.xxs};
+    gap: ${({ theme }) => theme.spacing["2xs"]};
   }
 `;
 

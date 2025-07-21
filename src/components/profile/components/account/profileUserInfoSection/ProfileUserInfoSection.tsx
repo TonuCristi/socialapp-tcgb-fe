@@ -63,7 +63,7 @@ const StyledHeader = styled.header`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.md};
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     flex-direction: column;
     align-items: start;
     width: ${({ theme }) => theme.width.full};

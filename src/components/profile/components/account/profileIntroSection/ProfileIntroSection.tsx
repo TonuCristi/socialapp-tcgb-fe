@@ -43,7 +43,7 @@ const StyledAvatar = styled.img`
     height: 5rem;
   }
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     width: 3rem;
     height: 3rem;
   }

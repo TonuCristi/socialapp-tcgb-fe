@@ -19,7 +19,7 @@ declare module "styled-components" {
       gray400: string;
     };
     spacing: {
-      xxs: string;
+      "2xs": string;
       xs: string;
       sm: string;
       md: string;
@@ -77,7 +77,7 @@ declare module "styled-components" {
       full: string;
     };
     breakpoints: {
-      xxs: string;
+      "2xs": string;
       xs: string;
       sm: string;
       md: string;

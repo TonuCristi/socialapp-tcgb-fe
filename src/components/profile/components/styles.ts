@@ -8,7 +8,7 @@ export const StyledProfileSection = styled.section`
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   padding: ${({ theme }) => theme.spacing.md};
 
-  @media (width < ${({ theme }) => theme.breakpoints.xxs}) {
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     padding: ${({ theme }) => theme.spacing.sm};
   }
 `;

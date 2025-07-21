@@ -18,7 +18,7 @@ export const theme: DefaultTheme = {
     gray400: "oklch(70.7% 0.022 261.325)",
   },
   spacing: {
-    xxs: "0.125rem", // 2px
+    "2xs": "0.125rem", // 2px
     xs: "0.25rem", // 4px
     sm: "0.5rem", // 8px
     md: "1rem", // 16px
@@ -76,7 +76,7 @@ export const theme: DefaultTheme = {
     full: "100%",
   },
   breakpoints: {
-    xxs: "20rem", // 320px
+    "2xs": "20rem", // 320px
     xs: "30rem", // 480 px
     sm: "40rem", // 640 px
     md: "48rem", // 768 px
