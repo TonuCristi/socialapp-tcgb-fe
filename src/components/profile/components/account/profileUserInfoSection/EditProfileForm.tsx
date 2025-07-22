@@ -17,10 +17,10 @@ import { StyledFormFieldsWrapper } from "../../../../styles/styles";
 import { StyledFormField } from "../../../../input/styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
-import { selectCurrentUser } from "../../../../../features/user/currentUserSlice";
 import { editProfileFormSchema } from "../../../../../schemas/editProfileForm.schema";
 import type { EditProfileForm } from "../../../../../types/User.type";
 import { useEditUser } from "../../../hooks/useEditUser";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 const inputs = [
   {

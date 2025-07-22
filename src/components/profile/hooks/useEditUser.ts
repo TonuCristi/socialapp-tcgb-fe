@@ -1,11 +1,10 @@
 import toast from "react-hot-toast";
 
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import {
-  editUser,
-  selectCurrentUserIsEditProfileLoading,
-} from "../../../features/user/currentUserSlice";
+
 import type { EditProfileForm } from "../../../types/User.type";
+import { selectCurrentUserIsEditProfileLoading } from "../../../features/user/currentUserSelectors";
+import { editUser } from "../../../features/user/currentUserThunks";
 
 export function useEditUser() {
   const dispatch = useAppDispatch();

@@ -1,10 +1,9 @@
 import toast from "react-hot-toast";
+
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import {
-  changePassword,
-  selectCurrentUserIsChangePasswordLoading,
-} from "../../../features/user/currentUserSlice";
 import type { ChangePasswordForm } from "../../../types/User.type";
+import { selectCurrentUserIsChangePasswordLoading } from "../../../features/user/currentUserSelectors";
+import { changePassword } from "../../../features/user/currentUserThunks";
 
 export function useChangePassword() {
   const dispatch = useAppDispatch();

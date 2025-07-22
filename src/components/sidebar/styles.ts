@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-import Button from "../Button";
+import { NavLink } from "react-router";
 
-export const StyledSidebarButtonLink = styled(Button)`
+export const sidebarButtonLinkStyles = css`
   display: flex;
   gap: ${({ theme }) => theme.spacing.sm};
   align-items: center;
@@ -11,6 +11,15 @@ export const StyledSidebarButtonLink = styled(Button)`
   transition: all 0.1s;
   padding: ${({ theme }) =>
     `${theme.spacing.sm} ${theme.spacing.md} ${theme.spacing.sm} ${theme.spacing.sm}`};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.zinc800};
+    border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
+
+    @media (width < ${({ theme }) => theme.breakpoints.md}) {
+      background-color: ${({ theme }) => theme.colors.transparent};
+    }
+  }
 
   :first-child {
     color: ${({ theme }) => theme.colors.accent};
@@ -24,13 +33,6 @@ export const StyledSidebarButtonLink = styled(Button)`
     box-shadow: 0 0 0.4rem 0.4rem ${({ theme }) => theme.colors.shadowBlue};
   }
 
-  @media (width > ${({ theme }) => theme.breakpoints.md}) {
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.zinc800};
-      border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
-    }
-  }
-
   @media (width < ${({ theme }) => theme.breakpoints.md}) {
     padding: ${({ theme }) => theme.spacing.sm};
     justify-content: center;
@@ -38,6 +40,25 @@ export const StyledSidebarButtonLink = styled(Button)`
 
   @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
     padding: ${({ theme }) => theme.spacing.xs};
+  }
+`;
+
+export const StyledSidebarLink = styled(NavLink)`
+  ${sidebarButtonLinkStyles}
+
+  &.active {
+    background-color: ${({ theme }) => theme.colors.zinc800};
+    border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
+
+    @media (width < ${({ theme }) => theme.breakpoints.md}) {
+      background-color: ${({ theme }) => theme.colors.transparent};
+    }
+  }
+
+  &.active :first-child {
+    border-radius: ${({ theme }) => theme.borderRadius.full};
+    background-color: ${({ theme }) => theme.colors.shadowBlue};
+    box-shadow: 0 0 0.4rem 0.4rem ${({ theme }) => theme.colors.shadowBlue};
   }
 `;
 

@@ -26,19 +26,11 @@ export default function Input({
   return (
     <InputWrapper>
       {leftIcon && (
-        <StyledLeftIcon
-          $isButton={!!onRightIconClick}
-          onClick={onLeftIconClick}
-        >
-          {leftIcon}
-        </StyledLeftIcon>
+        <StyledLeftIcon onClick={onLeftIconClick}>{leftIcon}</StyledLeftIcon>
       )}
       <StyledInput {...props} {...register(name)} />
       {rightIcon && (
-        <StyledRightIcon
-          $isButton={!!onRightIconClick}
-          onClick={onRightIconClick}
-        >
+        <StyledRightIcon onClick={onRightIconClick}>
           {rightIcon}
         </StyledRightIcon>
       )}
@@ -72,10 +64,10 @@ const StyledInput = styled.input`
   }
 `;
 
-const StyledLeftIcon = styled.div<{ $isButton: boolean }>`
+const StyledLeftIcon = styled.div`
   cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
 `;
 
-const StyledRightIcon = styled.div<{ $isButton: boolean }>`
+const StyledRightIcon = styled.div`
   cursor: ${({ onClick }) => (onClick ? "pointer" : "default")};
 `;

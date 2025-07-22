@@ -8,47 +8,40 @@ import {
   HiMiniHome,
   HiMiniMagnifyingGlass,
 } from "react-icons/hi2";
-import { StyledSidebarButtonLink, StyledSidebarItemText } from "./styles";
-import { Link } from "react-router";
-import Button, { type Variant } from "../Button";
+import { StyledSidebarItemText, StyledSidebarLink } from "./styles";
 
 export default function Navbar() {
   const navItems = [
-    { type: "link", as: Link, to: "/", icon: <HiMiniHome />, text: "Home" },
+    { text: "Home", to: "/", icon: <HiMiniHome /> },
     {
-      type: "button",
-      as: Button,
-      icon: <HiMiniMagnifyingGlass />,
       text: "Search",
+      to: "/search",
+      icon: <HiMiniMagnifyingGlass />,
     },
     {
-      type: "link",
-      as: Link,
+      text: "Chat",
       to: "/chat",
       icon: <HiMiniChatBubbleOvalLeft />,
-      text: "Chat",
     },
     {
-      type: "button",
-      as: Button,
-      icon: <HiMiniBell />,
       text: "Notifications",
+      to: "/notifications",
+      icon: <HiMiniBell />,
     },
   ];
 
   return (
     <StyledNavbar>
       <StyledNavbarList>
-        {navItems.map(({ type, as, to, icon, text }) => (
+        {navItems.map(({ to, icon, text }) => (
           <StyledNavbarListItem key={text}>
-            <StyledSidebarButtonLink
-              as={as}
-              to={type === "link" ? to : ""}
-              variant={(type === "button" ? "empty" : "") as Variant}
+            <StyledSidebarLink
+              to={to}
+              className={({ isActive }) => (isActive ? "active" : "")}
             >
               {icon}
               <StyledSidebarItemText>{text}</StyledSidebarItemText>
-            </StyledSidebarButtonLink>
+            </StyledSidebarLink>
           </StyledNavbarListItem>
         ))}
         <StyledNavbarListItemWithMargin>

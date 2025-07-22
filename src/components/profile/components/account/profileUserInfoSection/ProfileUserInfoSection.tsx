@@ -5,7 +5,7 @@ import Title from "../../../../Title";
 import { StyledDivider, StyledProfileSection } from "../../styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
-import { selectCurrentUser } from "../../../../../features/user/currentUserSlice";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 export default function ProfileUserInfoSection() {
   const user = useAppSelector(selectCurrentUser);

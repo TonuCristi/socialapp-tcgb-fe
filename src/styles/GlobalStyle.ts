@@ -19,6 +19,20 @@ export const GlobalStyle = createGlobalStyle`
         border: 0 solid;
     }
 
+    *::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+    
+    *::-webkit-scrollbar-track {
+        background-color: ${({ theme }) => theme.colors.zinc800};
+        border-radius: ${({ theme }) => theme.borderRadius.sm};
+    }
+    
+    *::-webkit-scrollbar-thumb {
+        background-color: ${({ theme }) => theme.colors.accent};
+        border-radius: ${({ theme }) => theme.borderRadius.sm};
+    }
+
     body {
         font-family: "Inter", sans-serif;
         font-optical-sizing: auto;
@@ -26,34 +40,6 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: ${({ theme }) => theme.fontWeights.normal};
         background-color: ${({ theme }) => theme.colors.secondary};
         color: ${({ theme }) => theme.colors.primary};
-    }
-
-    body::-webkit-scrollbar {
-        width: 0.5rem;
-    }
-    
-    body::-webkit-scrollbar-track {
-        background-color: ${({ theme }) => theme.colors.zinc800};
-        border-radius: ${({ theme }) => theme.borderRadius.sm};
-    }
-    
-    body::-webkit-scrollbar-thumb {
-        background-color: ${({ theme }) => theme.colors.accent};
-        border-radius: ${({ theme }) => theme.borderRadius.sm};
-    }
-
-    textarea::-webkit-scrollbar {
-        width: 0.5rem;
-    }
-    
-    textarea::-webkit-scrollbar-track {
-        background-color: ${({ theme }) => theme.colors.zinc800};
-        border-radius: ${({ theme }) => theme.borderRadius.sm};
-    }
-    
-    textarea::-webkit-scrollbar-thumb {
-        background-color: ${({ theme }) => theme.colors.accent};
-        border-radius: ${({ theme }) => theme.borderRadius.sm};
     }
 
     h1,
