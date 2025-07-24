@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export type Variant = "primary" | "aprove" | "reject" | "empty";
 
@@ -31,55 +31,63 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
   ${({ theme, $variant }) => {
     switch ($variant) {
       case "primary":
-        return `font-weight: ${theme.fontWeights.semibold};
-                padding: ${theme.spacing.sm};
-                border-radius: ${theme.borderRadius["3xl"]};
-                background: ${theme.colors.transparent};
-                border: 0.15rem solid ${theme.colors.accent};
-                color: ${theme.colors.accent};
-                width: ${theme.width.full};
-                transition: background 0.1s;
+        return css`
+          font-weight: ${theme.fontWeights.semibold};
+          padding: ${theme.spacing.sm};
+          border-radius: ${theme.borderRadius["3xl"]};
+          background: ${theme.colors.transparent};
+          border: 0.15rem solid ${theme.colors.accent};
+          color: ${theme.colors.accent};
+          width: ${theme.width.full};
+          transition: all 0.1s;
 
-                &:hover {
-                  background: ${theme.colors.primary};
-                }`;
+          &:hover {
+            background: ${theme.colors.primary};
+          }
+        `;
       case "aprove":
-        return `background: ${theme.colors.succes};
-                padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
-                border-radius: ${theme.borderRadius["3xl"]};
-                font-weight: ${theme.fontWeights.semibold};
-                width: ${theme.width.full};
-                transition: background 0.1s;
-                
-                &:hover {
-                  background: ${theme.colors.succesLight};
-                  }`;
+        return css`
+          background: ${theme.colors.succes};
+          padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
+          border-radius: ${theme.borderRadius["3xl"]};
+          font-weight: ${theme.fontWeights.semibold};
+          width: ${theme.width.full};
+          transition: all 0.1s;
+
+          &:hover {
+            background: ${theme.colors.succesLight};
+          }
+        `;
       case "reject":
-        return `background: ${theme.colors.danger};
-                padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
-                border-radius: ${theme.borderRadius["3xl"]};
-                font-weight: ${theme.fontWeights.semibold};
-                width: ${theme.width.full};
-                transition: background 0.1s;
+        return css`
+          background: ${theme.colors.danger};
+          padding: ${`${theme.spacing.sm} ${theme.spacing.lg}`};
+          border-radius: ${theme.borderRadius["3xl"]};
+          font-weight: ${theme.fontWeights.semibold};
+          width: ${theme.width.full};
+          transition: all 0.1s;
 
-                &:hover {
-                  background: ${theme.colors.dangerLight};
-                }`;
+          &:hover {
+            background: ${theme.colors.dangerLight};
+          }
+        `;
       case "empty":
-        return ``;
+        return css``;
       default:
-        return `font-weight: ${theme.fontWeights.semibold};
-                padding: ${theme.spacing.sm};
-                border-radius: ${theme.borderRadius["3xl"]};
-                background: ${theme.colors.transparent};
-                border: 0.15rem solid ${theme.colors.accent};
-                color: ${theme.colors.accent};
-                width: ${theme.width.full};
-                transition: background 0.1s;
+        return css`
+          font-weight: ${theme.fontWeights.semibold};
+          padding: ${theme.spacing.sm};
+          border-radius: ${theme.borderRadius["3xl"]};
+          background: ${theme.colors.transparent};
+          border: 0.15rem solid ${theme.colors.accent};
+          color: ${theme.colors.accent};
+          width: ${theme.width.full};
+          transition: all 0.1s;
 
-                &:hover {
-                  background: ${theme.colors.primary};
-                }`;
+          &:hover {
+            background: ${theme.colors.primary};
+          }
+        `;
     }
   }}
 `;

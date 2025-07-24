@@ -10,7 +10,6 @@ export default function Page({ children, ...props }: Props) {
 }
 
 const StyledMain = styled.main`
-  height: 100%;
   width: ${({ theme }) => theme.width.xl};
   margin: 0 auto;
   padding: ${({ theme }) => `${theme.spacing.lg} ${theme.spacing.sm}`};

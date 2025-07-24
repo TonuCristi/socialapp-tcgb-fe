@@ -2,8 +2,9 @@ import { useNavigate } from "react-router";
 import toast from "react-hot-toast";
 
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { login, selectAuthIsLoading } from "../../../features/auth/authSlice";
+import { selectAuthIsLoading } from "../../../features/auth/authSlice";
 import type { LoginForm } from "../../../types/User.type";
+import { login } from "../../../features/auth/authThunks";
 
 export function useLogin() {
   const dispatch = useAppDispatch();

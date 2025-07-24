@@ -41,3 +41,15 @@ export type User = {
   phoneNumber: string;
   avatar: string;
 };
+
+export type UserPreviewResponse = {
+  _id: string;
+  username: string;
+  avatar: string;
+};
+
+export type UserPreview = {
+  id: string;
+  username: string;
+  avatar: string;
+};

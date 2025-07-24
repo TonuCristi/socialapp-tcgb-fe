@@ -10,10 +10,10 @@ import Textarea from "../../../../Textarea";
 import { StyledFormField } from "../../../../input/styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
-import { selectCurrentUser } from "../../../../../features/user/currentUserSlice";
 import type { EditUserBioForm } from "../../../../../types/User.type";
 import { editUserBioFormSchema } from "../../../../../schemas/editUserBioForm.schema";
 import { useEditUserBio } from "../../../hooks/useEditUserBio";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 export default function EditUserBioForm() {
   const user = useAppSelector(selectCurrentUser);

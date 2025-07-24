@@ -24,7 +24,7 @@ const StyledAside = styled.aside`
   position: sticky;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100dvh;
   width: 20rem;
 
   @media (width < ${({ theme }) => theme.breakpoints.xl}) {

@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-import { StyledSidebarButtonLink, StyledSidebarItemText } from "./styles";
-import { Link } from "react-router";
+import { StyledSidebarItemText, StyledSidebarLink } from "./styles";
 
 export default function ProfileLink() {
   return (
-    <StyledSidebarButtonLink as={Link} to="/profile">
+    <StyledSidebarLink to="/profile">
       <StyledAvatar src="src/assets/photo.png" />
       <StyledSidebarItemText>Profile</StyledSidebarItemText>
-    </StyledSidebarButtonLink>
+    </StyledSidebarLink>
   );
 }
 

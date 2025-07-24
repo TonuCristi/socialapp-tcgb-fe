@@ -6,7 +6,7 @@ import ProfileBio from "./ProfileBio";
 import { StyledProfileSection } from "../../styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
-import { selectCurrentUser } from "../../../../../features/user/currentUserSlice";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 export default function ProfileIntroSection() {
   const user = useAppSelector(selectCurrentUser);

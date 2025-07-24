@@ -1,9 +1,8 @@
 import { useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import {
-  getLoggedUser,
-  selectCurrentUserIsLoading,
-} from "../../../features/user/currentUserSlice";
+import { selectCurrentUserIsLoading } from "../../../features/user/currentUserSelectors";
+import { getLoggedUser } from "../../../features/user/currentUserThunks";
 
 export function useFetchLoggedUser() {
   const dispatch = useAppDispatch();

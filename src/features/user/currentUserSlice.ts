@@ -1,93 +1,12 @@
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+
+import type { User } from "../../types/User.type";
 import {
-  createAsyncThunk,
-  createSlice,
-  type PayloadAction,
-} from "@reduxjs/toolkit";
-import axios from "axios";
-import type { AxiosResponse } from "axios";
-
-import type {
-  ChangePasswordForm,
-  EditProfileForm,
-  User,
-  UserResponse,
-} from "../../types/User.type";
-import type { RootState } from "../../app/store";
-import { api } from "../../api/api";
-import { mapUser } from "../../utils/mapUser";
-
-export const getLoggedUser = createAsyncThunk(
-  "user/get-logged-user",
-  async () => {
-    const { data }: AxiosResponse<{ user: UserResponse }> = await api.get(
-      "/user/get-logged-user"
-    );
-
-    const user = mapUser(data.user);
-
-    return user;
-  }
-);
-
-export const editUser = createAsyncThunk(
-  "user/edit-user",
-  async (editedUser: EditProfileForm, { rejectWithValue }) => {
-    try {
-      const {
-        data,
-      }: AxiosResponse<{ editedUser: UserResponse; message: string }> =
-        await api.put("/user/edit-user", editedUser);
-
-      const user = mapUser(data.editedUser);
-
-      return { user, message: data.message };
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        return rejectWithValue(error.response.data.message);
-      }
-
-      return rejectWithValue("Something went wrong!");
-    }
-  }
-);
-
-export const editBio = createAsyncThunk(
-  "user/edit-user-bio",
-  async (bio: string, { rejectWithValue }) => {
-    try {
-      const { data }: AxiosResponse<{ bio: string; message: string }> =
-        await api.put("/user/edit-user-bio", { bio });
-
-      return { bio: data.bio, message: data.message };
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        return rejectWithValue(error.response.data.message);
-      }
-
-      return rejectWithValue("Something went wrong!");
-    }
-  }
-);
-
-export const changePassword = createAsyncThunk(
-  "user/change-password",
-  async (passwords: ChangePasswordForm, { rejectWithValue }) => {
-    try {
-      const { data }: AxiosResponse<{ message: string }> = await api.put(
-        "/user/change-password",
-        passwords
-      );
-
-      return { message: data.message };
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        return rejectWithValue(error.response.data.message);
-      }
-
-      return rejectWithValue("Something went wrong!");
-    }
-  }
-);
+  changePassword,
+  editBio,
+  editUser,
+  getLoggedUser,
+} from "./currentUserThunks";
 
 export type UserState = {
   isLoading: boolean;
@@ -165,13 +84,3 @@ export const currentUserSlice = createSlice({
 export default currentUserSlice.reducer;
 
 export const { deleteUser } = currentUserSlice.actions;
-
-export const selectCurrentUserIsLoading = (state: RootState) =>
-  state.currentUser.isLoading;
-export const selectCurrentUserIsEditProfileLoading = (state: RootState) =>
-  state.currentUser.isEditUserLoading;
-export const selectCurrentUserIsChangePasswordLoading = (state: RootState) =>
-  state.currentUser.isChangePasswordLoading;
-export const selectCurrentUserIsEditBioLoading = (state: RootState) =>
-  state.currentUser.isEditBioLoading;
-export const selectCurrentUser = (state: RootState) => state.currentUser.user;

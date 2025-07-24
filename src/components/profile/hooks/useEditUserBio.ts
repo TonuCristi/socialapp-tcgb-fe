@@ -1,9 +1,8 @@
 import toast from "react-hot-toast";
+
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import {
-  editBio,
-  selectCurrentUserIsEditBioLoading,
-} from "../../../features/user/currentUserSlice";
+import { selectCurrentUserIsEditBioLoading } from "../../../features/user/currentUserSelectors";
+import { editBio } from "../../../features/user/currentUserThunks";
 
 export function useEditUserBio() {
   const isLoading = useAppSelector(selectCurrentUserIsEditBioLoading);

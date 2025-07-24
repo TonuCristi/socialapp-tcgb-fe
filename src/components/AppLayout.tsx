@@ -60,7 +60,7 @@ const StyledApp = styled.div`
 `;
 
 const StyledOutletWrapper = styled.div`
-  min-height: 100dvh;
+  height: 100%;
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     grid-row: 1;
