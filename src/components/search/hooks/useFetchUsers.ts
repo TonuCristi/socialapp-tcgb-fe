@@ -1,32 +1,52 @@
-import { useRef, useState } from "react";
-import { useAppDispatch } from "../../../app/hooks";
-import toast from "react-hot-toast";
-import { getUsers } from "../../../features/users/usersThunks";
+import { useCallback, useState } from "react";
+import axios from "axios";
+
+import { UsersApi } from "../../../services/UsersApi";
+import type { UserPreview } from "../../../types/User.type";
+import { mapUserPreview } from "../../../utils/mapUserPreview";
 
 export function useFetchUsers() {
-  const [offset, setOffset] = useState<number>(0);
-  const dispatch = useAppDispatch();
-  const abortControllerRef = useRef<AbortController | null>(null);
+  const [users, setUsers] = useState<UserPreview[]>([]);
+  const [usersCount, setUsersCount] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  async function getSearchedUsers(search: string) {
+  const getSearchedUsers = useCallback(async function (
+    search: string,
+    offset: number,
+    limit: number,
+    abortController: AbortController
+  ) {
+    // if (isLoading) return;
+
+    setIsLoading(true);
+
     try {
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
+      const res = await UsersApi.getUsers(
+        search,
+        offset,
+        limit,
+        abortController
+      );
+
+      const users = res.data.users.map((userPreview) =>
+        mapUserPreview(userPreview)
+      );
+
+      const usersCount = res.data.usersCount;
+
+      setUsers((prev) => (offset === 0 ? users : [...prev, ...users]));
+      setUsersCount(usersCount);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      if (axios.isCancel(error)) {
+        return;
       }
 
-      const abortController = new AbortController();
-      abortControllerRef.current = abortController;
-
-      await dispatch(
-        getUsers(
-          { search, offset, limit: 5 },
-          { signal: abortControllerRef.current.signal }
-        )
-      ).unwrap();
-    } catch (error) {
-      toast.error(error as string);
+      console.log(error);
     }
-  }
+  },
+  []);
 
-  return { getSearchedUsers, offset, setOffset };
+  return { getSearchedUsers, users, usersCount, isLoading, setUsers };
 }

@@ -10,7 +10,8 @@ import { StyledDivider } from "../components/profile/components/styles";
 
 import { searchFormSchema } from "../schemas/searchForm.schema";
 import { useFetchUsers } from "../components/search/hooks/useFetchUsers";
-import { useEffect } from "react";
+
+export const LIMIT = 10;
 
 type Search = {
   search: string;
@@ -23,32 +24,26 @@ export default function SearchPage() {
     },
     resolver: zodResolver(searchFormSchema),
   });
-  const { getSearchedUsers, offset, setOffset } = useFetchUsers();
+  const { getSearchedUsers, users, usersCount, isLoading, setUsers } =
+    useFetchUsers();
 
-  const { watch, subscribe } = methods;
+  const { watch } = methods;
 
-  useEffect(() => {
-    const callback = subscribe({
-      formState: {
-        values: true,
-      },
-      callback: ({ values }) => {
-        const search = values.search;
-        getSearchedUsers(search);
-      },
-    });
-
-    return () => callback();
-  }, [subscribe, getSearchedUsers]);
+  // console.log(isLoading);
 
   return (
     <FormProvider {...methods}>
       <StyledSearchPage>
         <Title variant="large">Search</Title>
         <StyledDivider />
-        <SearchForm />
+        <SearchForm getSearchedUsers={getSearchedUsers} setUsers={setUsers} />
         {watch("search").length > 0 ? (
-          <SearchResults />
+          <SearchResults
+            getSearchedUsers={getSearchedUsers}
+            users={users}
+            usersCount={usersCount}
+            isLoading={isLoading}
+          />
         ) : (
           <p>Type to search.</p>
         )}
