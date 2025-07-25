@@ -1,68 +1,54 @@
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
+import { useFormContext } from "react-hook-form";
+import { useInfiniteQuery } from "@tanstack/react-query";
 
-import SearchResultCard from "./SearchResultCard";
 import Loader from "../../Loader";
 
-import type { UserPreview } from "../../../types/User.type";
-import { useFormContext } from "react-hook-form";
 import { LIMIT } from "../../../pages/SearchPage";
+import { UsersApi } from "../../../services/UsersApi";
+import { mapUserPreview } from "../../../utils/mapUserPreview";
+import SearchResultCard from "./SearchResultCard";
 
-type Props = {
-  getSearchedUsers: (
-    search: string,
-    offset: number,
-    limit: number,
-    abortController: AbortController
-  ) => void;
-  users: UserPreview[];
-  usersCount: number;
-  isLoading: boolean;
-};
-
-export default function SearchResults({
-  getSearchedUsers,
-  users,
-  isLoading,
-}: Props) {
+export default function SearchResults() {
   const rootRef = useRef<HTMLUListElement>(null);
   const targetRef = useRef<HTMLLIElement>(null);
-  const abortControllerRef = useRef<AbortController | null>(null);
-  const offsetRef = useRef<number>(0);
-  const isLoadingRef = useRef<boolean>(false);
 
   const { watch } = useFormContext();
 
+  const search = watch("search");
+
+  async function getUsers(search: string, offset: number) {
+    const data = await UsersApi.getUsers(search, offset, LIMIT);
+
+    const users = data.users.map((userPreview) => mapUserPreview(userPreview));
+
+    return { users, nextPage: data.nextPage };
+  }
+
+  const { fetchNextPage, isFetchingNextPage, data } = useInfiniteQuery({
+    queryKey: ["search", search],
+    queryFn: ({ pageParam }) => getUsers(search, pageParam),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
+  });
+
   useEffect(() => {
-    isLoadingRef.current = isLoading;
-  }, [isLoading]);
+    if (!rootRef.current || !targetRef.current) return;
 
-  const options = {
-    root: rootRef.current,
-    threshold: 1.0,
-  };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const isIntersecting = entries[0].isIntersecting;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting && !isLoadingRef.current) {
-        if (abortControllerRef.current) {
-          abortControllerRef.current.abort();
+        if (isIntersecting) {
+          fetchNextPage();
         }
-
-        abortControllerRef.current = new AbortController();
-
-        if (offsetRef.current >= 1) {
-          getSearchedUsers(
-            watch("search"),
-            offsetRef.current,
-            LIMIT,
-            abortControllerRef.current
-          );
-        }
-
-        offsetRef.current += 1;
+      },
+      {
+        root: null,
+        threshold: 0.1,
       }
-    }, options);
+    );
 
     const target = targetRef.current;
 
@@ -73,15 +59,15 @@ export default function SearchResults({
     return () => {
       observer.disconnect();
     };
-  }, [watch, getSearchedUsers]);
+  }, [fetchNextPage]);
 
   return (
     <StyledSearchResults ref={rootRef}>
-      {users.map((user) => (
-        <SearchResultCard key={user.id} user={user} />
-      ))}
+      {data?.pages.map((page) =>
+        page.users.map((user) => <SearchResultCard key={user.id} user={user} />)
+      )}
       <li ref={targetRef}></li>
-      {isLoading && (
+      {isFetchingNextPage && (
         <StyledLoaderWrapper>
           <Loader />
         </StyledLoaderWrapper>

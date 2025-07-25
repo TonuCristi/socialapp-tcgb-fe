@@ -1,19 +1,22 @@
 import styled from "styled-components";
 
+import Page from "../components/Page";
+import Title from "../components/Title";
+import CreatePost from "../components/posts/components/CreatePost";
+import { StyledDivider } from "../components/profile/components/styles";
+
 export default function HomePage() {
-  return <StyledHomePage>Home page</StyledHomePage>;
+  return (
+    <StyledHomePage>
+      <Title variant="large">Feed</Title>
+      <StyledDivider />
+      <CreatePost />
+    </StyledHomePage>
+  );
 }
 
-const StyledHomePage = styled.main`
-  /* max-width: ${({ theme }) => theme.width["5xl"]}; */
-  /* min-height: 100dvh; */
-  /* margin: 0 auto; */
-  /* border-left: 0.1rem solid ${({ theme }) => theme.colors.accent}; */
-  /* border-right: 0.1rem solid ${({ theme }) => theme.colors.accent}; */
-  /* padding: ${({ theme }) => theme.spacing.md}; */
-
-  /* @media (width < ${({ theme }) => theme.breakpoints.lg}) {
-    border-left: none;
-    border-right: none;
-  } */
+const StyledHomePage = styled(Page)`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing.md};
 `;

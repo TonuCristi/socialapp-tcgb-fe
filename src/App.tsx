@@ -7,6 +7,10 @@ import AuthLayout from "./components/AuthLayout";
 import { useAppSelector } from "./app/hooks";
 import { selectAuthIsLogged } from "./features/auth/authSlice";
 import { useLogout } from "./components/authentication/hooks/useLogout";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+export const queryClient = new QueryClient();
 
 function App() {
   const isLogged = useAppSelector(selectAuthIsLogged);
@@ -23,7 +27,14 @@ function App() {
     }
   }, [logoutUser]);
 
-  return isLogged ? <AppLayout /> : <AuthLayout />;
+  return isLogged ? (
+    <QueryClientProvider client={queryClient}>
+      <AppLayout />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  ) : (
+    <AuthLayout />
+  );
 }
 
 export default App;

@@ -27,7 +27,7 @@ const rotate = keyframes`
 
 const StyledLoader = styled.div`
   width: ${({ theme }) => theme.width.full};
-  height: 100%;
+  height: ${({ theme }) => theme.height.full};
   border: 0.5rem solid ${({ theme }) => theme.colors.zinc800};
   border-right: 0.5rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius.full};

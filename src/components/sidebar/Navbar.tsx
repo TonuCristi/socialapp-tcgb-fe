@@ -57,7 +57,7 @@ export default function Navbar() {
 
 const StyledNavbar = styled.nav`
   width: ${({ theme }) => theme.width.full};
-  height: 100%;
+  height: ${({ theme }) => theme.height.full};
 `;
 
 const StyledNavbarList = styled.ul`
@@ -66,7 +66,7 @@ const StyledNavbarList = styled.ul`
   align-items: start;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
-  height: 100%;
+  height: ${({ theme }) => theme.height.full};
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: row;

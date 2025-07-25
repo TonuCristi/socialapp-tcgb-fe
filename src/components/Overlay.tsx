@@ -12,7 +12,7 @@ const StyledOverlay = styled.div`
   top: 0;
   left: 0;
   width: ${({ theme }) => theme.width.full};
-  min-height: 100dvh;
+  min-height: ${({ theme }) => theme.height.screen};
   z-index: 999;
   display: flex;
   justify-content: center;

@@ -24,7 +24,7 @@ const StyledAside = styled.aside`
   position: sticky;
   top: 0;
   left: 0;
-  height: 100dvh;
+  height: ${({ theme }) => theme.height.screen};
   width: 20rem;
 
   @media (width < ${({ theme }) => theme.breakpoints.xl}) {
@@ -42,7 +42,7 @@ const StyledAside = styled.aside`
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     width: ${({ theme }) => theme.width.full};
-    height: min-content;
+    height: ${({ theme }) => theme.height.min};
     flex-direction: row;
     top: auto;
     bottom: 0;

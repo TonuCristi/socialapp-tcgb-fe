@@ -7,7 +7,6 @@ import { mapUserPreview } from "../../../utils/mapUserPreview";
 
 export function useFetchUsers() {
   const [users, setUsers] = useState<UserPreview[]>([]);
-  const [usersCount, setUsersCount] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const getSearchedUsers = useCallback(async function (
@@ -16,8 +15,6 @@ export function useFetchUsers() {
     limit: number,
     abortController: AbortController
   ) {
-    // if (isLoading) return;
-
     setIsLoading(true);
 
     try {
@@ -32,10 +29,7 @@ export function useFetchUsers() {
         mapUserPreview(userPreview)
       );
 
-      const usersCount = res.data.usersCount;
-
       setUsers((prev) => (offset === 0 ? users : [...prev, ...users]));
-      setUsersCount(usersCount);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -48,5 +42,5 @@ export function useFetchUsers() {
   },
   []);
 
-  return { getSearchedUsers, users, usersCount, isLoading, setUsers };
+  return { getSearchedUsers, users, isLoading, setUsers };
 }

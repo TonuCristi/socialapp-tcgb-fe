@@ -11,6 +11,7 @@ export default function Page({ children, ...props }: Props) {
 
 const StyledMain = styled.main`
   width: ${({ theme }) => theme.width.xl};
+  height: ${({ theme }) => theme.height.full};
   margin: 0 auto;
   padding: ${({ theme }) => `${theme.spacing.lg} ${theme.spacing.sm}`};
 
