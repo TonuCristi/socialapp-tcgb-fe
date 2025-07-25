@@ -56,11 +56,13 @@ const StyledApp = styled.div`
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: ${({ theme }) => theme.height.screen};
   }
 `;
 
 const StyledOutletWrapper = styled.div`
-  height: 100%;
+  height: ${({ theme }) => theme.height.full};
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     grid-row: 1;
@@ -69,7 +71,7 @@ const StyledOutletWrapper = styled.div`
 
 const StyledLoaderWrapper = styled.div`
   width: ${({ theme }) => theme.width.full};
-  height: 100dvh;
+  height: ${({ theme }) => theme.height.screen};
   display: flex;
   justify-content: center;
   align-items: center;

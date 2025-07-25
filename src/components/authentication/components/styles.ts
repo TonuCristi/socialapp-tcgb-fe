@@ -2,7 +2,7 @@ import { Link } from "react-router";
 import styled from "styled-components";
 
 export const StyledAuthPage = styled.div`
-  height: 100dvh;
+  height: ${({ theme }) => theme.height.screen};
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.sm};
@@ -97,7 +97,7 @@ export const StyledLoginRegisterLink = styled(Link)`
 `;
 
 export const StyledForgotPasswordPage = styled.main`
-  height: 100dvh;
+  height: ${({ theme }) => theme.height.screen};
   overflow: hidden;
   display: flex;
   justify-content: center;
