@@ -101,4 +101,11 @@ export const theme: DefaultTheme = {
     auto: "auto",
     full: "100%",
   },
+  height: {
+    auto: "auto",
+    full: "100%",
+    screen: "100dvh",
+    min: "min-content",
+    max: "max-content",
+  },
 };

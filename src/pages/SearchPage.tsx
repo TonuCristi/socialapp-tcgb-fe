@@ -9,9 +9,8 @@ import SearchResults from "../components/search/components/SearchResults";
 import { StyledDivider } from "../components/profile/components/styles";
 
 import { searchFormSchema } from "../schemas/searchForm.schema";
-import { useFetchUsers } from "../components/search/hooks/useFetchUsers";
 
-export const LIMIT = 10;
+export const LIMIT = 15;
 
 type Search = {
   search: string;
@@ -24,26 +23,17 @@ export default function SearchPage() {
     },
     resolver: zodResolver(searchFormSchema),
   });
-  const { getSearchedUsers, users, usersCount, isLoading, setUsers } =
-    useFetchUsers();
 
   const { watch } = methods;
-
-  // console.log(isLoading);
 
   return (
     <FormProvider {...methods}>
       <StyledSearchPage>
         <Title variant="large">Search</Title>
         <StyledDivider />
-        <SearchForm getSearchedUsers={getSearchedUsers} setUsers={setUsers} />
+        <SearchForm />
         {watch("search").length > 0 ? (
-          <SearchResults
-            getSearchedUsers={getSearchedUsers}
-            users={users}
-            usersCount={usersCount}
-            isLoading={isLoading}
-          />
+          <SearchResults />
         ) : (
           <p>Type to search.</p>
         )}
@@ -56,5 +46,4 @@ const StyledSearchPage = styled(Page)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
-  height: min-content;
 `;

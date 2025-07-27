@@ -36,12 +36,19 @@ export default function CreatePostButton() {
 const StyledCreatePostButton = styled(Button)`
   height: 2.5rem;
   text-align: left;
+  width: 100%;
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    height: auto;
+  }
 `;
 
 const StyledCloseModalButton = styled(Button)`
   position: absolute;
-  top: 5%;
-  right: 5%;
+  top: 0;
+  right: 0;
+  margin-top: ${({ theme }) => theme.spacing.xl};
+  margin-right: ${({ theme }) => theme.spacing.xl};
   font-size: ${({ theme }) => theme.fontSizes.xl};
   color: ${({ theme }) => theme.colors.accent};
 

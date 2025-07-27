@@ -102,5 +102,12 @@ declare module "styled-components" {
       auto: string;
       full: string;
     };
+    height: {
+      auto: string;
+      full: string;
+      screen: string;
+      min: string;
+      max: string;
+    };
   }
 }

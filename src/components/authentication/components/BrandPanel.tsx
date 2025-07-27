@@ -10,7 +10,7 @@ const StyledBrandPanel = styled.div`
   align-items: center;
   padding: ${({ theme }) => theme.spacing.md};
   width: ${({ theme }) => theme.width.full};
-  height: 100%;
+  height: ${({ theme }) => theme.height.full};
   display: flex;
   justify-content: center;
   align-items: center;

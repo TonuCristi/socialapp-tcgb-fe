@@ -35,13 +35,17 @@ const StyledCreatePostSection = styled.section`
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
 
-  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
+  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing.sm};
   }
 `;
 
 const StyledProfileLink = styled(Link)`
   border-radius: ${({ theme }) => theme.borderRadius.full};
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    display: none;
+  }
 `;
 
 const StyledAvatar = styled.img`

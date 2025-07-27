@@ -7,6 +7,7 @@ import Textarea from "../../Textarea";
 import Label from "../../input/Label";
 import Button from "../../Button";
 import Message from "../../Message";
+import CreatePostFormPhotos from "./CreatePostFormPhotos";
 import { HiMiniPhoto } from "react-icons/hi2";
 import { StyledFormField } from "../../input/styles";
 
@@ -33,7 +34,8 @@ export default function CreatePostForm() {
   } = methods;
 
   const onSumbit: SubmitHandler<CreatePostForm> = (data) => {
-    console.log(data);
+    const photos = data.photos.map((photo, i) => ({ index: i, photo }));
+    console.log({ content: data.content, photos });
   };
 
   const photos = Array.from(watch("photos"));
@@ -75,12 +77,7 @@ export default function CreatePostForm() {
           </StyledFormField>
           <Button>Create post</Button>
         </StyledForm>
-        <StyledPhotosWrapper>
-          {photos.length > 0 &&
-            photos.map((photo, i) => (
-              <img key={i} src={URL.createObjectURL(photo)} />
-            ))}
-        </StyledPhotosWrapper>
+        {photos.length > 0 && <CreatePostFormPhotos />}
       </StyledFormWrapper>
     </FormProvider>
   );
@@ -91,10 +88,31 @@ const StyledFormWrapper = styled.div`
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   padding: ${({ theme }) => theme.spacing.md};
-  width: 50%;
+  width: ${({ theme }) => theme.width.xl};
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
+
+  @media (width < ${({ theme }) => theme.breakpoints.lg}) {
+    width: 60%;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.md}) {
+    width: 70%;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.sm}) {
+    width: 80%;
+    padding: ${({ theme }) => theme.spacing.sm};
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    width: 90%;
+  }
+
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
+    width: 100%;
+  }
 `;
 
 const StyledForm = styled.form`
@@ -111,10 +129,6 @@ const StyledPhotosLabel = styled(Label)`
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   padding: ${({ theme }) => theme.spacing.sm};
   cursor: pointer;
-`;
 
-const StyledPhotosWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing.sm};
+  margin-bottom: ${({ theme }) => theme.spacing.md};
 `;
