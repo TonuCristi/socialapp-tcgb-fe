@@ -1,38 +1,44 @@
-import { useState } from "react";
+import { type Dispatch, type SetStateAction, type SyntheticEvent } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
+
 import Button from "../../Button";
 
-export default function CreatePostFormPhotos() {
-  const [photosOrder, setPhotosOrder] = useState<
-    { index: number; photo: File }[]
-  >([]);
+import type { PhotoOrder } from "./CreatePostForm";
+import { HiMiniXMark } from "react-icons/hi2";
 
-  const { watch, getValues } = useFormContext();
+type Props = {
+  photosOrder: PhotoOrder[];
+  setPhotosOrder: Dispatch<SetStateAction<PhotoOrder[]>>;
+};
+
+export default function CreatePostFormPhotos({
+  photosOrder,
+  setPhotosOrder,
+}: Props) {
+  const { watch, setValue } = useFormContext();
+
+  const photos = Array.from(watch("photos")) as File[];
 
   function handlePhotoOrder(photo: File) {
-    const photos = getValues("photos");
-
-    // const smallestIndex = photosIndexes.length ? Math.min(...photosIndexes) : 0;
-
-    // console.log(biggestIndex);
-
     setPhotosOrder((prev) => {
       const foundPhoto = prev.find(
         (photoOrder) => photoOrder.photo.name === photo.name
       );
 
       if (foundPhoto) {
-        return prev.filter(
-          (photoOrder) => photoOrder.photo.name !== photo.name
-        );
-        //   .map((photoOrder) => ({
-        //     ...photoOrder,
-        //     index: photoOrder.index - 1,
-        //   }));
+        return prev
+          .filter((photoOrder) => photoOrder.photo.name !== photo.name)
+          .map((photoOrder) => ({
+            ...photoOrder,
+            index:
+              foundPhoto.index > photoOrder.index
+                ? photoOrder.index
+                : photoOrder.index - 1,
+          }));
       }
 
-      const photosIndexes = photosOrder.map((photo) => photo.index);
+      const photosIndexes = prev.map((photo) => photo.index);
 
       const biggestIndex = photosIndexes.length
         ? Math.max(...photosIndexes)
@@ -40,13 +46,33 @@ export default function CreatePostFormPhotos() {
 
       return [...prev, { index: biggestIndex + 1, photo }];
     });
-
-    // console.log(photo);
   }
 
-  console.log(photosOrder);
+  function handleDeletePhoto(e: SyntheticEvent, photo: File) {
+    e.stopPropagation();
 
-  const photos = Array.from(watch("photos")) as File[];
+    setPhotosOrder((prev) => {
+      const foundPhoto = prev.find(
+        (photoOrder) => photoOrder.photo.name === photo.name
+      );
+
+      return prev
+        .filter((photoOrder) => photoOrder.photo.name !== photo.name)
+        .map((photoOrder) => ({
+          ...photoOrder,
+          index:
+            foundPhoto && foundPhoto.index > photoOrder.index
+              ? photoOrder.index
+              : photoOrder.index - 1,
+        }));
+    });
+
+    const filteredPhotos = photos.filter(
+      (photoItem) => photoItem.name !== photo.name
+    );
+
+    setValue("photos", filteredPhotos);
+  }
 
   return (
     <StyledPhotosWrapper>
@@ -56,16 +82,17 @@ export default function CreatePostFormPhotos() {
         );
 
         return (
-          <StyledPhotoWrapper
-            key={i}
-            $index={1}
-            variant="empty"
-            onClick={() => handlePhotoOrder(photo)}
-          >
+          <StyledPhotoWrapper key={i} onClick={() => handlePhotoOrder(photo)}>
             {foundPhoto ? (
               <StyledPhotoIndex>{foundPhoto.index}</StyledPhotoIndex>
             ) : null}
-            <StyledPhoto src={URL.createObjectURL(photo)} />
+            <StyledDeletePhotoButton
+              variant="empty"
+              onClick={(e) => handleDeletePhoto(e, photo)}
+            >
+              <HiMiniXMark />
+            </StyledDeletePhotoButton>
+            <img src={URL.createObjectURL(photo)} />
           </StyledPhotoWrapper>
         );
       })}
@@ -77,17 +104,14 @@ const StyledPhotosWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.sm};
+  align-items: start;
 `;
 
-const StyledPhotoWrapper = styled(Button)<{ $index: number }>`
+const StyledPhotoWrapper = styled.div`
   position: relative;
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   overflow: hidden;
-
-  &:hover :first-child {
-    background-color: ${({ theme }) => theme.colors.white};
-    color: ${({ theme }) => theme.colors.accent};
-  }
+  cursor: pointer;
 `;
 
 const StyledPhotoIndex = styled.div`
@@ -106,4 +130,22 @@ const StyledPhotoIndex = styled.div`
   transition: all 0.1s;
 `;
 
-const StyledPhoto = styled.img``;
+const StyledDeletePhotoButton = styled(Button)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: ${({ theme }) => theme.colors.accent};
+  border-radius: 0 0 0 ${({ theme }) => theme.borderRadius.full};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: ${({ theme }) => theme.fontSizes.xl};
+  color: ${({ theme }) => theme.colors.white};
+  transition: all 0.1s;
+
+  :first-child {
+    stroke-width: 1;
+  }
+`;

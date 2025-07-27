@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,6 +17,8 @@ import { selectCurrentUser } from "../../../features/user/currentUserSelectors";
 import type { CreatePostForm } from "../../../types/Post.type";
 import { createPostFormSchema } from "../../../schemas/createPostForm.schema";
 
+export type PhotoOrder = { index: number; photo: File };
+
 export default function CreatePostForm() {
   const methods = useForm<CreatePostForm>({
     defaultValues: {
@@ -25,6 +28,7 @@ export default function CreatePostForm() {
     resolver: zodResolver(createPostFormSchema),
   });
   const user = useAppSelector(selectCurrentUser);
+  const [photosOrder, setPhotosOrder] = useState<PhotoOrder[]>([]);
 
   const {
     handleSubmit,
@@ -33,12 +37,17 @@ export default function CreatePostForm() {
     register,
   } = methods;
 
-  const onSumbit: SubmitHandler<CreatePostForm> = (data) => {
-    const photos = data.photos.map((photo, i) => ({ index: i, photo }));
-    console.log({ content: data.content, photos });
-  };
-
   const photos = Array.from(watch("photos"));
+
+  const onSumbit: SubmitHandler<CreatePostForm> = (data) => {
+    console.log({
+      ...data,
+      photos:
+        data.photos.length !== photosOrder.length
+          ? data.photos.map((photo, i) => ({ index: i + 1, photo }))
+          : photosOrder,
+    });
+  };
 
   return (
     <FormProvider {...methods}>
@@ -77,7 +86,12 @@ export default function CreatePostForm() {
           </StyledFormField>
           <Button>Create post</Button>
         </StyledForm>
-        {photos.length > 0 && <CreatePostFormPhotos />}
+        {photos.length > 0 && (
+          <CreatePostFormPhotos
+            photosOrder={photosOrder}
+            setPhotosOrder={setPhotosOrder}
+          />
+        )}
       </StyledFormWrapper>
     </FormProvider>
   );
