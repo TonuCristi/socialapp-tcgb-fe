@@ -20,7 +20,7 @@ import { useLogin } from "../../hooks/useLogin";
 export default function LoginForm() {
   const methods = useForm<LoginForm>({
     defaultValues: {
-      email: "chrisdev2002@gmail.com",
+      email: "john.johnson@gmail.com",
       password: "P@rola1234",
     },
     resolver: zodResolver(loginFormSchema),

@@ -54,7 +54,6 @@ const StyledProfileUserInfoSection = styled(StyledProfileSection)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
-  z-index: 1;
 `;
 
 const StyledHeader = styled.header`

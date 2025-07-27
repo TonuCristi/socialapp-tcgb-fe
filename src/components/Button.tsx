@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import styled, { css } from "styled-components";
 
-export type Variant = "primary" | "aprove" | "reject" | "empty";
+export type Variant = "aprove" | "reject" | "empty";
 
 type Props = DetailedHTMLProps<
   ButtonHTMLAttributes<HTMLButtonElement>,
@@ -30,21 +30,6 @@ const StyledButton = styled.button<{ $variant?: Variant }>`
 
   ${({ theme, $variant }) => {
     switch ($variant) {
-      case "primary":
-        return css`
-          font-weight: ${theme.fontWeights.semibold};
-          padding: ${theme.spacing.sm};
-          border-radius: ${theme.borderRadius["3xl"]};
-          background: ${theme.colors.transparent};
-          border: 0.15rem solid ${theme.colors.accent};
-          color: ${theme.colors.accent};
-          width: ${theme.width.full};
-          transition: all 0.1s;
-
-          &:hover {
-            background: ${theme.colors.primary};
-          }
-        `;
       case "aprove":
         return css`
           background: ${theme.colors.succes};
