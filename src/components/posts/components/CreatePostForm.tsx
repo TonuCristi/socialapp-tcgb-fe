@@ -1,6 +1,5 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import Title from "../../Title";
@@ -14,10 +13,11 @@ import { StyledFormField } from "../../input/styles";
 
 import { useAppSelector } from "../../../app/hooks";
 import { selectCurrentUser } from "../../../features/user/currentUserSelectors";
-import type { CreatePostForm } from "../../../types/Post.type";
+import type { CreatePostForm, PhotoOrder } from "../../../types/Post.type";
 import { createPostFormSchema } from "../../../schemas/createPostForm.schema";
-
-export type PhotoOrder = { index: number; photo: File };
+import { useMutation } from "@tanstack/react-query";
+import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
+import { PostsApi } from "../../../services/PostsApi";
 
 export default function CreatePostForm() {
   const methods = useForm<CreatePostForm>({
@@ -29,6 +29,9 @@ export default function CreatePostForm() {
   });
   const user = useAppSelector(selectCurrentUser);
   const [photosOrder, setPhotosOrder] = useState<PhotoOrder[]>([]);
+  const { isPending, mutate } = useMutation({
+    mutationFn: (newPost: FormData) => PostsApi.createPost(newPost),
+  });
 
   const {
     handleSubmit,
@@ -40,13 +43,31 @@ export default function CreatePostForm() {
   const photos = Array.from(watch("photos"));
 
   const onSumbit: SubmitHandler<CreatePostForm> = (data) => {
-    console.log({
+    const newPost = {
       ...data,
       photos:
         data.photos.length !== photosOrder.length
           ? data.photos.map((photo, i) => ({ index: i + 1, photo }))
           : photosOrder,
-    });
+    };
+
+    const formData = new FormData();
+    formData.append("content", newPost.content);
+    newPost.photos.forEach((photoItem) =>
+      formData.append("photos", photoItem.photo)
+    );
+
+    formData.append(
+      "order",
+      JSON.stringify(
+        newPost.photos.map((photoItem) => ({
+          index: photoItem.index,
+          photoName: photoItem.photo.name,
+        }))
+      )
+    );
+
+    mutate(formData);
   };
 
   return (
@@ -84,7 +105,7 @@ export default function CreatePostForm() {
               <Message variant="error">{errors.photos.message}</Message>
             )}
           </StyledFormField>
-          <Button>Create post</Button>
+          <Button disabled={isPending}>Create post</Button>
         </StyledForm>
         {photos.length > 0 && (
           <CreatePostFormPhotos

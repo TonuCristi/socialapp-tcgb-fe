@@ -3,9 +3,9 @@ import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
 import Button from "../../Button";
-
-import type { PhotoOrder } from "./CreatePostForm";
 import { HiMiniXMark } from "react-icons/hi2";
+
+import type { PhotoOrder } from "../../../types/Post.type";
 
 type Props = {
   photosOrder: PhotoOrder[];
