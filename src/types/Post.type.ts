@@ -12,14 +12,24 @@ export type CreatePostFormWithPhotoOrder = Omit<
   photos: PhotoOrder[];
 };
 
+export type PhotoOrderWithLinkResponse = {
+  _id: string;
+  index: number;
+  photo: string;
+};
+
 export type PostResponse = {
   _id: string;
   content: string;
-  photos: PhotoOrder[];
+  photos: PhotoOrderWithLinkResponse[];
+  createdAt: string;
 };
 
+export type PhotoOrderWithLink = { id: string; index: number; photo: string };
+
 export type Post = {
-  _id: string;
+  id: string;
   content: string;
-  photos: PhotoOrder[];
+  photos: PhotoOrderWithLink[];
+  createdAt: string;
 };

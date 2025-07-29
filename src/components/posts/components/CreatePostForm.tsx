@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { zodResolver } from "@hookform/resolvers/zod";
+import toast from "react-hot-toast";
 
 import Title from "../../Title";
 import Textarea from "../../Textarea";
@@ -18,6 +19,7 @@ import { createPostFormSchema } from "../../../schemas/createPostForm.schema";
 import { useMutation } from "@tanstack/react-query";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { PostsApi } from "../../../services/PostsApi";
+import axios from "axios";
 
 export default function CreatePostForm() {
   const methods = useForm<CreatePostForm>({
@@ -30,7 +32,15 @@ export default function CreatePostForm() {
   const user = useAppSelector(selectCurrentUser);
   const [photosOrder, setPhotosOrder] = useState<PhotoOrder[]>([]);
   const { isPending, mutate } = useMutation({
-    mutationFn: (newPost: FormData) => PostsApi.createPost(newPost),
+    mutationFn: PostsApi.createPost,
+    onError: (error) => {
+      if (axios.isAxiosError(error) && error.response) {
+        toast.error(error.response.data.message);
+      }
+    },
+    onSuccess: (data) => {
+      toast.success(data.message);
+    },
   });
 
   const {
@@ -137,12 +147,8 @@ const StyledFormWrapper = styled.div`
   }
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
-    width: 80%;
-    padding: ${({ theme }) => theme.spacing.sm};
-  }
-
-  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
     width: 90%;
+    padding: ${({ theme }) => theme.spacing.sm};
   }
 
   @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {

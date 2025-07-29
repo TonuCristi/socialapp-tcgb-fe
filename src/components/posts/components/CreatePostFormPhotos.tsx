@@ -105,6 +105,13 @@ const StyledPhotosWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: ${({ theme }) => theme.spacing.sm};
   align-items: start;
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+    max-height: 20rem;
+    align-items: normal;
+  }
 `;
 
 const StyledPhotoWrapper = styled.div`
@@ -128,6 +135,12 @@ const StyledPhotoIndex = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
   transition: all 0.1s;
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    width: 2rem;
+    height: 2rem;
+    font-size: ${({ theme }) => theme.fontSizes.base};
+  }
 `;
 
 const StyledDeletePhotoButton = styled(Button)`
@@ -144,6 +157,12 @@ const StyledDeletePhotoButton = styled(Button)`
   font-size: ${({ theme }) => theme.fontSizes.xl};
   color: ${({ theme }) => theme.colors.white};
   transition: all 0.1s;
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    width: 2rem;
+    height: 2rem;
+    font-size: ${({ theme }) => theme.fontSizes.base};
+  }
 
   :first-child {
     stroke-width: 1;
