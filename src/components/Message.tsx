@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import styled from "styled-components";
 
-type Variant = "success" | "error";
+type Variant = "error";
 
 type Props = {
   children: ReactNode;
@@ -15,8 +15,6 @@ export default function Message({ children, variant }: Props) {
 const StyledMessage = styled.p<{ $variant?: Variant }>`
   ${({ $variant, theme }) => {
     switch ($variant) {
-      case "success":
-        return ``;
       case "error":
         return `
             color: ${theme.colors.danger}

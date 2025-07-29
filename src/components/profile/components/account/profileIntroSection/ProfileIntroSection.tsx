@@ -26,7 +26,7 @@ export default function ProfileIntroSection() {
 const StyledProfileIntroSection = styled(StyledProfileSection)`
   display: flex;
   gap: ${({ theme }) => theme.spacing.lg};
-  z-index: 2;
+  z-index: 1;
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
     flex-direction: column;

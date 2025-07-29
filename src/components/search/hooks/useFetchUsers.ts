@@ -12,22 +12,14 @@ export function useFetchUsers() {
   const getSearchedUsers = useCallback(async function (
     search: string,
     offset: number,
-    limit: number,
-    abortController: AbortController
+    limit: number
   ) {
     setIsLoading(true);
 
     try {
-      const res = await UsersApi.getUsers(
-        search,
-        offset,
-        limit,
-        abortController
-      );
+      const res = await UsersApi.getUsers(search, offset, limit);
 
-      const users = res.data.users.map((userPreview) =>
-        mapUserPreview(userPreview)
-      );
+      const users = res.users.map((userPreview) => mapUserPreview(userPreview));
 
       setUsers((prev) => (offset === 0 ? users : [...prev, ...users]));
       setIsLoading(false);

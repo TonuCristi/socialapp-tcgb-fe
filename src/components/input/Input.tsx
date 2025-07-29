@@ -42,6 +42,7 @@ const InputWrapper = styled.div`
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius["3xl"]};
   color: ${({ theme }) => theme.colors.accent};
+  background-color: ${({ theme }) => theme.colors.secondary};
   width: ${({ theme }) => theme.width.full};
   display: flex;
   align-items: center;
