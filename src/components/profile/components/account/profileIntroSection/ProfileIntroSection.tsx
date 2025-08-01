@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Title from "../../../../Title";
+import Title from "../../../../common/Title";
 import ProfileStats from "./ProfileStats";
 import ProfileBio from "./ProfileBio";
 import { StyledProfileSection } from "../../styles";

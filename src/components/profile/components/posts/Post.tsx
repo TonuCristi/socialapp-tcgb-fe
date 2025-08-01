@@ -1,28 +1,37 @@
 import styled from "styled-components";
 
+import PostInteractions from "./PostInteractions";
+import PostPhotos from "./PostPhotos";
 import { Link } from "react-router";
-import PostActions from "./PostActions";
 
-export default function Post() {
+import { useAppSelector } from "../../../../app/hooks";
+import { selectCurrentUser } from "../../../../features/user/currentUserSelectors";
+import type { Post } from "../../../../types/Post.type";
+
+type Props = {
+  post: Post;
+};
+
+export default function Post({ post }: Props) {
+  const user = useAppSelector(selectCurrentUser);
+  const { content, createdAt } = post;
+
+  const photos = post.photos.sort((a, b) => a.index - b.index);
+
   return (
     <StyledPost>
       <StyledPostInfoWrapper>
-        <Link to="/">
+        <Link to="/profile">
           <StyledAvatar src="src/assets/photo.png" />
         </Link>
         <StyledPostInfo>
-          <p>John Johnson</p>
-          <p>5h ago</p>
+          <p>{user?.username}</p>
+          <p>{new Date(createdAt).toDateString()}</p>
         </StyledPostInfo>
       </StyledPostInfoWrapper>
-      <StyledPhotosWrapper>
-        <StyledPhoto src="https://jyymomxmtqikxxaoedhf.supabase.co/storage/v1/render/image/public/photos/postsPhotos/688a8ec1587af3d0dc26a7f1-1?width=1920&height=1080&quality=70" />
-        <StyledPhoto src="https://jyymomxmtqikxxaoedhf.supabase.co/storage/v1/render/image/public/photos/postsPhotos/688a8ec1587af3d0dc26a7f1-2?width=1920&height=1080&quality=70" />
-        <StyledPhoto src="https://jyymomxmtqikxxaoedhf.supabase.co/storage/v1/render/image/public/photos/postsPhotos/688a8ec1587af3d0dc26a7f1-3?width=1920&height=1080&quality=70" />
-        <StyledPhoto src="https://jyymomxmtqikxxaoedhf.supabase.co/storage/v1/render/image/public/photos/postsPhotos/688a8ec1587af3d0dc26a7f1-4?width=1920&height=1080&quality=70" />
-        <StyledPhoto src="https://jyymomxmtqikxxaoedhf.supabase.co/storage/v1/render/image/public/photos/postsPhotos/688a8ec1587af3d0dc26a7f1-5?width=1920&height=1080&quality=70" />
-      </StyledPhotosWrapper>
-      <PostActions />
+      {content && <StyledContent>{content}</StyledContent>}
+      <PostPhotos photos={photos} />
+      <PostInteractions />
     </StyledPost>
   );
 }
@@ -41,6 +50,12 @@ const StyledPostInfoWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing.sm};
 `;
 
+const StyledAvatar = styled.img`
+  width: 2rem;
+  height: 2rem;
+  border-radius: ${({ theme }) => theme.borderRadius.full};
+`;
+
 const StyledPostInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -49,18 +64,4 @@ const StyledPostInfo = styled.div`
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
 `;
 
-const StyledAvatar = styled.img`
-  width: 2rem;
-  height: 2rem;
-  border-radius: ${({ theme }) => theme.borderRadius.full};
-`;
-
-const StyledPhotosWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const StyledPhoto = styled.img`
-  border-radius: ${({ theme }) => theme.borderRadius.xl};
-`;
+const StyledContent = styled.pre``;

@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import Button from "../../Button";
-import Overlay from "../../Overlay";
 import CreatePostForm from "./CreatePostForm";
+import Overlay from "../../common/Overlay";
+import Button from "../../common/Button";
 import { HiMiniXMark } from "react-icons/hi2";
 
 import { useAppSelector } from "../../../app/hooks";

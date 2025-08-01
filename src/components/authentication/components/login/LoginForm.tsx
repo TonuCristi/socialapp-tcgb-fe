@@ -3,19 +3,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router";
 import styled from "styled-components";
 
-import Label from "../../../input/Label";
-import Input from "../../../input/Input";
-import Message from "../../../Message";
-import HidePasswordInput from "../../../input/HidePasswordInput";
-import Button from "../../../Button";
+import Label from "../../../common/input/Label";
+import Input from "../../../common/input/Input";
+import HidePasswordInput from "../../../common/input/HidePasswordInput";
 import { HiMiniEnvelope } from "react-icons/hi2";
 import { StyledFormFieldsWrapper } from "../../../styles/styles";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
-import { StyledFormField } from "../../../input/styles";
+import { StyledFormField } from "../../../common/input/styles";
 
 import type { LoginForm } from "../../../../types/User.type";
 import { loginFormSchema } from "../../../../schemas/loginForm.schema";
 import { useLogin } from "../../hooks/useLogin";
+import Message from "../../../common/Message";
+import Button from "../../../common/Button";
 
 export default function LoginForm() {
   const methods = useForm<LoginForm>({

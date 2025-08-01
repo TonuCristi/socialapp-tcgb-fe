@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
-import Input from "../../input/Input";
+import Input from "../../common/input/Input";
 
 export default function SearchForm() {
   const { setFocus } = useFormContext();

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
+import Title from "../../../../common/Title";
 import EditProfileButton from "./EditProfileButton";
-import Title from "../../../../Title";
 import { StyledDivider, StyledProfileSection } from "../../styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
@@ -39,12 +39,17 @@ export default function ProfileUserInfoSection() {
       </StyledHeader>
       <StyledDivider />
       <StyledUserInformation>
-        {userDetails.map(({ name, value }) => (
-          <StyledUserDetailWrapper key={name}>
-            <StyledUserDetailName>{name}</StyledUserDetailName>
-            <p>{value}</p>
-          </StyledUserDetailWrapper>
-        ))}
+        {userDetails.map(({ name, value }) => {
+          if ((name === "Birth date" || name === "Phone number") && !value)
+            return null;
+
+          return (
+            <StyledUserDetailWrapper key={name}>
+              <StyledUserDetailName>{name}</StyledUserDetailName>
+              <p>{value}</p>
+            </StyledUserDetailWrapper>
+          );
+        })}
       </StyledUserInformation>
     </StyledProfileUserInfoSection>
   );

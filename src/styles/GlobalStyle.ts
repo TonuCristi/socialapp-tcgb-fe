@@ -51,7 +51,8 @@ export const GlobalStyle = createGlobalStyle`
     button,
     input,
     textarea,
-    a {
+    a,
+    pre {
         font-family: inherit;
         font-size: inherit;
         font-weight: inherit;

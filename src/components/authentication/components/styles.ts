@@ -52,7 +52,7 @@ export const StyledAppName = styled.h3`
   margin-bottom: ${({ theme }) => theme.spacing.xl};
 `;
 
-export const StyledTitle = styled.h2`
+export const StyledTitle = styled.h1`
   font-size: ${({ theme }) => theme.fontSizes["5xl"]};
   font-weight: ${({ theme }) => theme.fontWeights.bold};
   color: ${({ theme }) => theme.colors.primary};

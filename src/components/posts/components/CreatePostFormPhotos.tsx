@@ -2,7 +2,7 @@ import { type Dispatch, type SetStateAction, type SyntheticEvent } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
-import Button from "../../Button";
+import Button from "../../common/Button";
 import { HiMiniXMark } from "react-icons/hi2";
 
 import type { PhotoOrder } from "../../../types/Post.type";

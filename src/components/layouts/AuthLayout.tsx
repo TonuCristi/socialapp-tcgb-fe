@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
-import Loader from "./Loader";
+import Loader from "../common/Loader";
 
 export default function AuthLayout() {
   const location = useLocation();

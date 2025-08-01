@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import ConfirmationModal from "../ConfirmationModal";
-import Button from "../Button";
+import ConfirmationModal from "../common/ConfirmationModal";
+import Button from "../common/Button";
 import { HiMiniArrowLeftEndOnRectangle } from "react-icons/hi2";
 import { sidebarButtonLinkStyles, StyledSidebarItemText } from "./styles";
 
