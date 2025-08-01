@@ -1,10 +1,13 @@
 import { type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
 
-type Props = { children: ReactNode };
+type Props = {
+  children: ReactNode;
+};
 
 export default function Overlay({ children }: Props) {
-  return <StyledOverlay>{children}</StyledOverlay>;
+  return createPortal(<StyledOverlay>{children}</StyledOverlay>, document.body);
 }
 
 const StyledOverlay = styled.div`
@@ -12,8 +15,8 @@ const StyledOverlay = styled.div`
   top: 0;
   left: 0;
   width: ${({ theme }) => theme.width.full};
-  padding: ${({ theme }) => theme.spacing.sm};
   min-height: ${({ theme }) => theme.height.screen};
+  padding: ${({ theme }) => theme.spacing.sm};
   z-index: 999;
   display: flex;
   justify-content: center;

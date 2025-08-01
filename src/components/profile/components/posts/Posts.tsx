@@ -6,7 +6,7 @@ import Post from "./Post";
 
 import { PostsApi } from "../../../../services/PostsApi";
 
-const LIMIT = 15;
+const LIMIT = 5;
 
 export default function Posts() {
   const targetRef = useRef<HTMLLIElement>(null);
@@ -17,8 +17,6 @@ export default function Posts() {
     initialPageParam: 0,
     getNextPageParam: (lastPage) => lastPage.nextPage,
   });
-
-  // console.log(data);
 
   useEffect(() => {
     if (!targetRef.current) return;

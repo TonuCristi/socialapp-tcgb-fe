@@ -4,6 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import axios from "axios";
 
+import Title from "../../common/Title";
+import Textarea from "../../common/Textarea";
+import Message from "../../common/Message";
+import Button from "../../common/Button";
 import Label from "../../common/input/Label";
 import CreatePostFormPhotos from "./CreatePostFormPhotos";
 import { HiMiniPhoto } from "react-icons/hi2";
@@ -16,10 +20,6 @@ import { createPostFormSchema } from "../../../schemas/createPostForm.schema";
 import { useMutation } from "@tanstack/react-query";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { PostsApi } from "../../../services/PostsApi";
-import Title from "../../common/Title";
-import Textarea from "../../common/Textarea";
-import Message from "../../common/Message";
-import Button from "../../common/Button";
 
 export default function CreatePostForm() {
   const methods = useForm<CreatePostForm>({

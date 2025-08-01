@@ -16,8 +16,6 @@ export default function Post({ post }: Props) {
   const user = useAppSelector(selectCurrentUser);
   const { content, createdAt } = post;
 
-  const photos = post.photos.sort((a, b) => a.index - b.index);
-
   return (
     <StyledPost>
       <StyledPostInfoWrapper>
@@ -30,7 +28,7 @@ export default function Post({ post }: Props) {
         </StyledPostInfo>
       </StyledPostInfoWrapper>
       {content && <StyledContent>{content}</StyledContent>}
-      <PostPhotos photos={photos} />
+      <PostPhotos photos={post.photos} />
       <PostInteractions />
     </StyledPost>
   );
@@ -43,6 +41,10 @@ const StyledPost = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
+
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    padding: ${({ theme }) => theme.spacing.sm};
+  }
 `;
 
 const StyledPostInfoWrapper = styled.div`

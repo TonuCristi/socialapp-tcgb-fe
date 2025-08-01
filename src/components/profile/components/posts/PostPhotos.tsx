@@ -1,6 +1,8 @@
+import { useState } from "react";
 import styled, { css } from "styled-components";
 
 import Button from "../../../common/Button";
+import PostPhotosSilder from "./PostPhotosSlider";
 
 import type { PhotoOrderWithLink } from "../../../../types/Post.type";
 
@@ -10,19 +12,38 @@ type Props = {
 
 export default function PostPhotos({ photos }: Props) {
   const photosCount = photos.length;
+  const sortedPhotos = photos.sort((a, b) => a.index - b.index);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [currentPhoto, setCurrentPhoto] = useState<number>(0);
+
+  function handlePhotoClick(photoIndex: number) {
+    setIsOpen(true);
+    setCurrentPhoto(photoIndex);
+  }
 
   return (
-    <StyledPostPhotos $photosCount={photosCount} data-count={3}>
-      {photos.map((photoItem, i) => (
-        <StyledPhotoWrapper
-          key={photoItem.id}
-          variant="empty"
-          data-count={i === 2 ? "+3" : undefined}
-        >
-          <StyledPhoto src={photoItem.photo} />
-        </StyledPhotoWrapper>
-      ))}
-    </StyledPostPhotos>
+    <>
+      <StyledPostPhotos $photosCount={photosCount} data-count={3}>
+        {sortedPhotos.map((photoItem, i) => (
+          <StyledPhotoWrapper
+            key={photoItem.id}
+            variant="empty"
+            onClick={() => handlePhotoClick(i)}
+            data-count={i === 2 ? "+3" : undefined}
+          >
+            <StyledPhoto src={photoItem.photo} />
+          </StyledPhotoWrapper>
+        ))}
+      </StyledPostPhotos>
+      {isOpen && (
+        <PostPhotosSilder
+          photos={sortedPhotos}
+          currentPhoto={currentPhoto}
+          setCurrentPhoto={setCurrentPhoto}
+          setIsOpen={setIsOpen}
+        />
+      )}
+    </>
   );
 }
 
@@ -96,5 +117,6 @@ const StyledPhoto = styled.img`
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   aspect-ratio: 1/1;
   object-fit: cover;
+  object-position: center;
   height: ${({ theme }) => theme.height.full};
 `;

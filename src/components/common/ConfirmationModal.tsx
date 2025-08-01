@@ -1,9 +1,10 @@
-import { useEffect, type ReactNode } from "react";
-import { createPortal } from "react-dom";
+import { type ReactNode } from "react";
 import styled from "styled-components";
 
 import Overlay from "./Overlay";
 import Button from "./Button";
+
+import { useOverflowHidden } from "../../hooks/useOverflowHidden";
 
 type Props = {
   children: ReactNode;
@@ -16,15 +17,9 @@ export default function ConfirmationModal({
   onConfirm,
   onReject,
 }: Props) {
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
+  useOverflowHidden();
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, []);
-
-  return createPortal(
+  return (
     <Overlay>
       <StyledConfirmationModal>
         <StyledQuestion>{children}</StyledQuestion>
@@ -37,8 +32,7 @@ export default function ConfirmationModal({
           </Button>
         </StyledButtonsContainer>
       </StyledConfirmationModal>
-    </Overlay>,
-    document.body
+    </Overlay>
   );
 }
 
