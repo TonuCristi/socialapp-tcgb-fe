@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import Page from "../components/Page";
-import Title from "../components/Title";
+import Page from "../components/common/Page";
+import Title from "../components/common/Title";
 import CreatePostButton from "../components/posts/components/CreatePostButton";
 import { StyledDivider } from "../components/profile/components/styles";
 import { Link } from "react-router";

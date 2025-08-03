@@ -2,11 +2,11 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-import Title from "../../../../Title";
-import Label from "../../../../input/Label";
-import Input from "../../../../input/Input";
-import Message from "../../../../Message";
-import Button from "../../../../Button";
+import Title from "../../../../common/Title";
+import Message from "../../../../common/Message";
+import Button from "../../../../common/Button";
+import Label from "../../../../common/input/Label";
+import Input from "../../../../common/input/Input";
 import {
   HiMiniCalendar,
   HiMiniEnvelope,
@@ -14,7 +14,7 @@ import {
   HiMiniUser,
 } from "react-icons/hi2";
 import { StyledFormFieldsWrapper } from "../../../../styles/styles";
-import { StyledFormField } from "../../../../input/styles";
+import { StyledFormField } from "../../../../common/input/styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
 import { editProfileFormSchema } from "../../../../../schemas/editProfileForm.schema";
@@ -63,7 +63,7 @@ export default function EditProfileForm() {
     defaultValues: {
       username: user?.username,
       email: user?.email,
-      birthDate: user?.birthDate.split("T")[0],
+      birthDate: user?.birthDate ? user?.birthDate.split("T")[0] : "",
       phoneNumber: user?.phoneNumber,
     },
     resolver: zodResolver(editProfileFormSchema),

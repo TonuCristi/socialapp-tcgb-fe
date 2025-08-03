@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { useEffect } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
-import Loader from "./Loader";
-import Sidebar from "./sidebar/Sidebar";
+import Loader from "../common/Loader";
+import Sidebar from "../sidebar/Sidebar";
 
-import { useFetchLoggedUser } from "./authentication/hooks/useFetchLoggedUser";
+import { useFetchLoggedUser } from "../authentication/hooks/useFetchLoggedUser";
 
 export default function AppLayout() {
   const location = useLocation();

@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
-import AppLayout from "./components/AppLayout";
-import AuthLayout from "./components/AuthLayout";
+import AppLayout from "./components/layouts/AppLayout";
+import AuthLayout from "./components/layouts/AuthLayout";
 
 import { useAppSelector } from "./app/hooks";
 import { selectAuthIsLogged } from "./features/auth/authSlice";

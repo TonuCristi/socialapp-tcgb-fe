@@ -2,15 +2,16 @@ import { useState } from "react";
 import styled from "styled-components";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
+import axios from "axios";
 
-import Title from "../../Title";
-import Textarea from "../../Textarea";
-import Label from "../../input/Label";
-import Button from "../../Button";
-import Message from "../../Message";
+import Title from "../../common/Title";
+import Textarea from "../../common/Textarea";
+import Message from "../../common/Message";
+import Button from "../../common/Button";
+import Label from "../../common/input/Label";
 import CreatePostFormPhotos from "./CreatePostFormPhotos";
 import { HiMiniPhoto } from "react-icons/hi2";
-import { StyledFormField } from "../../input/styles";
+import { StyledFormField } from "../../common/input/styles";
 
 import { useAppSelector } from "../../../app/hooks";
 import { selectCurrentUser } from "../../../features/user/currentUserSelectors";
@@ -19,7 +20,6 @@ import { createPostFormSchema } from "../../../schemas/createPostForm.schema";
 import { useMutation } from "@tanstack/react-query";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { PostsApi } from "../../../services/PostsApi";
-import axios from "axios";
 
 export default function CreatePostForm() {
   const methods = useForm<CreatePostForm>({
@@ -152,7 +152,7 @@ const StyledFormWrapper = styled.div`
   }
 
   @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
-    width: 100%;
+    width: ${({ theme }) => theme.width.full};
   }
 `;
 

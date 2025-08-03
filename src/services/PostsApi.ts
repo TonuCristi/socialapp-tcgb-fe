@@ -22,4 +22,16 @@ export const PostsApi = {
 
     return { newPost: post, message: res.data.message };
   },
+  async getUserPosts(
+    offset: number,
+    limit: number
+  ): Promise<{ posts: Post[]; nextPage: number }> {
+    const res = await api.get<{ posts: PostResponse[]; nextPage: number }>(
+      `${URL}/get-user-posts?offset=${offset}&limit=${limit}`
+    );
+
+    const posts = res.data.posts.map((post) => mapPost(post));
+
+    return { posts, nextPage: res.data.nextPage };
+  },
 };

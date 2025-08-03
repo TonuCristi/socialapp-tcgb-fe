@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import styled from "styled-components";
 
 import EditProfileForm from "./EditProfileForm";
-import Button from "../../../../Button";
+import Button from "../../../../common/Button";
 
 import { useClickOutside } from "../../../../../hooks/useClickOutside";
 

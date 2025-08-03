@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-import Page from "../components/Page";
-import Title from "../components/Title";
+import Page from "../components/common/Page";
+import Title from "../components/common/Title";
 import ProfileIntroSection from "../components/profile/components/account/profileIntroSection/ProfileIntroSection";
 import Posts from "../components/profile/components/posts/Posts";
 import ProfileTabs from "../components/profile/components/ProfileTabs";

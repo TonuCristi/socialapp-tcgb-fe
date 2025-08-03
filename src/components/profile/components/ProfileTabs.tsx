@@ -1,8 +1,9 @@
 import type { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
+import Button from "../../common/Button";
+
 import type { Tab } from "../../../pages/ProfilePage";
-import Button from "../../Button";
 
 type Props = {
   tabs: { value: Tab; text: string }[];

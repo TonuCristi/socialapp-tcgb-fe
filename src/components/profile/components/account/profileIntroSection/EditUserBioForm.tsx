@@ -2,12 +2,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 
-import Title from "../../../../Title";
-import Label from "../../../../input/Label";
-import Message from "../../../../Message";
-import Button from "../../../../Button";
-import Textarea from "../../../../Textarea";
-import { StyledFormField } from "../../../../input/styles";
+import Title from "../../../../common/Title";
+import Textarea from "../../../../common/Textarea";
+import Message from "../../../../common/Message";
+import Button from "../../../../common/Button";
+import Label from "../../../../common/input/Label";
+import { StyledFormField } from "../../../../common/input/styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
 import type { EditUserBioForm } from "../../../../../types/User.type";
