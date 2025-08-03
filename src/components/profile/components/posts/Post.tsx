@@ -12,8 +12,16 @@ type Props = {
 };
 
 export default function Post({ post }: Props) {
-  const { content, photos, likesCount, commentsCount, creatorName, createdAt } =
-    post;
+  const {
+    id,
+    content,
+    photos,
+    likesCount,
+    commentsCount,
+    creatorName,
+    isLikedByMe,
+    createdAt,
+  } = post;
 
   return (
     <StyledPost>
@@ -28,7 +36,12 @@ export default function Post({ post }: Props) {
       </StyledPostInfoWrapper>
       {content && <PostContent>{content}</PostContent>}
       {!!photos.length && <PostPhotos photos={photos} />}
-      <PostInteractions likesCount={likesCount} commentsCount={commentsCount} />
+      <PostInteractions
+        postId={id}
+        isLikedByMe={isLikedByMe}
+        likesCount={likesCount}
+        commentsCount={commentsCount}
+      />
     </StyledPost>
   );
 }

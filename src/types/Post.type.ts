@@ -25,6 +25,7 @@ export type PostResponse = {
   likesCount: number;
   commentsCount: number;
   creatorName: string;
+  isLikedByMe: boolean;
   createdAt: string;
 };
 
@@ -37,5 +38,6 @@ export type Post = {
   likesCount: number;
   commentsCount: number;
   creatorName: string;
+  isLikedByMe: boolean;
   createdAt: string;
 };
