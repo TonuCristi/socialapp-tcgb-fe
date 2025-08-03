@@ -2,8 +2,8 @@ import z from "zod";
 
 export const createPostFormSchema = z
   .object({
-    content: z.string().max(500, {
-      message: "The content should't be longer than 500 characters!",
+    content: z.string().max(2000, {
+      message: "The content should't be longer than 2000 characters!",
     }),
     photos: z
       .transform((val: File[]) => {

@@ -21,6 +21,8 @@ export default function CreatePostFormPhotos({
   const photos = Array.from(watch("photos")) as File[];
 
   function handlePhotoOrder(photo: File) {
+    if (photos.length === 1) return;
+
     setPhotosOrder((prev) => {
       const foundPhoto = prev.find(
         (photoOrder) => photoOrder.photo.name === photo.name
@@ -75,7 +77,7 @@ export default function CreatePostFormPhotos({
   }
 
   return (
-    <StyledPhotosWrapper>
+    <StyledPhotosWrapper $photosCount={photos.length}>
       {photos.map((photo, i) => {
         const foundPhoto = photosOrder.find(
           (photoOrder) => photoOrder.photo.name === photo.name
@@ -100,16 +102,18 @@ export default function CreatePostFormPhotos({
   );
 }
 
-const StyledPhotosWrapper = styled.div`
+const StyledPhotosWrapper = styled.div<{ $photosCount: number }>`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: ${({ $photosCount }) =>
+    $photosCount === 1 ? "1fr" : "1fr 1fr"};
   gap: ${({ theme }) => theme.spacing.sm};
+  max-height: 20rem;
+  overflow-y: auto;
+  padding-right: ${({ theme }) => theme.spacing.sm};
   align-items: start;
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
     grid-template-columns: 1fr;
-    overflow-y: auto;
-    max-height: 20rem;
     align-items: normal;
   }
 `;

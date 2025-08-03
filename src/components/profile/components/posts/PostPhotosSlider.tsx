@@ -32,32 +32,33 @@ export default function PostPhotosSilder({
       <StyledCloseModalButton variant="empty" onClick={() => setIsOpen(false)}>
         <HiMiniXMark />
       </StyledCloseModalButton>
-      <StyledSlider $isSinglePhoto={photos.length === 1}>
-        <StyledPhoto src={photos[currentPhoto].photo} />
-
-        {photos.length > 1 && (
-          <StyledSliderControlsWrapper>
-            <StyledSliderControlButton
-              variant="empty"
-              onClick={() => {
-                setCurrentPhoto((prev) =>
-                  prev > 0 ? prev - 1 : photos.length - 1
-                );
-              }}
-            >
-              <HiMiniChevronLeft />
-            </StyledSliderControlButton>
-            <StyledSliderControlButton
-              variant="empty"
-              onClick={() => {
-                setCurrentPhoto((prev) =>
-                  prev < photos.length - 1 ? prev + 1 : 0
-                );
-              }}
-            >
-              <HiMiniChevronRight />
-            </StyledSliderControlButton>
-          </StyledSliderControlsWrapper>
+      <StyledSlider>
+        {photos.length === 1 || (
+          <StyledSliderPrevButton
+            variant="empty"
+            onClick={() => {
+              setCurrentPhoto((prev) =>
+                prev > 0 ? prev - 1 : photos.length - 1
+              );
+            }}
+          >
+            <HiMiniChevronLeft />
+          </StyledSliderPrevButton>
+        )}
+        <StyledPhotoWrapper>
+          <StyledPhoto src={photos[currentPhoto].photo} />
+        </StyledPhotoWrapper>
+        {photos.length === 1 || (
+          <StyledSliderNextButton
+            variant="empty"
+            onClick={() => {
+              setCurrentPhoto((prev) =>
+                prev < photos.length - 1 ? prev + 1 : 0
+              );
+            }}
+          >
+            <HiMiniChevronRight />
+          </StyledSliderNextButton>
         )}
       </StyledSlider>
     </Overlay>
@@ -78,41 +79,52 @@ const StyledCloseModalButton = styled(Button)`
   }
 `;
 
-const StyledSlider = styled.div<{ $isSinglePhoto: boolean }>`
+const StyledSlider = styled.div`
   position: relative;
   background-color: ${({ theme }) => theme.colors.secondary};
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   padding: ${({ theme }) => theme.spacing.md};
   width: 60rem;
-  display: grid;
-  grid-template-columns: "1fr";
+  height: 70dvh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: ${({ theme }) => theme.spacing.md};
+  overflow: hidden;
 
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     padding: ${({ theme }) => theme.spacing.sm};
     gap: ${({ theme }) => theme.spacing.sm};
   }
-`;
-
-const StyledPhoto = styled.img`
-  border-radius: ${({ theme }) => theme.borderRadius.xl};
-`;
-
-const StyledSliderControlsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: ${({ theme }) => theme.spacing.md};
-  width: 50%;
-  margin: 0 auto;
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
-    width: 100%;
+    height: 50dvh;
   }
 `;
 
-const StyledSliderControlButton = styled(Button)`
+const StyledPhotoWrapper = styled.div`
+  height: ${({ theme }) => theme.height.full};
+  width: ${({ theme }) => theme.width.full};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const StyledPhoto = styled.img`
+  max-height: ${({ theme }) => theme.height.full};
+  max-width: ${({ theme }) => theme.width.full};
+  object-fit: contain;
+  border-radius: ${({ theme }) => theme.borderRadius.xl};
+`;
+
+const StyledSliderPrevButton = styled(Button)`
+  position: absolute;
+  transform: translateY(-50%);
+  left: 5%;
+  top: 50%;
   font-size: ${({ theme }) => theme.fontSizes.xl};
   color: ${({ theme }) => theme.colors.accent};
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
@@ -122,4 +134,9 @@ const StyledSliderControlButton = styled(Button)`
   :first-child {
     stroke-width: 1;
   }
+`;
+
+const StyledSliderNextButton = styled(StyledSliderPrevButton)`
+  left: auto;
+  right: 5%;
 `;

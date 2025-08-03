@@ -22,6 +22,9 @@ export type PostResponse = {
   _id: string;
   content: string;
   photos: PhotoOrderWithLinkResponse[];
+  likesCount: number;
+  commentsCount: number;
+  creatorName: string;
   createdAt: string;
 };
 
@@ -31,5 +34,8 @@ export type Post = {
   id: string;
   content: string;
   photos: PhotoOrderWithLink[];
+  likesCount: number;
+  commentsCount: number;
+  creatorName: string;
   createdAt: string;
 };

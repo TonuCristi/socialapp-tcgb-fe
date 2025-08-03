@@ -152,7 +152,7 @@ const StyledFormWrapper = styled.div`
   }
 
   @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
-    width: 100%;
+    width: ${({ theme }) => theme.width.full};
   }
 `;
 

@@ -36,7 +36,7 @@ export default function CreatePostButton() {
 const StyledCreatePostButton = styled(Button)`
   height: 2.5rem;
   text-align: left;
-  width: 100%;
+  width: ${({ theme }) => theme.width.full};
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
     height: auto;

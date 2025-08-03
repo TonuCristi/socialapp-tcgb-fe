@@ -7,12 +7,17 @@ import {
   HiMiniLink,
 } from "react-icons/hi2";
 
-export default function PostInteractions() {
+type Props = {
+  likesCount: number;
+  commentsCount: number;
+};
+
+export default function PostInteractions({ likesCount, commentsCount }: Props) {
   return (
     <StyledPostInteractions>
       <StyledPostStats>
-        <StyledStat>Likes 20</StyledStat>
-        <StyledStat>11 Comments</StyledStat>
+        <StyledStat>Likes {likesCount}</StyledStat>
+        <StyledStat>{commentsCount} Comments</StyledStat>
       </StyledPostStats>
       <StyledPostActions>
         <StyledButton variant="empty">

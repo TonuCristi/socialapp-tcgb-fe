@@ -22,7 +22,7 @@ export const PostsApi = {
 
     return { newPost: post, message: res.data.message };
   },
-  async getPosts(
+  async getUserPosts(
     offset: number,
     limit: number
   ): Promise<{ posts: Post[]; nextPage: number }> {

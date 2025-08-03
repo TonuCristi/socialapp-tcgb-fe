@@ -2,10 +2,9 @@ import styled from "styled-components";
 
 import PostInteractions from "./PostInteractions";
 import PostPhotos from "./PostPhotos";
+import PostContent from "./PostContent";
 import { Link } from "react-router";
 
-import { useAppSelector } from "../../../../app/hooks";
-import { selectCurrentUser } from "../../../../features/user/currentUserSelectors";
 import type { Post } from "../../../../types/Post.type";
 
 type Props = {
@@ -13,8 +12,8 @@ type Props = {
 };
 
 export default function Post({ post }: Props) {
-  const user = useAppSelector(selectCurrentUser);
-  const { content, createdAt } = post;
+  const { content, photos, likesCount, commentsCount, creatorName, createdAt } =
+    post;
 
   return (
     <StyledPost>
@@ -23,13 +22,13 @@ export default function Post({ post }: Props) {
           <StyledAvatar src="src/assets/photo.png" />
         </Link>
         <StyledPostInfo>
-          <p>{user?.username}</p>
+          <p>{creatorName}</p>
           <p>{new Date(createdAt).toDateString()}</p>
         </StyledPostInfo>
       </StyledPostInfoWrapper>
-      {content && <StyledContent>{content}</StyledContent>}
-      <PostPhotos photos={post.photos} />
-      <PostInteractions />
+      {content && <PostContent>{content}</PostContent>}
+      {!!photos.length && <PostPhotos photos={photos} />}
+      <PostInteractions likesCount={likesCount} commentsCount={commentsCount} />
     </StyledPost>
   );
 }
@@ -65,5 +64,3 @@ const StyledPostInfo = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.xs};
   font-weight: ${({ theme }) => theme.fontWeights.semibold};
 `;
-
-const StyledContent = styled.pre``;

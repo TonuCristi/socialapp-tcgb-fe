@@ -89,8 +89,8 @@ const StyledPostPhotos = styled.div<{ $photosCount: number }>`
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: ${({ theme }) => theme.width.full};
+            height: ${({ theme }) => theme.height.full};
             display: flex;
             align-items: center;
             justify-content: center;
@@ -115,7 +115,7 @@ const StyledPhotoWrapper = styled(Button)`
 
 const StyledPhoto = styled.img`
   border-radius: ${({ theme }) => theme.borderRadius.xl};
-  aspect-ratio: 1/1;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center;
   height: ${({ theme }) => theme.height.full};
