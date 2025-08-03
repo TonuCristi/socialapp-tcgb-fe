@@ -1,18 +1,22 @@
 import styled from "styled-components";
 
-import Button from "../../../common/Button";
-import {
-  HiMiniChatBubbleOvalLeft,
-  HiMiniHeart,
-  HiMiniLink,
-} from "react-icons/hi2";
+import PostLikeButton from "./PostLikeButton";
+import { HiMiniChatBubbleOvalLeft, HiMiniLink } from "react-icons/hi2";
+import { StyledInteractionButton } from "./styles";
 
 type Props = {
+  postId: string;
+  isLikedByMe: boolean;
   likesCount: number;
   commentsCount: number;
 };
 
-export default function PostInteractions({ likesCount, commentsCount }: Props) {
+export default function PostInteractions({
+  postId,
+  isLikedByMe,
+  likesCount,
+  commentsCount,
+}: Props) {
   return (
     <StyledPostInteractions>
       <StyledPostStats>
@@ -20,18 +24,15 @@ export default function PostInteractions({ likesCount, commentsCount }: Props) {
         <StyledStat>{commentsCount} Comments</StyledStat>
       </StyledPostStats>
       <StyledPostActions>
-        <StyledButton variant="empty">
-          <HiMiniHeart />
-          Like
-        </StyledButton>
-        <StyledButton variant="empty">
+        <PostLikeButton postId={postId} isLikedByMe={isLikedByMe} />
+        <StyledInteractionButton variant="empty">
           <HiMiniChatBubbleOvalLeft />
           Comment
-        </StyledButton>
-        <StyledButton variant="empty">
+        </StyledInteractionButton>
+        <StyledInteractionButton variant="empty">
           <HiMiniLink />
           Share
-        </StyledButton>
+        </StyledInteractionButton>
       </StyledPostActions>
     </StyledPostInteractions>
   );
@@ -61,19 +62,4 @@ const StyledPostActions = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: ${({ theme }) => theme.spacing.sm};
-`;
-
-const StyledButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing.xs};
-
-  :first-child {
-    font-size: ${({ theme }) => theme.fontSizes.xl};
-    transition: color 0.3s;
-  }
-
-  &:hover :first-child {
-    color: ${({ theme }) => theme.colors.accent};
-  }
 `;

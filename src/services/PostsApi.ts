@@ -34,4 +34,7 @@ export const PostsApi = {
 
     return { posts, nextPage: res.data.nextPage };
   },
+  async likePost(postId: string) {
+    return await api.post(`${URL}/like-post/${postId}`);
+  },
 };
