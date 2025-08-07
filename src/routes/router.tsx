@@ -1,13 +1,14 @@
+import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
 
 import App from "../App";
-import LoginPage from "../pages/LoginPage";
-import RegisterPage from "../pages/RegisterPage";
-import ForgotPasswordPage from "../pages/ForgotPasswordPage";
-import ResetPasswordPage from "../pages/ResetPasswordPage";
-import HomePage from "../pages/HomePage";
-import SearchPage from "../pages/SearchPage";
-import ProfilePage from "../pages/ProfilePage";
+const LoginPage = lazy(() => import("../pages/LoginPage"));
+const RegisterPage = lazy(() => import("../pages/RegisterPage"));
+const ForgotPasswordPage = lazy(() => import("../pages/ForgotPasswordPage"));
+const ResetPasswordPage = lazy(() => import("../pages/ResetPasswordPage"));
+const HomePage = lazy(() => import("../pages/HomePage"));
+const SearchPage = lazy(() => import("../pages/SearchPage"));
+const ProfilePage = lazy(() => import("../pages/ProfilePage"));
 
 export const router = createBrowserRouter([
   {
@@ -16,9 +17,9 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "/search", element: <SearchPage /> },
-      { path: "/profile", element: <ProfilePage /> },
       { path: "/chat", element: <div>Chat</div> },
       { path: "/notifications", element: <div>Notifications</div> },
+      { path: "/profile", element: <ProfilePage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/register", element: <RegisterPage /> },
       { path: "/forgot-password", element: <ForgotPasswordPage /> },

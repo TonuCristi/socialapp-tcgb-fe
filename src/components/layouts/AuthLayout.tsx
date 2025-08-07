@@ -1,17 +1,20 @@
-import { useEffect } from "react";
-import styled from "styled-components";
+import { useEffect, useMemo } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
 import Loader from "../common/Loader";
+import { StyledLoaderWrapper } from "../styles/styles";
 
 export default function AuthLayout() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const pathnames =
-    location.pathname === "/" ||
-    location.pathname === "/chat" ||
-    location.pathname === "/profile";
+  const pathnames = useMemo(() => {
+    return (
+      location.pathname === "/" ||
+      location.pathname === "/chat" ||
+      location.pathname === "/profile"
+    );
+  }, [location.pathname]);
 
   useEffect(() => {
     if (pathnames) {
@@ -29,12 +32,3 @@ export default function AuthLayout() {
 
   return <Outlet />;
 }
-
-const StyledLoaderWrapper = styled.div`
-  width: ${({ theme }) => theme.width.full};
-  height: ${({ theme }) => theme.height.screen};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-`;

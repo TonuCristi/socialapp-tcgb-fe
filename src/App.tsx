@@ -1,8 +1,10 @@
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
 import AppLayout from "./components/layouts/AppLayout";
 import AuthLayout from "./components/layouts/AuthLayout";
+import Loader from "./components/common/Loader";
+import { StyledLoaderWrapper } from "./components/styles/styles";
 
 import { useAppSelector } from "./app/hooks";
 import { selectAuthIsLogged } from "./features/auth/authSlice";
@@ -12,7 +14,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const queryClient = new QueryClient();
 
-function App() {
+export default function App() {
   const isLogged = useAppSelector(selectAuthIsLogged);
   const { logoutUser } = useLogout();
 
@@ -27,14 +29,22 @@ function App() {
     }
   }, [logoutUser]);
 
-  return isLogged ? (
-    <QueryClientProvider client={queryClient}>
-      <AppLayout />
-      <ReactQueryDevtools />
-    </QueryClientProvider>
-  ) : (
-    <AuthLayout />
+  return (
+    <Suspense
+      fallback={
+        <StyledLoaderWrapper>
+          <Loader />
+        </StyledLoaderWrapper>
+      }
+    >
+      {isLogged ? (
+        <QueryClientProvider client={queryClient}>
+          <AppLayout />
+          <ReactQueryDevtools />
+        </QueryClientProvider>
+      ) : (
+        <AuthLayout />
+      )}
+    </Suspense>
   );
 }
-
-export default App;

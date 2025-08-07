@@ -1,22 +1,26 @@
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
 
 import Loader from "../common/Loader";
 import Sidebar from "../sidebar/Sidebar";
 
 import { useFetchLoggedUser } from "../authentication/hooks/useFetchLoggedUser";
+import { StyledLoaderWrapper } from "../styles/styles";
 
 export default function AppLayout() {
   const location = useLocation();
   const navigate = useNavigate();
   const { isLoading: isCurrentUserLoading } = useFetchLoggedUser();
 
-  const pathnames =
-    location.pathname === "/login" ||
-    location.pathname === "/register" ||
-    location.pathname === "/forgot-password" ||
-    location.pathname === "/reset-password";
+  const pathnames = useMemo(() => {
+    return (
+      location.pathname === "/login" ||
+      location.pathname === "/register" ||
+      location.pathname === "/forgot-password" ||
+      location.pathname === "/reset-password"
+    );
+  }, [location.pathname]);
 
   useEffect(() => {
     if (pathnames) {
@@ -67,13 +71,4 @@ const StyledOutletWrapper = styled.div`
   @media (width < ${({ theme }) => theme.breakpoints.sm}) {
     grid-row: 1;
   }
-`;
-
-const StyledLoaderWrapper = styled.div`
-  width: ${({ theme }) => theme.width.full};
-  height: ${({ theme }) => theme.height.screen};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
 `;
