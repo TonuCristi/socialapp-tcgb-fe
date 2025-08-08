@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 
-import Post from "./Post";
+import Post from "../../../posts/components/Post";
 import Loader from "../../../common/Loader";
 
 import { PostsApi } from "../../../../services/PostsApi";

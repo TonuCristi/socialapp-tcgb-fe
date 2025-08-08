@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Button from "../../../common/Button";
+import Button from "../../common/Button";
 
 export const StyledInteractionButton = styled(Button)`
   display: flex;

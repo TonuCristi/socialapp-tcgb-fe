@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 import Title from "../../../../common/Title";
 import EditProfileButton from "./EditProfileButton";
-import { StyledDivider, StyledProfileSection } from "../../styles";
+import { StyledProfileSection } from "../../styles";
 
 import { useAppSelector } from "../../../../../app/hooks";
 import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
+import { StyledDivider } from "../../../../styles/styles";
 
 export default function ProfileUserInfoSection() {
   const user = useAppSelector(selectCurrentUser);

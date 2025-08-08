@@ -2,11 +2,15 @@ import { type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 
+import { useOverflowHidden } from "../../hooks/useOverflowHidden";
+
 type Props = {
   children: ReactNode;
 };
 
 export default function Overlay({ children }: Props) {
+  useOverflowHidden();
+
   return createPortal(<StyledOverlay>{children}</StyledOverlay>, document.body);
 }
 

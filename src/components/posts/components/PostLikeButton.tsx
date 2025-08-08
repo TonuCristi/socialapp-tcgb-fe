@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { HiMiniHeart } from "react-icons/hi2";
 
 import { useMutation } from "@tanstack/react-query";
-import { PostsApi } from "../../../../services/PostsApi";
+import { PostsApi } from "../../../services/PostsApi";
 import { StyledInteractionButton } from "./styles";
-import { queryClient } from "../../../../App";
-import type { Post } from "../../../../types/Post.type";
+import { queryClient } from "../../../App";
+import type { Post } from "../../../types/Post.type";
 
 type Props = {
   postId: string;
@@ -17,7 +17,7 @@ type Props = {
 export default function PostLikeButton({ postId, isLikedByMe }: Props) {
   const [isLiked, setIsLiked] = useState<boolean>(isLikedByMe);
   const { isPending, mutate } = useMutation({
-    mutationFn: PostsApi.likePost,
+    mutationFn: (postId: string) => PostsApi.like(postId, "post"),
     onSuccess: () => {
       setIsLiked((prev) => !prev);
       queryClient.setQueryData(

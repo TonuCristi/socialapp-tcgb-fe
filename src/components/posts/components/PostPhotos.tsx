@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 
-import Button from "../../../common/Button";
+import Button from "../../common/Button";
 import PostPhotosSilder from "./PostPhotosSlider";
 
-import type { PhotoOrderWithLink } from "../../../../types/Post.type";
+import type { PhotoOrderWithLink } from "../../../types/Post.type";
 
 type Props = {
   photos: PhotoOrderWithLink[];

@@ -7,7 +7,7 @@ import ProfileIntroSection from "../components/profile/components/account/profil
 import Posts from "../components/profile/components/posts/Posts";
 import ProfileTabs from "../components/profile/components/ProfileTabs";
 import Account from "../components/profile/components/account/Account";
-import { StyledDivider } from "../components/profile/components/styles";
+import { StyledDivider } from "../components/styles/styles";
 
 export type Tab = "posts" | "account";
 

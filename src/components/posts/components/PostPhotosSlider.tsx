@@ -1,16 +1,13 @@
 import type { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
-import Overlay from "../../../common/Overlay";
-import Button from "../../../common/Button";
-import {
-  HiMiniChevronLeft,
-  HiMiniChevronRight,
-  HiMiniXMark,
-} from "react-icons/hi2";
+import Overlay from "../../common/Overlay";
+import Button from "../../common/Button";
+import CloseOverlayModalButton from "../../common/CloseOverlayModalButton";
+import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
 
-import { useOverflowHidden } from "../../../../hooks/useOverflowHidden";
-import type { PhotoOrderWithLink } from "../../../../types/Post.type";
+import { useOverflowHidden } from "../../../hooks/useOverflowHidden";
+import type { PhotoOrderWithLink } from "../../../types/Post.type";
 
 type Props = {
   photos: PhotoOrderWithLink[];
@@ -29,9 +26,7 @@ export default function PostPhotosSilder({
 
   return (
     <Overlay>
-      <StyledCloseModalButton variant="empty" onClick={() => setIsOpen(false)}>
-        <HiMiniXMark />
-      </StyledCloseModalButton>
+      <CloseOverlayModalButton onClose={() => setIsOpen(false)} />
       <StyledSlider>
         {photos.length === 1 || (
           <StyledSliderPrevButton
@@ -64,20 +59,6 @@ export default function PostPhotosSilder({
     </Overlay>
   );
 }
-
-const StyledCloseModalButton = styled(Button)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: ${({ theme }) => theme.spacing.xl};
-  margin-right: ${({ theme }) => theme.spacing.xl};
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  color: ${({ theme }) => theme.colors.accent};
-
-  :first-child {
-    stroke-width: 1;
-  }
-`;
 
 const StyledSlider = styled.div`
   position: relative;

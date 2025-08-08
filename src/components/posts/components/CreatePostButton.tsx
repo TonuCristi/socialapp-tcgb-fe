@@ -4,7 +4,7 @@ import styled from "styled-components";
 import CreatePostForm from "./CreatePostForm";
 import Overlay from "../../common/Overlay";
 import Button from "../../common/Button";
-import { HiMiniXMark } from "react-icons/hi2";
+import CloseOverlayModalButton from "../../common/CloseOverlayModalButton";
 
 import { useAppSelector } from "../../../app/hooks";
 import { selectCurrentUser } from "../../../features/user/currentUserSelectors";
@@ -20,12 +20,7 @@ export default function CreatePostButton() {
       </StyledCreatePostButton>
       {isOpen && (
         <Overlay>
-          <StyledCloseModalButton
-            variant="empty"
-            onClick={() => setIsOpen(false)}
-          >
-            <HiMiniXMark />
-          </StyledCloseModalButton>
+          <CloseOverlayModalButton onClose={() => setIsOpen(false)} />
           <CreatePostForm />
         </Overlay>
       )}
@@ -40,19 +35,5 @@ const StyledCreatePostButton = styled(Button)`
 
   @media (width < ${({ theme }) => theme.breakpoints.xs}) {
     height: auto;
-  }
-`;
-
-const StyledCloseModalButton = styled(Button)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: ${({ theme }) => theme.spacing.xl};
-  margin-right: ${({ theme }) => theme.spacing.xl};
-  font-size: ${({ theme }) => theme.fontSizes.xl};
-  color: ${({ theme }) => theme.colors.accent};
-
-  :first-child {
-    stroke-width: 1;
   }
 `;

@@ -6,9 +6,9 @@ import Page from "../components/common/Page";
 import Title from "../components/common/Title";
 import SearchForm from "../components/search/components/SearchForm";
 import SearchResults from "../components/search/components/SearchResults";
-import { StyledDivider } from "../components/profile/components/styles";
 
 import { searchFormSchema } from "../schemas/searchForm.schema";
+import { StyledDivider } from "../components/styles/styles";
 
 export const LIMIT = 15;
 
