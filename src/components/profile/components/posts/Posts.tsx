@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 
-import Post from "../../../posts/components/Post";
-import Loader from "../../../common/Loader";
+import Post from "../../../posts/Post";
+import PostsLoader from "../../../posts/PostsLoader";
 
 import { PostsApi } from "../../../../services/PostsApi";
 
@@ -56,11 +56,7 @@ export default function Posts() {
         )}
         <li ref={targetRef}></li>
       </StyledPosts>
-      {(isLoading || isFetchingNextPage) && (
-        <StyledLoaderWrapper>
-          <Loader />
-        </StyledLoaderWrapper>
-      )}
+      {(isLoading || isFetchingNextPage) && <PostsLoader />}
     </>
   );
 }
@@ -69,9 +65,4 @@ const StyledPosts = styled.ul`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
-`;
-
-const StyledLoaderWrapper = styled.div`
-  display: flex;
-  justify-content: center;
 `;

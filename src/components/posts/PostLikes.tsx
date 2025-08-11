@@ -3,11 +3,12 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 
 import PostLikeCard from "./PostLikeCard";
-import Title from "../../common/Title";
+import Title from "../common/Title";
+import PostLikeCardSkeleton from "./PostLikeCardSkeleton";
 
-import { PostsApi } from "../../../services/PostsApi";
+import { PostsApi } from "../../services/PostsApi";
 
-const LIMIT = 10;
+const LIMIT = 3;
 
 type Props = {
   postId: string;
@@ -16,12 +17,14 @@ type Props = {
 export default function PostLikes({ postId }: Props) {
   const targetRef = useRef<HTMLLIElement>(null);
 
-  const { fetchNextPage, isFetchingNextPage, data } = useInfiniteQuery({
-    queryKey: ["post-likes", postId],
-    queryFn: ({ pageParam }) => PostsApi.getPostLikes(postId, pageParam, LIMIT),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+  const { fetchNextPage, isLoading, isFetchingNextPage, data } =
+    useInfiniteQuery({
+      queryKey: ["post-likes", postId],
+      queryFn: ({ pageParam }) =>
+        PostsApi.getPostLikes(postId, pageParam, LIMIT),
+      initialPageParam: 0,
+      getNextPageParam: (lastPage) => lastPage.nextPage,
+    });
 
   useEffect(() => {
     if (!targetRef.current) return;
@@ -59,6 +62,7 @@ export default function PostLikes({ postId }: Props) {
           page.likes.map((user) => <PostLikeCard key={user.id} user={user} />)
         )}
         <li ref={targetRef}></li>
+        {(isLoading || isFetchingNextPage) && <PostLikeCardSkeleton />}
       </StyledPostLikes>
     </StyledPostLikesWrapper>
   );

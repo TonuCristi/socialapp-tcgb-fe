@@ -4,10 +4,10 @@ import styled from "styled-components";
 import { HiMiniHeart } from "react-icons/hi2";
 
 import { useMutation } from "@tanstack/react-query";
-import { PostsApi } from "../../../services/PostsApi";
 import { StyledInteractionButton } from "./styles";
-import { queryClient } from "../../../App";
-import type { Post } from "../../../types/Post.type";
+import { PostsApi } from "../../services/PostsApi";
+import { queryClient } from "../../App";
+import type { Post } from "../../types/Post.type";
 
 type Props = {
   postId: string;

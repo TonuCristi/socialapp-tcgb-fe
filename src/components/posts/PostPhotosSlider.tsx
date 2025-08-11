@@ -1,13 +1,13 @@
 import type { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
-import Overlay from "../../common/Overlay";
-import Button from "../../common/Button";
-import CloseOverlayModalButton from "../../common/CloseOverlayModalButton";
+import Overlay from "../common/Overlay";
+import CloseOverlayModalButton from "../common/CloseOverlayModalButton";
+import Button from "../common/Button";
 import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
 
-import { useOverflowHidden } from "../../../hooks/useOverflowHidden";
-import type { PhotoOrderWithLink } from "../../../types/Post.type";
+import { useOverflowHidden } from "../../hooks/useOverflowHidden";
+import type { PhotoOrderWithLink } from "../../types/Post.type";
 
 type Props = {
   photos: PhotoOrderWithLink[];

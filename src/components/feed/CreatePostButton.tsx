@@ -1,13 +1,13 @@
 import { useState } from "react";
 import styled from "styled-components";
 
+import Overlay from "../common/Overlay";
+import CloseOverlayModalButton from "../common/CloseOverlayModalButton";
 import CreatePostForm from "./CreatePostForm";
-import Overlay from "../../common/Overlay";
-import Button from "../../common/Button";
-import CloseOverlayModalButton from "../../common/CloseOverlayModalButton";
+import Button from "../common/Button";
 
-import { useAppSelector } from "../../../app/hooks";
-import { selectCurrentUser } from "../../../features/user/currentUserSelectors";
+import { useAppSelector } from "../../app/hooks";
+import { selectCurrentUser } from "../../features/user/currentUserSelectors";
 
 export default function CreatePostButton() {
   const user = useAppSelector(selectCurrentUser);

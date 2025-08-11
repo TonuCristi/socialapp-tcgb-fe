@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import Button from "../../common/Button";
-import Overlay from "../../common/Overlay";
-import CloseOverlayModalButton from "../../common/CloseOverlayModalButton";
 import PostLikes from "./PostLikes";
+import Button from "../common/Button";
+import Overlay from "../common/Overlay";
+import CloseOverlayModalButton from "../common/CloseOverlayModalButton";
 
 type Props = {
   postId: string;

@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
+import Button from "../common/Button";
 import PostLikeButton from "./PostLikeButton";
+import LikeStatButton from "./LikeStatButton";
 import { HiMiniChatBubbleOvalLeft, HiMiniLink } from "react-icons/hi2";
 import { StyledInteractionButton } from "./styles";
-import Button from "../../common/Button";
-import LikeStatButton from "./LikeStatButton";
 
 type Props = {
   postId: string;

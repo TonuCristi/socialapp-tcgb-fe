@@ -4,9 +4,11 @@ import { useFormContext } from "react-hook-form";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 import SearchResultCard from "./SearchResultCard";
+import SearchResultCardSkeleton from "./SearchResultCardSkeleton";
 
-import { LIMIT } from "../../../pages/SearchPage";
-import { UsersApi } from "../../../services/UsersApi";
+import { UsersApi } from "../../services/UsersApi";
+
+export const LIMIT = 15;
 
 export default function SearchResults() {
   const targetRef = useRef<HTMLLIElement>(null);
@@ -15,12 +17,13 @@ export default function SearchResults() {
 
   const search = watch("search");
 
-  const { fetchNextPage, isFetchingNextPage, data } = useInfiniteQuery({
-    queryKey: ["search", search],
-    queryFn: ({ pageParam }) => UsersApi.getUsers(search, pageParam, LIMIT),
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) => lastPage.nextPage,
-  });
+  const { fetchNextPage, isLoading, isFetchingNextPage, data } =
+    useInfiniteQuery({
+      queryKey: ["search", search],
+      queryFn: ({ pageParam }) => UsersApi.getUsers(search, pageParam, LIMIT),
+      initialPageParam: 0,
+      getNextPageParam: (lastPage) => lastPage.nextPage,
+    });
 
   useEffect(() => {
     if (!targetRef.current) return;
@@ -56,6 +59,7 @@ export default function SearchResults() {
         page.users.map((user) => <SearchResultCard key={user.id} user={user} />)
       )}
       <li ref={targetRef}></li>
+      {(isLoading || isFetchingNextPage) && <SearchResultCardSkeleton />}
     </StyledSearchResults>
   );
 }
