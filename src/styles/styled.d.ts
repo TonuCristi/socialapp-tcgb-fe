@@ -14,6 +14,7 @@ declare module "styled-components" {
       shadowRed: string;
       white: string;
       transparent: string;
+      zinc700: string;
       zinc800: string;
       gray300: string;
       gray400: string;

@@ -4,13 +4,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import Page from "../components/common/Page";
 import Title from "../components/common/Title";
-import SearchForm from "../components/search/components/SearchForm";
-import SearchResults from "../components/search/components/SearchResults";
-import { StyledDivider } from "../components/profile/components/styles";
+import SearchForm from "../components/search/SearchForm";
+import SearchResults from "../components/search/SearchResults";
 
 import { searchFormSchema } from "../schemas/searchForm.schema";
-
-export const LIMIT = 15;
+import { StyledDivider } from "../components/styles/styles";
 
 type Search = {
   search: string;

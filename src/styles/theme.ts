@@ -13,6 +13,7 @@ export const theme: DefaultTheme = {
     shadowRed: "rgb(251, 44, 54, 0.4)",
     white: "#fff",
     transparent: "transparent",
+    zinc700: "oklch(37% 0.013 285.805)",
     zinc800: "oklch(27.4% 0.006 286.033)",
     gray300: "oklch(87.2% 0.01 258.338)",
     gray400: "oklch(70.7% 0.022 261.325)",

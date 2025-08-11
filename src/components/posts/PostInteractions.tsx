@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
+import Button from "../common/Button";
 import PostLikeButton from "./PostLikeButton";
+import LikeStatButton from "./LikeStatButton";
 import { HiMiniChatBubbleOvalLeft, HiMiniLink } from "react-icons/hi2";
 import { StyledInteractionButton } from "./styles";
 
@@ -20,8 +22,10 @@ export default function PostInteractions({
   return (
     <StyledPostInteractions>
       <StyledPostStats>
-        <StyledStat>Likes {likesCount}</StyledStat>
-        <StyledStat>{commentsCount} Comments</StyledStat>
+        <LikeStatButton postId={postId} likesCount={likesCount} />
+        <StyledStatButton variant="empty">
+          {commentsCount} Comments
+        </StyledStatButton>
       </StyledPostStats>
       <StyledPostActions>
         <PostLikeButton postId={postId} isLikedByMe={isLikedByMe} />
@@ -55,7 +59,7 @@ const StyledPostStats = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing.sm};
 `;
 
-const StyledStat = styled.div``;
+const StyledStatButton = styled(Button)``;
 
 const StyledPostActions = styled.div`
   display: flex;

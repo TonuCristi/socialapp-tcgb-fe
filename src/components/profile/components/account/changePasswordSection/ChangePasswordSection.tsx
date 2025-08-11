@@ -7,8 +7,11 @@ import Message from "../../../../common/Message";
 import Button from "../../../../common/Button";
 import Label from "../../../../common/input/Label";
 import HidePasswordInput from "../../../../common/input/HidePasswordInput";
-import { StyledDivider, StyledProfileSection } from "../../styles";
-import { StyledFormFieldsWrapper } from "../../../../styles/styles";
+import { StyledProfileSection } from "../../styles";
+import {
+  StyledDivider,
+  StyledFormFieldsWrapper,
+} from "../../../../styles/styles";
 import { StyledFormField } from "../../../../common/input/styles";
 
 import type { ChangePasswordForm } from "../../../../../types/User.type";

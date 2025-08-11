@@ -15,9 +15,7 @@ export const UsersApi = {
       nextPage: number;
     }>(`${URL}/get-users?search=${search}&offset=${offset}&limit=${limit}`);
 
-    const users = res.data.users.map((userPreview) =>
-      mapUserPreview(userPreview)
-    );
+    const users = res.data.users.map(mapUserPreview);
 
     return { users, nextPage: res.data.nextPage };
   },

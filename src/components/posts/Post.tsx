@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-import PostInteractions from "./PostInteractions";
-import PostPhotos from "./PostPhotos";
 import PostContent from "./PostContent";
+import PostPhotos from "./PostPhotos";
+import PostInteractions from "./PostInteractions";
 import { Link } from "react-router";
 
-import type { Post } from "../../../../types/Post.type";
+import type { Post } from "../../types/Post.type";
 
 type Props = {
   post: Post;
@@ -46,7 +46,7 @@ export default function Post({ post }: Props) {
   );
 }
 
-const StyledPost = styled.div`
+const StyledPost = styled.li`
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius.xl};
   padding: ${({ theme }) => theme.spacing.md};
