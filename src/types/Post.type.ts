@@ -1,9 +1,12 @@
 import type z from "zod";
 import type { createPostFormSchema } from "../schemas/createPostForm.schema";
+import type { addPostCommentFormSchema } from "../schemas/addPostCommentForm.schema";
 
 export type PhotoOrder = { index: number; photo: File };
 
 export type CreatePostForm = z.infer<typeof createPostFormSchema>;
+
+export type AddPostCommentForm = z.infer<typeof addPostCommentFormSchema>;
 
 export type CreatePostFormWithPhotoOrder = Omit<
   z.infer<typeof createPostFormSchema>,

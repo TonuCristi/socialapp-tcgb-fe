@@ -1,10 +1,13 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 import Button from "../common/Button";
-import PostLikeButton from "./PostLikeButton";
-import LikeStatButton from "./LikeStatButton";
-import { HiMiniChatBubbleOvalLeft, HiMiniLink } from "react-icons/hi2";
+import PostCommentsSectionButton from "./postComments/PostCommentsSectionButton";
+import PostLikeStatButton from "./postLikes/PostLikeStatButton";
+import PostLikeButton from "./postLikes/PostLikeButton";
+import { HiMiniLink } from "react-icons/hi2";
 import { StyledInteractionButton } from "./styles";
+import PostCommentsSection from "./postComments/PostCommentsSection";
 
 type Props = {
   postId: string;
@@ -19,25 +22,28 @@ export default function PostInteractions({
   likesCount,
   commentsCount,
 }: Props) {
+  const [isCommentsSectionOpen, setIsCommentsSectionOpen] =
+    useState<boolean>(false);
+
   return (
     <StyledPostInteractions>
       <StyledPostStats>
-        <LikeStatButton postId={postId} likesCount={likesCount} />
+        <PostLikeStatButton postId={postId} likesCount={likesCount} />
         <StyledStatButton variant="empty">
           {commentsCount} Comments
         </StyledStatButton>
       </StyledPostStats>
       <StyledPostActions>
         <PostLikeButton postId={postId} isLikedByMe={isLikedByMe} />
-        <StyledInteractionButton variant="empty">
-          <HiMiniChatBubbleOvalLeft />
-          Comment
-        </StyledInteractionButton>
+        <PostCommentsSectionButton
+          setIsCommentsSectionOpen={setIsCommentsSectionOpen}
+        />
         <StyledInteractionButton variant="empty">
           <HiMiniLink />
           Share
         </StyledInteractionButton>
       </StyledPostActions>
+      {isCommentsSectionOpen && <PostCommentsSection />}
     </StyledPostInteractions>
   );
 }

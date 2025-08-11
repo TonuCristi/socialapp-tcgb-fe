@@ -2,12 +2,12 @@ import { useState } from "react";
 import styled from "styled-components";
 
 import { HiMiniHeart } from "react-icons/hi2";
+import { StyledInteractionButton } from "../styles";
 
 import { useMutation } from "@tanstack/react-query";
-import { StyledInteractionButton } from "./styles";
-import { PostsApi } from "../../services/PostsApi";
-import { queryClient } from "../../App";
-import type { Post } from "../../types/Post.type";
+import { PostsApi } from "../../../services/PostsApi";
+import { queryClient } from "../../../App";
+import type { Post } from "../../../types/Post.type";
 
 type Props = {
   postId: string;

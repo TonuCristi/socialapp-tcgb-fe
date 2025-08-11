@@ -2,13 +2,13 @@ import { useEffect, useRef } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 
+import Title from "../../common/Title";
 import PostLikeCard from "./PostLikeCard";
-import Title from "../common/Title";
 import PostLikeCardSkeleton from "./PostLikeCardSkeleton";
 
-import { PostsApi } from "../../services/PostsApi";
+import { PostsApi } from "../../../services/PostsApi";
 
-const LIMIT = 3;
+const LIMIT = 10;
 
 type Props = {
   postId: string;
