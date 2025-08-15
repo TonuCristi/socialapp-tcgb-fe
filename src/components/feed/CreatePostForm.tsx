@@ -1,25 +1,25 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { zodResolver } from "@hookform/resolvers/zod";
-import toast from "react-hot-toast";
 import axios from "axios";
+import toast from "react-hot-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
+import { useAppSelector } from "../../app/hooks";
+import { selectCurrentUser } from "../../features/user/currentUserSelectors";
 
 import Title from "../common/Title";
 import Textarea from "../common/Textarea";
 import Message from "../common/Message";
 import Button from "../common/Button";
 import CreatePostFormPhotos from "./CreatePostFormPhotos";
-import { HiMiniPhoto } from "react-icons/hi2";
+import Label from "../common/input/Label";
+import Icon from "../common/Icon";
 import { StyledFormField } from "../common/input/styles";
 
-import { useMutation } from "@tanstack/react-query";
-import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import type { CreatePostForm, PhotoOrder } from "../../types/Post.type";
 import { createPostFormSchema } from "../../schemas/createPostForm.schema";
-import { useAppSelector } from "../../app/hooks";
 import { PostsApi } from "../../services/PostsApi";
-import { selectCurrentUser } from "../../features/user/currentUserSelectors";
-import Label from "../common/input/Label";
 
 export default function CreatePostForm() {
   const methods = useForm<CreatePostForm>({
@@ -100,7 +100,7 @@ export default function CreatePostForm() {
               {photos.length >= 1
                 ? `Selected photos: ${photos.length}`
                 : "Select photos"}
-              <HiMiniPhoto />
+              <Icon type="photo" />
             </StyledPhotosLabel>
             <input
               {...register("photos")}

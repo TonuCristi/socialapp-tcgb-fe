@@ -2,31 +2,26 @@ import styled from "styled-components";
 
 import ProfileLink from "./ProfileLink";
 import LogoutButton from "./LogoutButton";
-import {
-  HiMiniBell,
-  HiMiniChatBubbleOvalLeft,
-  HiMiniHome,
-  HiMiniMagnifyingGlass,
-} from "react-icons/hi2";
+import Icon from "../common/Icon";
 import { StyledSidebarItemText, StyledSidebarLink } from "./styles";
 
 export default function Navbar() {
   const navItems = [
-    { text: "Home", to: "/", icon: <HiMiniHome /> },
+    { text: "Home", to: "/", icon: <Icon type="home" /> },
     {
       text: "Search",
       to: "/search",
-      icon: <HiMiniMagnifyingGlass />,
+      icon: <Icon type="search" />,
     },
     {
       text: "Chat",
       to: "/chat",
-      icon: <HiMiniChatBubbleOvalLeft />,
+      icon: <Icon type="chat" />,
     },
     {
       text: "Notifications",
       to: "/notifications",
-      icon: <HiMiniBell />,
+      icon: <Icon type="bell" />,
     },
   ];
 

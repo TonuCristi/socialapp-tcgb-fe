@@ -1,6 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
+import { useEditUserBio } from "../../../hooks/useEditUserBio";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
+import { useAppSelector } from "../../../../../app/hooks";
 
 import Title from "../../../../common/Title";
 import Textarea from "../../../../common/Textarea";
@@ -9,11 +12,8 @@ import Button from "../../../../common/Button";
 import Label from "../../../../common/input/Label";
 import { StyledFormField } from "../../../../common/input/styles";
 
-import { useAppSelector } from "../../../../../app/hooks";
 import type { EditUserBioForm } from "../../../../../types/User.type";
 import { editUserBioFormSchema } from "../../../../../schemas/editUserBioForm.schema";
-import { useEditUserBio } from "../../../hooks/useEditUserBio";
-import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 export default function EditUserBioForm() {
   const user = useAppSelector(selectCurrentUser);

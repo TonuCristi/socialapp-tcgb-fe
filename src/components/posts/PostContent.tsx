@@ -15,7 +15,7 @@ export default function PostContent({ children }: Props) {
   const text = children.split("\n").splice(0, 3).join("\n");
 
   return (
-    <StyledContent>
+    <StyledPostContent>
       {!isExpanded && (newLinesCount >= 3 || children.length >= 80) ? (
         <>
           {children.length >= 80 ? children.slice(0, 80) : text}
@@ -30,11 +30,11 @@ export default function PostContent({ children }: Props) {
       ) : (
         children
       )}
-    </StyledContent>
+    </StyledPostContent>
   );
 }
 
-const StyledContent = styled.p`
+const StyledPostContent = styled.p`
   white-space: pre-wrap;
   overflow-wrap: break-word;
   word-break: break-word;

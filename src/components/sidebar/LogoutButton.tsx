@@ -1,12 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useLogout } from "../authentication/hooks/useLogout";
 
 import ConfirmationModal from "../common/ConfirmationModal";
 import Button from "../common/Button";
-import { HiMiniArrowLeftEndOnRectangle } from "react-icons/hi2";
+import Icon from "../common/Icon";
 import { sidebarButtonLinkStyles, StyledSidebarItemText } from "./styles";
-
-import { useLogout } from "../authentication/hooks/useLogout";
 
 export default function LogoutButton() {
   const { logoutUser } = useLogout();
@@ -15,7 +14,7 @@ export default function LogoutButton() {
   return (
     <>
       <StyledLogoutButton variant="empty" onClick={() => setIsOpen(true)}>
-        <HiMiniArrowLeftEndOnRectangle />
+        <Icon type="exit" />
         <StyledSidebarItemText>Log out</StyledSidebarItemText>
       </StyledLogoutButton>
       {isOpen && (

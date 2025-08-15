@@ -1,11 +1,10 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
+import { useClickOutside } from "../../../../../hooks/useClickOutside";
 
 import EditUserBioForm from "./EditUserBioForm";
 import Button from "../../../../common/Button";
-import { HiMiniPencil } from "react-icons/hi2";
-
-import { useClickOutside } from "../../../../../hooks/useClickOutside";
+import Icon from "../../../../common/Icon";
 
 export default function EditUserBioButton() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -15,7 +14,7 @@ export default function EditUserBioButton() {
   return (
     <StyledEditProfileButtonWrapper ref={containerRef}>
       <Button variant="empty" onClick={() => setIsOpen((prev) => !prev)}>
-        <HiMiniPencil />
+        <Icon type="pen" />
       </Button>
 
       {isOpen && <EditUserBioForm />}

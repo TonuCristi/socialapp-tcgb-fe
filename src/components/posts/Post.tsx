@@ -6,6 +6,7 @@ import PostInteractions from "./PostInteractions";
 import { Link } from "react-router";
 
 import type { Post } from "../../types/Post.type";
+import { formatPassedTime } from "../../utils/formatPassedTime";
 
 type Props = {
   post: Post;
@@ -31,7 +32,7 @@ export default function Post({ post }: Props) {
         </Link>
         <StyledPostInfo>
           <p>{creatorName}</p>
-          <p>{new Date(createdAt).toDateString()}</p>
+          <p>{formatPassedTime(createdAt)}</p>
         </StyledPostInfo>
       </StyledPostInfoWrapper>
       {content && <PostContent>{content}</PostContent>}

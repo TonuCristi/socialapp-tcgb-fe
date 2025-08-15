@@ -6,7 +6,7 @@ import {
 import { useFormContext } from "react-hook-form";
 
 import Input from "./Input";
-import { HiMiniEye, HiMiniEyeSlash, HiMiniLockClosed } from "react-icons/hi2";
+import Icon from "../Icon";
 
 type Props = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
@@ -24,8 +24,8 @@ export default function HidePasswordInput({ name, ...props }: Props) {
       type={isOpen ? "text" : "password"}
       {...props}
       {...register(name)}
-      leftIcon={<HiMiniLockClosed />}
-      rightIcon={isOpen ? <HiMiniEyeSlash /> : <HiMiniEye />}
+      leftIcon={<Icon type="lock" />}
+      rightIcon={isOpen ? <Icon type="closedEye" /> : <Icon type="openedEye" />}
       onRightIconClick={() => setIsOpen((prev) => !prev)}
     />
   );

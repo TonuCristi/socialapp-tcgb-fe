@@ -1,7 +1,6 @@
 import { type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
-
 import { useOverflowHidden } from "../../hooks/useOverflowHidden";
 
 type Props = {

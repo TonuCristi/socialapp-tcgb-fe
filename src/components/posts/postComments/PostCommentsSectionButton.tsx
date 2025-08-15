@@ -1,6 +1,6 @@
 import type { Dispatch, SetStateAction } from "react";
 
-import { HiMiniChatBubbleOvalLeft } from "react-icons/hi2";
+import Icon from "../../common/Icon";
 import { StyledInteractionButton } from "../styles";
 
 type Props = {
@@ -15,7 +15,7 @@ export default function PostCommentsSectionButton({
       variant="empty"
       onClick={() => setIsCommentsSectionOpen((prev) => !prev)}
     >
-      <HiMiniChatBubbleOvalLeft />
+      <Icon type="chat" />
       Comment
     </StyledInteractionButton>
   );

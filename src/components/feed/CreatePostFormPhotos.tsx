@@ -2,8 +2,8 @@ import { type Dispatch, type SetStateAction, type SyntheticEvent } from "react";
 import { useFormContext } from "react-hook-form";
 import styled from "styled-components";
 
-import { HiMiniXMark } from "react-icons/hi2";
 import Button from "../common/Button";
+import Icon from "../common/Icon";
 
 import type { PhotoOrder } from "../../types/Post.type";
 
@@ -92,7 +92,7 @@ export default function CreatePostFormPhotos({
               variant="empty"
               onClick={(e) => handleDeletePhoto(e, photo)}
             >
-              <HiMiniXMark />
+              <Icon type="close" />
             </StyledDeletePhotoButton>
             <img src={URL.createObjectURL(photo)} />
           </StyledPhotoWrapper>

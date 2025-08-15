@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { queryClient } from "../../../App";
+import { useMutation } from "@tanstack/react-query";
 
-import { HiMiniHeart } from "react-icons/hi2";
+import Icon from "../../common/Icon";
 import { StyledInteractionButton } from "../styles";
 
-import { useMutation } from "@tanstack/react-query";
 import { PostsApi } from "../../../services/PostsApi";
-import { queryClient } from "../../../App";
 import type { Post } from "../../../types/Post.type";
 
 type Props = {
@@ -54,7 +54,7 @@ export default function PostLikeButton({ postId, isLikedByMe }: Props) {
       disabled={isPending}
       onClick={() => mutate(postId)}
     >
-      <HiMiniHeart />
+      <Icon type="heart" />
       Like
     </StyledPostLikeButton>
   );

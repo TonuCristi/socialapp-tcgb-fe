@@ -1,10 +1,10 @@
 import styled from "styled-components";
+import { Link } from "react-router";
 
 import Page from "../components/common/Page";
 import Title from "../components/common/Title";
 import CreatePostButton from "../components/feed/CreatePostButton";
 import { StyledDivider } from "../components/styles/styles";
-import { Link } from "react-router";
 
 export default function HomePage() {
   return (

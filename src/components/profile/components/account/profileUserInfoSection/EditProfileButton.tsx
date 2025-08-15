@@ -1,10 +1,9 @@
 import { useRef, useState } from "react";
 import styled from "styled-components";
+import { useClickOutside } from "../../../../../hooks/useClickOutside";
 
 import EditProfileForm from "./EditProfileForm";
 import Button from "../../../../common/Button";
-
-import { useClickOutside } from "../../../../../hooks/useClickOutside";
 
 export default function EditProfileButton() {
   const [isOpen, setIsOpen] = useState<boolean>(false);

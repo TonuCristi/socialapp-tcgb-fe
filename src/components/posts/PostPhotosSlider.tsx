@@ -1,12 +1,12 @@
 import type { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+import { useOverflowHidden } from "../../hooks/useOverflowHidden";
 
 import Overlay from "../common/Overlay";
 import CloseOverlayModalButton from "../common/CloseOverlayModalButton";
 import Button from "../common/Button";
-import { HiMiniChevronLeft, HiMiniChevronRight } from "react-icons/hi2";
+import Icon from "../common/Icon";
 
-import { useOverflowHidden } from "../../hooks/useOverflowHidden";
 import type { PhotoOrderWithLink } from "../../types/Post.type";
 
 type Props = {
@@ -37,7 +37,7 @@ export default function PostPhotosSilder({
               );
             }}
           >
-            <HiMiniChevronLeft />
+            <Icon type="leftArrow" />
           </StyledSliderPrevButton>
         )}
         <StyledPhotoWrapper>
@@ -52,7 +52,7 @@ export default function PostPhotosSilder({
               );
             }}
           >
-            <HiMiniChevronRight />
+            <Icon type="rightArrow" />
           </StyledSliderNextButton>
         )}
       </StyledSlider>

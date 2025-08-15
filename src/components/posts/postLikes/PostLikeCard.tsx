@@ -1,8 +1,7 @@
 import styled from "styled-components";
-
 import { Link } from "react-router";
 
-import type { UserPreview } from "../../types/User.type";
+import type { UserPreview } from "../../../types/User.type";
 
 type Props = {
   user: UserPreview;
@@ -26,7 +25,6 @@ const StyledListItem = styled.li`
 const StyledResultLink = styled(Link)`
   border: 0.15rem solid ${({ theme }) => theme.colors.accent};
   border-radius: ${({ theme }) => theme.borderRadius.xl};
-  display: inline-block;
   width: ${({ theme }) => theme.width.full};
   padding: ${({ theme }) => theme.spacing.sm};
   display: flex;

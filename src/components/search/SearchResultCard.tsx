@@ -1,5 +1,6 @@
-import { Link } from "react-router";
 import styled from "styled-components";
+import { Link } from "react-router";
+
 import type { UserPreview } from "../../types/User.type";
 
 type Props = {

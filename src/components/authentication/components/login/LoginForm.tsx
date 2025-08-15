@@ -2,20 +2,20 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router";
 import styled from "styled-components";
+import { useLogin } from "../../hooks/useLogin";
 
 import Label from "../../../common/input/Label";
 import Input from "../../../common/input/Input";
 import HidePasswordInput from "../../../common/input/HidePasswordInput";
-import { HiMiniEnvelope } from "react-icons/hi2";
+import Message from "../../../common/Message";
+import Button from "../../../common/Button";
+import Icon from "../../../common/Icon";
 import { StyledFormFieldsWrapper } from "../../../styles/styles";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 import { StyledFormField } from "../../../common/input/styles";
 
 import type { LoginForm } from "../../../../types/User.type";
 import { loginFormSchema } from "../../../../schemas/loginForm.schema";
-import { useLogin } from "../../hooks/useLogin";
-import Message from "../../../common/Message";
-import Button from "../../../common/Button";
 
 export default function LoginForm() {
   const methods = useForm<LoginForm>({
@@ -45,7 +45,7 @@ export default function LoginForm() {
               type="text"
               name="email"
               placeholder="Enter your email..."
-              leftIcon={<HiMiniEnvelope />}
+              leftIcon={<Icon type="envelope" />}
             />
             {errors.email && (
               <Message variant="error">{errors.email.message}</Message>

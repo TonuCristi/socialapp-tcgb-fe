@@ -6,9 +6,9 @@ import Page from "../components/common/Page";
 import Title from "../components/common/Title";
 import SearchForm from "../components/search/SearchForm";
 import SearchResults from "../components/search/SearchResults";
+import { StyledDivider } from "../components/styles/styles";
 
 import { searchFormSchema } from "../schemas/searchForm.schema";
-import { StyledDivider } from "../components/styles/styles";
 
 type Search = {
   search: string;

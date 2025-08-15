@@ -5,9 +5,9 @@ import Button from "../common/Button";
 import PostCommentsSectionButton from "./postComments/PostCommentsSectionButton";
 import PostLikeStatButton from "./postLikes/PostLikeStatButton";
 import PostLikeButton from "./postLikes/PostLikeButton";
-import { HiMiniLink } from "react-icons/hi2";
-import { StyledInteractionButton } from "./styles";
 import PostCommentsSection from "./postComments/PostCommentsSection";
+import Icon from "../common/Icon";
+import { StyledInteractionButton } from "./styles";
 
 type Props = {
   postId: string;
@@ -39,7 +39,7 @@ export default function PostInteractions({
           setIsCommentsSectionOpen={setIsCommentsSectionOpen}
         />
         <StyledInteractionButton variant="empty">
-          <HiMiniLink />
+          <Icon type="link" />
           Share
         </StyledInteractionButton>
       </StyledPostActions>

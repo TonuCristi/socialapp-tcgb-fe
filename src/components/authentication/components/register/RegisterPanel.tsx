@@ -1,10 +1,10 @@
+import RegisterForm from "./RegisterForm";
 import {
   StyledAppName,
   StyledAuthPanel,
   StyledMessage,
   StyledTitle,
 } from "../styles";
-import RegisterForm from "./RegisterForm";
 
 export default function RegisterPanel() {
   return (

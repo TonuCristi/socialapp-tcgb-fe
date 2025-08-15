@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { Link } from "react-router";
 
 import Navbar from "./Navbar";
-import { Link } from "react-router";
 
 export default function Sidebar() {
   return (

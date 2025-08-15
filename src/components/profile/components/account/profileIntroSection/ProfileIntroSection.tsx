@@ -1,12 +1,11 @@
 import styled from "styled-components";
+import { useAppSelector } from "../../../../../app/hooks";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 import Title from "../../../../common/Title";
 import ProfileStats from "./ProfileStats";
 import ProfileBio from "./ProfileBio";
 import { StyledProfileSection } from "../../styles";
-
-import { useAppSelector } from "../../../../../app/hooks";
-import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 export default function ProfileIntroSection() {
   const user = useAppSelector(selectCurrentUser);

@@ -6,8 +6,8 @@ import Label from "../../../common/input/Label";
 import Input from "../../../common/input/Input";
 import Message from "../../../common/Message";
 import Button from "../../../common/Button";
+import Icon from "../../../common/Icon";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
-import { HiMiniEnvelope } from "react-icons/hi2";
 import { StyledFormField } from "../../../common/input/styles";
 
 import type { ForgotPasswordForm } from "../../../../types/User.type";
@@ -41,7 +41,7 @@ export default function ForgotPassword() {
               type="text"
               name="email"
               placeholder="Enter your email..."
-              leftIcon={<HiMiniEnvelope />}
+              leftIcon={<Icon type="envelope" />}
             />
             {errors.email && (
               <Message variant="error">{errors.email.message}</Message>

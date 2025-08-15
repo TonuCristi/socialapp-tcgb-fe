@@ -1,20 +1,20 @@
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
+import { useRegister } from "../../hooks/useRegister";
 
 import Label from "../../../common/input/Label";
 import Input from "../../../common/input/Input";
 import HidePasswordInput from "../../../common/input/HidePasswordInput";
 import Message from "../../../common/Message";
 import Button from "../../../common/Button";
-import { HiMiniEnvelope, HiMiniUser } from "react-icons/hi2";
+import Icon from "../../../common/Icon";
 import { StyledAuthForm, StyledLoginRegisterLink } from "../styles";
 import { StyledFormFieldsWrapper } from "../../../styles/styles";
 import { StyledFormField } from "../../../common/input/styles";
 
 import type { RegisterForm } from "../../../../types/User.type";
 import { registerFormSchema } from "../../../../schemas/registerForm.schema";
-import { useRegister } from "../../hooks/useRegister";
 
 const inputs = [
   {
@@ -23,7 +23,7 @@ const inputs = [
     type: "text",
     name: "username",
     placeholder: "Enter your username...",
-    leftIcon: <HiMiniUser />,
+    leftIcon: <Icon type="user" />,
   },
   {
     label: "Email",
@@ -31,7 +31,7 @@ const inputs = [
     type: "text",
     name: "email",
     placeholder: "Enter your email...",
-    leftIcon: <HiMiniEnvelope />,
+    leftIcon: <Icon type="envelope" />,
   },
 ] as const;
 

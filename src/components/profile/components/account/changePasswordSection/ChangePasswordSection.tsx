@@ -1,6 +1,7 @@
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import styled from "styled-components";
+import { useChangePassword } from "../../../hooks/useChangePassword";
 
 import Title from "../../../../common/Title";
 import Message from "../../../../common/Message";
@@ -16,7 +17,6 @@ import { StyledFormField } from "../../../../common/input/styles";
 
 import type { ChangePasswordForm } from "../../../../../types/User.type";
 import { changePasswordFormSchema } from "../../../../../schemas/changePasswordForm.schema";
-import { useChangePassword } from "../../../hooks/useChangePassword";
 
 const inputs = [
   {

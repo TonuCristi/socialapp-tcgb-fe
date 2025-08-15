@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import Button from "./Button";
-import { HiMiniXMark } from "react-icons/hi2";
+import Icon from "./Icon";
 
 type Props = {
   onClose: () => void;
@@ -10,7 +10,7 @@ type Props = {
 export default function CloseOverlayModalButton({ onClose }: Props) {
   return (
     <StyledCloseModalButton variant="empty" onClick={onClose}>
-      <HiMiniXMark />
+      <Icon type="close" />
     </StyledCloseModalButton>
   );
 }

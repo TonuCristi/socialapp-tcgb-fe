@@ -19,14 +19,18 @@ export default function AddPostCommentForm() {
   const { handleSubmit } = methods;
 
   const onSubmit: SubmitHandler<AddPostCommentForm> = (data) => {
+    if (!data.comment) return;
+
     console.log(data);
   };
 
   return (
     <FormProvider {...methods}>
       <StyledAddCommentForm onSubmit={handleSubmit(onSubmit)}>
-        <Input name="comment" placeholder="Write your comment..." />
-        <StyledAddCommentButton>Add</StyledAddCommentButton>
+        <StyledWrapper>
+          <Input name="comment" placeholder="Write your comment..." />
+          <StyledAddCommentButton>Add</StyledAddCommentButton>
+        </StyledWrapper>
       </StyledAddCommentForm>
     </FormProvider>
   );
@@ -34,10 +38,22 @@ export default function AddPostCommentForm() {
 
 const StyledAddCommentForm = styled.form`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing.sm};
 `;
 
 const StyledAddCommentButton = styled(Button)`
   width: auto;
+`;
+
+const StyledWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing.sm};
+
+  @media (width < ${({ theme }) => theme.breakpoints["2xs"]}) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
 `;

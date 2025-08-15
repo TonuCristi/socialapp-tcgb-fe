@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { useEffect, useMemo } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
+import { useFetchLoggedUser } from "../authentication/hooks/useFetchLoggedUser";
 
 import Loader from "../common/Loader";
 import Sidebar from "../sidebar/Sidebar";
-
-import { useFetchLoggedUser } from "../authentication/hooks/useFetchLoggedUser";
 import { StyledLoaderWrapper } from "../styles/styles";
 
 export default function AppLayout() {

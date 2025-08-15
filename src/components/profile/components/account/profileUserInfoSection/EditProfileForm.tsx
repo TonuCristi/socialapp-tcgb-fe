@@ -1,26 +1,21 @@
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import styled from "styled-components";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAppSelector } from "../../../../../app/hooks";
+import { useEditUser } from "../../../hooks/useEditUser";
+import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 import Title from "../../../../common/Title";
 import Message from "../../../../common/Message";
 import Button from "../../../../common/Button";
 import Label from "../../../../common/input/Label";
 import Input from "../../../../common/input/Input";
-import {
-  HiMiniCalendar,
-  HiMiniEnvelope,
-  HiMiniPhone,
-  HiMiniUser,
-} from "react-icons/hi2";
+import Icon from "../../../../common/Icon";
 import { StyledFormFieldsWrapper } from "../../../../styles/styles";
 import { StyledFormField } from "../../../../common/input/styles";
 
-import { useAppSelector } from "../../../../../app/hooks";
 import { editProfileFormSchema } from "../../../../../schemas/editProfileForm.schema";
 import type { EditProfileForm } from "../../../../../types/User.type";
-import { useEditUser } from "../../../hooks/useEditUser";
-import { selectCurrentUser } from "../../../../../features/user/currentUserSelectors";
 
 const inputs = [
   {
@@ -29,7 +24,7 @@ const inputs = [
     type: "text",
     name: "username",
     placeholder: "Enter your username...",
-    leftIcon: <HiMiniUser />,
+    leftIcon: <Icon type="user" />,
   },
   {
     label: "Email",
@@ -37,7 +32,7 @@ const inputs = [
     type: "text",
     name: "email",
     placeholder: "Enter your email...",
-    leftIcon: <HiMiniEnvelope />,
+    leftIcon: <Icon type="envelope" />,
   },
   {
     label: "Birth date",
@@ -45,7 +40,7 @@ const inputs = [
     type: "date",
     name: "birthDate",
     placeholder: "Enter your birthDate...",
-    leftIcon: <HiMiniCalendar />,
+    leftIcon: <Icon type="calendar" />,
   },
   {
     label: "Phone number",
@@ -53,7 +48,7 @@ const inputs = [
     type: "text",
     name: "phoneNumber",
     placeholder: "Enter your phone number...",
-    leftIcon: <HiMiniPhone />,
+    leftIcon: <Icon type="phone" />,
   },
 ] as const;
 

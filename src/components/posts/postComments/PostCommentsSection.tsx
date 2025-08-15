@@ -3,55 +3,10 @@ import styled from "styled-components";
 import AddPostCommentForm from "./AddPostCommentForm";
 import PostComments from "./PostComments";
 
-const mockComments = [
-  {
-    comment: "111",
-    replies: [
-      {
-        comment: "222",
-        replies: [],
-      },
-      {
-        comment: "333",
-        replies: [],
-      },
-    ],
-  },
-  {
-    comment: "444",
-    replies: [
-      {
-        comment: "555",
-        replies: [],
-      },
-      {
-        comment: "777",
-        replies: [
-          {
-            comment: "888",
-            replies: [
-              {
-                comment: "999",
-                replies: [],
-              },
-              {
-                comment: "101",
-                replies: [],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-];
-
 export default function PostCommentsSection() {
   return (
     <StyledPostCommentsSection>
-      <StyledPostCommentsWrapper>
-        <PostComments comments={mockComments} index={0} />
-      </StyledPostCommentsWrapper>
+      <PostComments />
       <AddPostCommentForm />
     </StyledPostCommentsSection>
   );
@@ -65,9 +20,8 @@ const StyledPostCommentsSection = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing.md};
   height: 20rem;
-`;
 
-const StyledPostCommentsWrapper = styled.ul`
-  height: 100%;
-  overflow-y: auto;
+  @media (width < ${({ theme }) => theme.breakpoints.xs}) {
+    padding: ${({ theme }) => theme.spacing.sm};
+  }
 `;
