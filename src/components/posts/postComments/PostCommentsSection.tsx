@@ -3,11 +3,15 @@ import styled from "styled-components";
 import AddPostCommentForm from "./AddPostCommentForm";
 import PostComments from "./PostComments";
 
-export default function PostCommentsSection() {
+type Props = {
+  postId: string;
+};
+
+export default function PostCommentsSection({ postId }: Props) {
   return (
     <StyledPostCommentsSection>
-      <PostComments />
-      <AddPostCommentForm />
+      <PostComments postId={postId} />
+      <AddPostCommentForm postId={postId} />
     </StyledPostCommentsSection>
   );
 }

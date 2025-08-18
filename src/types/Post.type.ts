@@ -8,6 +8,28 @@ export type CreatePostForm = z.infer<typeof createPostFormSchema>;
 
 export type AddPostCommentForm = z.infer<typeof addPostCommentFormSchema>;
 
+export type PostCommentResponse = {
+  _id: string;
+  content: string;
+  likesCount: number;
+  createdAt: string;
+  userAvatar: string;
+  userUsername: string;
+  postId: string;
+  userId: string;
+};
+
+export type PostComment = {
+  id: string;
+  content: string;
+  likesCount: number;
+  createdAt: string;
+  userAvatar: string;
+  userUsername: string;
+  postId: string;
+  userId: string;
+};
+
 export type CreatePostFormWithPhotoOrder = Omit<
   z.infer<typeof createPostFormSchema>,
   "photos"

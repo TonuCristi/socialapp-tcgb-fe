@@ -33,13 +33,13 @@ export default function CreatePostForm() {
   const [photosOrder, setPhotosOrder] = useState<PhotoOrder[]>([]);
   const { isPending, mutate } = useMutation({
     mutationFn: PostsApi.createPost,
+    onSuccess: (data) => {
+      toast.success(data.message);
+    },
     onError: (error) => {
       if (axios.isAxiosError(error) && error.response) {
         toast.error(error.response.data.message);
       }
-    },
-    onSuccess: (data) => {
-      toast.success(data.message);
     },
   });
 

@@ -23,8 +23,8 @@ export default function PostLikeButton({ postId, isLikedByMe }: Props) {
       queryClient.setQueryData(
         ["user-posts"],
         (oldPosts: {
-          pages: { posts: Post[]; nextPage: number }[];
           pageParams: number[];
+          pages: { posts: Post[]; nextPage: number }[];
         }) => {
           return {
             ...oldPosts,

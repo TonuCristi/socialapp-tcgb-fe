@@ -8,7 +8,7 @@ import SearchResultCardSkeleton from "./SearchResultCardSkeleton";
 
 import { UsersApi } from "../../services/UsersApi";
 
-export const LIMIT = 15;
+const LIMIT = 15;
 
 export default function SearchResults() {
   const targetRef = useRef<HTMLLIElement>(null);

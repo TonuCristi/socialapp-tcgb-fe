@@ -29,9 +29,12 @@ export default function PostInteractions({
     <StyledPostInteractions>
       <StyledPostStats>
         <PostLikeStatButton postId={postId} likesCount={likesCount} />
-        <StyledStatButton variant="empty">
+        <Button
+          variant="empty"
+          onClick={() => setIsCommentsSectionOpen((prev) => !prev)}
+        >
           {commentsCount} Comments
-        </StyledStatButton>
+        </Button>
       </StyledPostStats>
       <StyledPostActions>
         <PostLikeButton postId={postId} isLikedByMe={isLikedByMe} />
@@ -43,7 +46,7 @@ export default function PostInteractions({
           Share
         </StyledInteractionButton>
       </StyledPostActions>
-      {isCommentsSectionOpen && <PostCommentsSection />}
+      {isCommentsSectionOpen && <PostCommentsSection postId={postId} />}
     </StyledPostInteractions>
   );
 }
@@ -64,8 +67,6 @@ const StyledPostStats = styled.div`
   border-bottom: 0.1rem solid ${({ theme }) => theme.colors.accent};
   padding-bottom: ${({ theme }) => theme.spacing.sm};
 `;
-
-const StyledStatButton = styled(Button)``;
 
 const StyledPostActions = styled.div`
   display: flex;
