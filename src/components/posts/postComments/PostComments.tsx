@@ -6,8 +6,7 @@ import PostCommentCard from "./PostCommentCard";
 import PostCommentCardSkeleton from "./PostCommentCardSkeleton";
 
 import { PostsApi } from "../../../services/PostsApi";
-
-const LIMIT = 5;
+import { LIMIT } from "./PostCommentsSection";
 
 type Props = {
   postId: string;

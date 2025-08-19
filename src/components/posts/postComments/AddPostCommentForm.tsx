@@ -33,9 +33,52 @@ export default function AddPostCommentForm({ postId }: Props) {
         ["comments", postId],
         (oldComments: {
           pageParams: number[];
-          pages: { comments: PostComment[]; nextPage: number };
+          pages: { comments: PostComment[]; nextPage: number }[];
         }) => {
-          console.log(oldComments);
+          const pagesCount = oldComments.pages.length;
+          // console.log(pagesCount);
+
+          const firstPage = oldComments.pages[0];
+
+          // console.log(
+          //   oldComments.pages.slice(
+          //     0,
+          //     lastPage.comments.length === 5 ? pagesCount + 1 : pagesCount
+          //   )
+          // );
+
+          // console.log({
+          //   ...oldComments,
+          //   pages: [
+          //     ...oldComments.pages.slice(
+          //       0,
+          //       lastPage.comments.length === 5 ? pagesCount + 1 : pagesCount
+          //     ),
+          //     {
+          //       ...lastPage,
+          //       comments:
+          //         lastPage.comments.length === 5
+          //           ? [data.newPostComment]
+          //           : [...lastPage.comments, data.newPostComment],
+          //     },
+          //   ],
+          // });
+
+          console.log(firstPage);
+
+          return {
+            ...oldComments,
+            pages: [
+              {
+                comments:
+                  firstPage.comments.length === 5
+                    ? [data.newPostComment]
+                    : [data.newPostComment, ...firstPage.comments],
+                nextPage: null,
+              },
+              ...oldComments.pages,
+            ],
+          };
         }
       );
     },
