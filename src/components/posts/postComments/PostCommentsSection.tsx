@@ -3,8 +3,6 @@ import styled from "styled-components";
 import AddPostCommentForm from "./AddPostCommentForm";
 import PostComments from "./PostComments";
 
-export const LIMIT = 5;
-
 type Props = {
   postId: string;
 };

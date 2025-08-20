@@ -6,7 +6,8 @@ import PostCommentCard from "./PostCommentCard";
 import PostCommentCardSkeleton from "./PostCommentCardSkeleton";
 
 import { PostsApi } from "../../../services/PostsApi";
-import { LIMIT } from "./PostCommentsSection";
+
+const LIMIT = 5;
 
 type Props = {
   postId: string;
@@ -23,6 +24,10 @@ export default function PostComments({ postId }: Props) {
       getNextPageParam: (lastPage) => lastPage.nextPage,
     });
 
+  const pages = data?.pages;
+
+  const comments = [...(pages ? pages.flatMap((page) => page.comments) : [])];
+
   useEffect(() => {
     if (!targetRef.current) return;
 
@@ -30,7 +35,7 @@ export default function PostComments({ postId }: Props) {
       (entries) => {
         const isIntersecting = entries[0].isIntersecting;
 
-        if (isIntersecting && !isFetchingNextPage) {
+        if (isIntersecting && !isFetchingNextPage && !isLoading) {
           fetchNextPage();
         }
       },
@@ -47,17 +52,15 @@ export default function PostComments({ postId }: Props) {
     }
 
     return () => {
-      observer.disconnect();
+      observer.unobserve(target);
     };
-  }, [fetchNextPage, isFetchingNextPage]);
+  }, [fetchNextPage, isFetchingNextPage, isLoading]);
 
   return (
     <StyledPostComments>
-      {data?.pages.map((page) =>
-        page.comments.map((comment) => (
-          <PostCommentCard key={comment.id} comment={comment} />
-        ))
-      )}
+      {comments.map((comment) => (
+        <PostCommentCard key={comment.id} comment={comment} />
+      ))}
       <li ref={targetRef}></li>
       {(isLoading || isFetchingNextPage) && <PostCommentCardSkeleton />}
     </StyledPostComments>
